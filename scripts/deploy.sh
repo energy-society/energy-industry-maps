@@ -11,5 +11,8 @@ git fetch origin gh-pages
 # Remove known files on this branch
 git rm $(git ls-tree -r --name-only HEAD)
 
+# Make a backup copy of the build
+cp -r build .build-cache
+
 # Move new build here
-cp -r build/* .
+git mv build/* .
