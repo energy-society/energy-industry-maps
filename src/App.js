@@ -9,7 +9,7 @@ import './App.css';
 
 const POINT_LAYER = 'energy-companies-point-layer'
 
-mapboxgl.accessToken = env.MAPBOX_API_TOKEN;
+mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_API_TOKEN;
 
 function getPopupContent(props) {
   const categoryInfo = ['tax1', 'tax2', 'tax3']

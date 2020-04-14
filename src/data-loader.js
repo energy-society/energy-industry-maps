@@ -2,11 +2,14 @@ import mapboxgl from 'mapbox-gl';
 import { normalizeCategory } from './common.js';
 
 const DATASETS_ENDPOINT = "https://api.mapbox.com/datasets/v1";
-const USER = "sjespersen";
-const DATASET_ID = "ck8ial4n30lew2zp4xon151jl";
+const USER = process.env.REACT_APP_MAPBOX_USER;
+// TODO: Parameterize over dataset id, as we will want the flexibility to load
+// other datasets.
+const DATASET_ID = "ck901ssdl1sxn2mmnj56s9ibm";
 
 function loadGeojsonData() {
-  return fetch(`${DATASETS_ENDPOINT}/${USER}/${DATASET_ID}/features?access_token=${mapboxgl.accessToken}`)
+  let url = `${DATASETS_ENDPOINT}/${USER}/${DATASET_ID}/features?access_token=${mapboxgl.accessToken}`;
+  return fetch(url)
     .then(response => response.text())
     .then(data => JSON.parse(data))
     .then(parsed => {
