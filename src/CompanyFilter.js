@@ -39,6 +39,7 @@ class CompanyFilter extends React.Component {
               id={checkboxId}
               name={sanitizedCat}
               checked={isChecked}
+              className='category-filter-checkbox'
               onChange={this.handleSelectCategory} />
           </td>
           <td>

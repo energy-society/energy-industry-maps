@@ -85,7 +85,10 @@ div#map-container {
   position: relative;
 }
 #company-filter #filter-toggle:hover {
-  background-color: #047;
+  background-color: #12447d;
+}
+#company-filter #filter-toggle:active {
+  background-color: #22548d;
 }
 #company-filter .hamburger-menu {
   height: 24px;
@@ -118,6 +121,12 @@ button.select-all {
   border: 1px solid #666;
   cursor: pointer;
   border-radius: 3px;
+}
+button.select-all:hover {
+  background-color: #12447d;
+}
+button.select-all:active {
+  background-color: #22548d;
 }
 div.flex-row {
   display: flex;
