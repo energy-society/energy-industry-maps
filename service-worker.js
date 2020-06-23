@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/energy-industry-maps/precache-manifest.afdb7cea5481ae241fd3fdc68d0d396d.js"
+  "/energy-industry-maps/precache-manifest.84c6b530542c3039fd32b8b7819e3c42.js"
 );
 
 self.addEventListener('message', (event) => {
