@@ -1,12 +1,16 @@
 # American Energy Society Industry Maps
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). You'll need `npm` installed to do any meaningful work on this project.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). You'll need `npm`/`yarn` installed to do any meaningful work on this project.
 
 ## How to dev
 
 In the project directory, run:
 
-### `npm start`
+### `yarn install --ignore-engines`
+
+Installs all dependencies needed to build the project.
+
+### `yarn start`
 
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -14,7 +18,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
 
-### `npm run build`
+### `yarn run build`
 
 Builds the app for production to the `build` folder.<br />
 It correctly bundles React in production mode and optimizes the build for the best performance.
