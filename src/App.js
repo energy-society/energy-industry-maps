@@ -1,7 +1,7 @@
-import React from 'react';
 import mapboxgl from 'mapbox-gl';
-import CompanyFilter from './CompanyFilter.js';
-import CompanySelector from './CompanySelector.js';
+import React from 'react';
+import MapOmnibox from './MapOmnibox.js';
+import SettingsPane from "./SettingsPane.js";
 import { CIRCLE_COLORS, DISPLAY_CATEGORIES } from './taxonomy-colors.js';
 import { loadGeojsonData } from './data-loader.js';
 import { normalizeCategory } from './common.js';
@@ -37,6 +37,8 @@ class App extends React.Component {
     minZoom: 6,
     companiesGeojson: {},
     selectedCategories: new Set(),
+    settingsPaneOpen: false,
+    mapTitle: 'Silicon Valley Energy Ecosystem, 2019',
   };
 
   constructor(props) {
@@ -45,6 +47,7 @@ class App extends React.Component {
     this.handleSelectAllCategories = this.handleSelectAllCategories.bind(this);
     this.handleDeselectAllCategories = this.handleDeselectAllCategories.bind(this);
     this.handleSelectCompany = this.handleSelectCompany.bind(this);
+    this.handleToggleSettingsPane = this.handleToggleSettingsPane.bind(this);
     this.displayPopup = this.displayPopup.bind(this);
   }
 
@@ -166,6 +169,10 @@ class App extends React.Component {
     });
   }
 
+  handleToggleSettingsPane(open) {
+    this.setState({settingsPaneOpen: open});
+  }
+
   componentDidUpdate() {
     if (this.map.getLayer(POINT_LAYER)) {
       var filters = ["any"];
@@ -184,19 +191,22 @@ class App extends React.Component {
   render() {
     return (
       <div id="app-container">
+        <SettingsPane
+          onToggleOpen={this.handleToggleSettingsPane}
+          settingsPaneOpen={this.state.settingsPaneOpen}
+          selectedCategories={this.state.selectedCategories}
+          onSelectAllCategories={this.handleSelectAllCategories}
+          onDeselectAllCategories={this.handleDeselectAllCategories}
+          onToggleCategory={this.handleToggleCategory} />
         <div ref={el => this.mapContainer = el} id="map-container" />
-        <div id="map-overlay">
-          <div id="title-and-search">
-            <div id="map-title">Silicon Valley Energy Ecosystem, 2019</div>
-            <CompanySelector
+        <div className="map-overlay">
+          <div className="map-title-and-search">
+            <div className="map-title">{this.state.mapTitle}</div>
+            <MapOmnibox
               companies={this.state.companiesGeojson.features}
-              onSelectCompany={this.handleSelectCompany}/>
+              onSelectCompany={this.handleSelectCompany}
+              onOpenSettingsPane={() => this.handleToggleSettingsPane(true)} />
           </div>
-          <CompanyFilter
-            selectedCategories={this.state.selectedCategories}
-            onSelectAllCategories={this.handleSelectAllCategories}
-            onDeselectAllCategories={this.handleDeselectAllCategories}
-            onToggleCategory={this.handleToggleCategory} />
         </div>
       </div>
     );
