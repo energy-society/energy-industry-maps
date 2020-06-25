@@ -79,7 +79,7 @@ class App extends React.Component {
       });
     });
 
-    loadGeojsonData().then(companiesGeojson => {
+    const geojsonLoaded = loadGeojsonData().then(companiesGeojson => {
       this.setState({
         companiesGeojson: companiesGeojson,
         categories: compileCategoryList(companiesGeojson),
@@ -87,44 +87,47 @@ class App extends React.Component {
 
       // initially select all categories
       this.handleSelectAllCategories();
+
+      return companiesGeojson;
     });
 
-
     this.map.on('load', () => {
-      this.map.addControl(new mapboxgl.FullscreenControl(), 'bottom-left');
-      this.map.addControl(new mapboxgl.NavigationControl(), 'bottom-left');
+      this.map.addControl(new mapboxgl.FullscreenControl(), 'bottom-right');
+      this.map.addControl(new mapboxgl.NavigationControl(), 'bottom-right');
 
-      this.map.addSource('companies', {
-        type: 'geojson',
-        data: this.state.companiesGeojson,
+      geojsonLoaded.then(companiesGeojson => {
+        this.map.addSource('companies', {
+          type: 'geojson',
+          data: companiesGeojson,
+        });
+
+        this.map.addLayer({
+          id: POINT_LAYER,
+          type: 'circle',
+          source: 'companies',
+          paint: {
+            // make circles larger as the user zooms
+            'circle-radius': {
+              stops: [[7, 5], [14, 12], [20, 50]]
+            },
+            'circle-opacity': 0.85,
+            // color circles by primary category
+            'circle-color': ['match', ['get', 'tax1']].concat(CIRCLE_COLORS),
+            'circle-stroke-color': '#fff',
+            'circle-stroke-width': 0.4,
+          }
+        });
+
+        this.map.on('mouseenter', POINT_LAYER, (e) => {
+          this.map.getCanvas().style.cursor = 'pointer';
+        });
+
+        this.map.on('mouseleave', POINT_LAYER, () => {
+          this.map.getCanvas().style.cursor = '';
+        });
+
+        this.map.on('click', POINT_LAYER, e => this.displayPopup(e.features[0]));
       });
-
-      this.map.addLayer({
-        id: POINT_LAYER,
-        type: 'circle',
-        source: 'companies',
-        paint: {
-          // make circles larger as the user zooms
-          'circle-radius': {
-            stops: [[7, 5], [14, 12], [20, 50]]
-          },
-          'circle-opacity': 0.85,
-          // color circles by primary category
-          'circle-color': ['match', ['get', 'tax1']].concat(CIRCLE_COLORS),
-          'circle-stroke-color': '#fff',
-          'circle-stroke-width': 0.4,
-        }
-      });
-
-      this.map.on('mouseenter', POINT_LAYER, (e) => {
-        this.map.getCanvas().style.cursor = 'pointer';
-      });
-
-      this.map.on('mouseleave', POINT_LAYER, () => {
-        this.map.getCanvas().style.cursor = '';
-      });
-
-      this.map.on('click', POINT_LAYER, e => this.displayPopup(e.features[0]));
     });
 
     this.map.flyTo({
