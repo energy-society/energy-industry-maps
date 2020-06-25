@@ -26,9 +26,9 @@ class MapOmnibox extends React.Component {
       <div className="map-omnibox">
         <div className="omnibox-burger-menu">
           <span>
-            <span className="omnibox-burger-bar" style={{top: "11px"}}/>
-            <span className="omnibox-burger-bar" style={{top: "17px"}} />
-            <span className="omnibox-burger-bar" style={{top: "23px"}} />
+            <span className="omnibox-burger-bar omnibox-burger-bar-top" />
+            <span className="omnibox-burger-bar omnibox-burger-bar-middle" />
+            <span className="omnibox-burger-bar omnibox-burger-bar-bottom" />
           </span>
           <button onClick={this.props.onOpenSettingsPane}>Menu</button>
         </div>
