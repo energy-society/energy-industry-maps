@@ -130,13 +130,13 @@ class App extends React.Component {
         });
 
         this.map.on('click', POINT_LAYER, e => this.displayPopup(e.features[0]));
-      });
-    });
 
-    this.map.flyTo({
-      center: [-122.21, 37.65], // [lng, lat]
-      zoom: 8,
-      speed: 0.5,
+        this.map.flyTo({
+          center: [-122.21, 37.65], // [lng, lat]
+          zoom: 8,
+          speed: 0.5,
+        });
+      });
     });
   }
 
