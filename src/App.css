@@ -78,6 +78,7 @@ div#map-container {
   background: #444;
   position: absolute;
   left: 10px;
+  border-radius: 2px;
 }
 .omnibox-burger-bar-top {
   top: 12px;
@@ -91,6 +92,9 @@ div#map-container {
 .omnibox-burger-menu:hover .omnibox-burger-bar {
   opacity: 0.75;
 }
+.omnibox-burger-menu:active .omnibox-burger-bar {
+  opacity: 0.5;
+}
 #place-search {
   top: 12pt;
   min-width: 260px;
@@ -99,9 +103,12 @@ div#map-container {
 /* Map settings pane */
 .bm-menu-wrap {
   transition: all 0.25s ease-in-out !important;
+  box-shadow: 2px 0px 5px #111;
+  min-width: 320px;
 }
-.bm-cross-button {
-  color: #f0f;
+.bm-cross {
+  background-color: #fff;
+  border-radius: 1px;
 }
 .map-settings-pane-content {
   font-family: 'Open Sans', sans-serif;
@@ -109,6 +116,7 @@ div#map-container {
   color: #3f3f3f;
   padding: 4px;
   background: rgba(244, 244, 244, 0.93);
+  min-height: 100vh;
 }
 .map-settings-pane-section-header {
   background-color: #02346d;
