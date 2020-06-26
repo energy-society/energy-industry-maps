@@ -2,7 +2,6 @@ import React from 'react';
 
 class Omnibox extends React.Component {
   state = {
-    option: '',
     query: '',
     hasFocus: false,
     searchResults: [],
@@ -13,7 +12,7 @@ class Omnibox extends React.Component {
     this.getCompanies = this.getCompanies.bind(this);
     this.shouldDisplaySuggestions = this.shouldDisplaySuggestions.bind(this);
     this.setHasFocus = this.setHasFocus.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+    this.handleResultSelection = this.handleResultSelection.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
   }
 
@@ -32,9 +31,9 @@ class Omnibox extends React.Component {
     this.setState({hasFocus: hasFocus});
   }
 
-  handleChange(option) {
-    this.setState({option: option});
-    this.props.onSelectCompany(option.value);
+  handleResultSelection(value) {
+    this.props.onSelectCompany(value);
+    this.setState({query: value, searchResults: []});
   }
 
   handleInputChange() {
@@ -51,8 +50,8 @@ class Omnibox extends React.Component {
   }
 
   render() {
-    const searchSuggestions = this.state.searchResults.map(
-      r => (<li key={r}>{r}</li>));
+    const searchSuggestions = this.state.searchResults.map(r => (
+      <li key={r} onMouseDown={() => this.handleResultSelection(r)}>{r}</li>));
     return (
       <div className="omnibox">
         <button
@@ -79,6 +78,7 @@ class Omnibox extends React.Component {
             id="omnibox-search-input"
             ref={input => this.searchInput = input}
             onChange={this.handleInputChange}
+            value={this.state.query}
             onFocus={() => this.setHasFocus(true)}
             onBlur={() => this.setHasFocus(false)}
             placeholder="Search..." />
