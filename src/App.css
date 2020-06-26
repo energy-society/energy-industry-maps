@@ -126,13 +126,41 @@ div#map-container {
   cursor: pointer;
   font-size: 16pt;
 }
+.omnibox-search-suggestions-container {
+  background-color: #fefefe;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  position: absolute;
+  top: 38px;
+  left: 40px;
+  width: 323px;
+}
+.omnibox-search-suggestions {
+  max-height: 300px;
+  overflow: scroll;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  color: #333;
+}
+.omnibox-search-suggestions li {
+  padding: 8px;
+  border-bottom: 1px solid #ccc;
+}
+.omnibox-search-suggestions li:nth-last-child(1) {
+  border-bottom: none;
+}
+.omnibox-search-suggestions li:hover {
+  background-color: #d9edff;
+  cursor: pointer;
+}
 .magnifying-glass {
   transform: rotate(-45deg);
 }
 /* Map settings pane */
 .bm-menu-wrap {
   transition: all 0.25s ease-in-out !important;
-  box-shadow: 2px 0px 5px #111;
+  box-shadow: 0px 0px 4px #111;
   min-width: 320px;
 }
 .bm-cross {
