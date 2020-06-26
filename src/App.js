@@ -176,7 +176,7 @@ class App extends React.Component {
   componentDidUpdate() {
     if (this.map.getLayer(POINT_LAYER)) {
       var filters = ["any"];
-      // If ANY of the 3 taxonomies for a company are selected, they should be
+      // If ANY of the 3 taxonomies for a company are selected, it should be
       // displayed on the map.
       const selectedCategories = this.state.selectedCategories;
       [1, 2, 3].forEach(i => {

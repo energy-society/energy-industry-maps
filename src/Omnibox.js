@@ -20,20 +20,32 @@ class Omnibox extends React.Component {
     }
     return (
       <div className="omnibox">
-        <div className="omnibox-burger-menu" onClick={this.props.onOpenSettingsPane}>
+        <button
+          className="omnibox-burger-menu"
+          onClick={this.props.onOpenSettingsPane}
+          title="Menu"
+          aria-label="Menu">
           <span>
-            <span className="omnibox-burger-bar omnibox-burger-bar-top" />
-            <span className="omnibox-burger-bar omnibox-burger-bar-middle" />
-            <span className="omnibox-burger-bar omnibox-burger-bar-bottom" />
+            <span
+              className="omnibox-burger-bar omnibox-burger-bar-top"
+              aria-hidden="true" />
+            <span
+              className="omnibox-burger-bar omnibox-burger-bar-middle"
+              aria-hidden="true" />
+            <span
+              className="omnibox-burger-bar omnibox-burger-bar-bottom"
+              aria-hidden="true" />
           </span>
-          <button>Menu</button>
-        </div>
-        <div className="place-search">
+        </button>
+        <div className="omnibox-search-input-container">
           <input type="text" className="omnibox-search-input" placeholder="Search..." />
         </div>
-        <div className="omnibox-search-button-container">
-          <button id="omnibox-search-button">&#9906;</button>
-        </div>
+        <button
+          className="omnibox-search-button"
+          title="Search"
+          aria-label="Search">
+          <div className="magnifying-glass" aria-hidden="true">&#9906;</div>
+        </button>
       </div>);
   }
 }

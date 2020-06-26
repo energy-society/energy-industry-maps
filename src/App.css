@@ -55,23 +55,14 @@ div#map-container {
 }
 .omnibox-burger-menu {
   position: absolute;
-  background: #fdfdfd;
-  border-radius: 3px;
+  background: transparent;
   height: 38px;
   width: 38px;
+  border: 0;
+  padding: 0;
   cursor: pointer;
   z-index: 1000;
-}
-.omnibox-burger-menu button {
-  background: transparent;
-  display: block;
-  position: absolute;
-  height: 38px;
-  width: 38px;
-  padding: 0;
   font-size: 0px;
-  border: 0px;
-  cursor: pointer;
 }
 .omnibox-burger-bar {
   width: 20px;
@@ -104,7 +95,7 @@ div#map-container {
   border-left: 1px solid #ddd;
   height: 28px;
 }
-.place-search {
+.omnibox-search-input-container {
   position: absolute;
   left: 48px;
   flex-grow: 1;
@@ -118,26 +109,25 @@ div#map-container {
   font-family: 'Roboto', sans-serif;
   border-style: none;
 }
-.omnibox-search-button-container {
+.omnibox-search-input::placeholder {
+  color: #444;
+}
+.omnibox-search-button {
   position: absolute;
   right: 0;
   top: 0;
-  height: 38px;
-  width: 38px;
-}
-#omnibox-search-button {
   background: transparent;
-  border: none;
   cursor: pointer;
   display: block;
-  position: absolute;
   height: 38px;
   width: 38px;
   padding: 0;
-  border: 0px;
+  border: 0;
   cursor: pointer;
-  transform: rotate(-45deg);
   font-size: 16pt;
+}
+.magnifying-glass {
+  transform: rotate(-45deg);
 }
 /* Map settings pane */
 .bm-menu-wrap {
