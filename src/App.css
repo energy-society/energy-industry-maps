@@ -45,7 +45,7 @@ div#map-container {
 .bm-burger-button, .bm-burger-bars {
   display: none;
 }
-.map-omnibox {
+.omnibox {
   border: 1px solid #ccc;
   border-radius: 5px;
   background: #fdfdfd;
@@ -100,7 +100,7 @@ div#map-container {
   content: "";
   position: absolute;
   left: 40px;
-  top: 4px;
+  top: 5px;
   border-left: 1px solid #ddd;
   height: 28px;
 }

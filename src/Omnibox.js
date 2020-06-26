@@ -1,6 +1,6 @@
 import React from 'react';
 
-class MapOmnibox extends React.Component {
+class Omnibox extends React.Component {
   state = {option: ''};
 
   constructor(props) {
@@ -19,7 +19,7 @@ class MapOmnibox extends React.Component {
       options = this.props.companies.map(f => f.properties.company);
     }
     return (
-      <div className="map-omnibox">
+      <div className="omnibox">
         <div className="omnibox-burger-menu" onClick={this.props.onOpenSettingsPane}>
           <span>
             <span className="omnibox-burger-bar omnibox-burger-bar-top" />
@@ -38,4 +38,4 @@ class MapOmnibox extends React.Component {
   }
 }
 
-export default MapOmnibox;
+export default Omnibox;
