@@ -2,15 +2,20 @@ import React from 'react';
 import Downshift from 'downshift';
 import { MAPS } from './config.js';
 
+
+const asOption = mapId => ({label: MAPS[mapId].shortName, value: mapId});
+
 class LocationSelector extends React.Component {
   state = {
-    selectedMap: null,
+    selectedMap: {label: '', value: ''},
+  }
+
+  componentDidMount() {
+    this.setState({selectedMap: asOption(this.props.selectedMap)});
   }
 
   render() {
-    const items = Object.keys(MAPS).map(k => (
-      {value: k, label: MAPS[k].shortName}
-    ));
+    const items = Object.keys(MAPS).map(asOption);
 
     return (
       <Downshift
@@ -34,7 +39,7 @@ class LocationSelector extends React.Component {
             <div className="location-selector">
               <button className="location-selector-button"
                 {...getToggleButtonProps()}>
-                <div>{(selectedItem && selectedItem.label) || '...'}</div>
+                <div>{this.state.selectedMap.label}</div>
                 <span className="location-selector-button-divider"></span>
                 <div className="location-selector-button-arrow">
                   <svg>

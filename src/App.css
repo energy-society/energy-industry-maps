@@ -202,14 +202,12 @@ div#map-container {
 .map-settings-pane-section-divider {
   border-bottom: 1px solid #ccc;
   border-top: none;
-  margin-left: 12px;
-  margin-right: 12px;
+  margin: 12px;
 }
 /* Location selector styling */
 .location-selector-container {
   display: flex;
   flex-direction: row;
-  padding-bottom: 4px;
   margin-right: 8px;
 }
 .location-selector {
@@ -217,7 +215,6 @@ div#map-container {
   position: relative;
 }
 .location-selector-button {
-  /*appearance: none;*/
   border: 1px solid #ccc;
   border-radius: 3px;
   font-family: 'Open Sans', sans-serif;

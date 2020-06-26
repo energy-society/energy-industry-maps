@@ -173,8 +173,8 @@ class App extends React.Component {
     });
   }
 
-  handleSelectMap(e) {
-    console.log(e);
+  handleSelectMap(mapId) {
+    this.setState({selectedMap: mapId});
   }
 
   handleToggleSettingsPane(open) {
