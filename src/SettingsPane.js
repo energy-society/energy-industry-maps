@@ -46,7 +46,7 @@ class SettingsPane extends React.Component {
               </div>
               <LocationSelector
                 onSelectMap={this.props.onSelectMap}
-                selectedMap={this.props.selectedMap} />
+                selectedMapId={this.props.selectedMapId} />
               <div><hr className="map-settings-pane-section-divider" /></div>
               <div className="map-settings-pane-section-header">
                 <span>Filter by category</span>

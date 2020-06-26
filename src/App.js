@@ -34,7 +34,7 @@ class App extends React.Component {
   map;
 
   state = {
-    selectedMap: 'sf', // FIXME (shouldn't need a default)
+    selectedMapId: 'sf', // FIXME (shouldn't need a default)
     center: MAPS['sf'].center, // FIXME (shouldn't need a default)
     zoom: 6,
     minZoom: 6,
@@ -50,8 +50,12 @@ class App extends React.Component {
     this.handleDeselectAllCategories = this.handleDeselectAllCategories.bind(this);
     this.handleSelectCompany = this.handleSelectCompany.bind(this);
     this.handleSelectMap = this.handleSelectMap.bind(this);
-    this.handleToggleSettingsPane = this.handleToggleSettingsPane.bind(this);
     this.displayPopup = this.displayPopup.bind(this);
+    this.getSelectedMap = this.getSelectedMap.bind(this);
+  }
+
+  getSelectedMap() {
+    return MAPS[this.state.selectedMapId];
   }
 
   displayPopup(feature) {
@@ -85,7 +89,7 @@ class App extends React.Component {
       });
     });
 
-    const geojsonLoaded = loadGeojsonData(MAPS[this.state.selectedMap].datasetId)
+    const geojsonLoaded = loadGeojsonData(this.getSelectedMap().datasetId)
       .then(companiesGeojson => {
         this.setState({
           companiesGeojson: companiesGeojson,
@@ -136,7 +140,7 @@ class App extends React.Component {
         this.map.on('click', POINT_LAYER, e => this.displayPopup(e.features[0]));
 
         this.map.flyTo({
-          center: this.state.selectedMap.flyTo, // [lng, lat]
+          center: this.getSelectedMap().flyTo, // [lng, lat]
           zoom: 8,
           speed: 0.5,
         });
@@ -174,11 +178,15 @@ class App extends React.Component {
   }
 
   handleSelectMap(mapId) {
-    this.setState({selectedMap: mapId});
-  }
-
-  handleToggleSettingsPane(open) {
-    this.setState({settingsPaneOpen: open});
+    if (mapId !== this.state.selectedMapId) {
+      console.log("different! doing stuff.");
+      this.setState({
+        selectedMapId: mapId,
+        settingsPaneOpen: false,
+      });
+    } else {
+      console.log("same as before, no action to take ");
+    }
   }
 
   componentDidUpdate() {
@@ -200,9 +208,9 @@ class App extends React.Component {
     return (
       <div id="app-container">
         <SettingsPane
-          onToggleOpen={this.handleToggleSettingsPane}
+          onToggleOpen={isOpen => this.setState({settingsPaneOpen: isOpen})}
           onSelectMap={this.handleSelectMap}
-          selectedMap={this.state.selectedMap}
+          selectedMapId={this.state.selectedMapId}
           settingsPaneOpen={this.state.settingsPaneOpen}
           selectedCategories={this.state.selectedCategories}
           onSelectAllCategories={this.handleSelectAllCategories}
@@ -211,11 +219,11 @@ class App extends React.Component {
         <div ref={el => this.mapContainer = el} id="map-container" />
         <div className="map-overlay">
           <div className="map-title-and-search">
-            <div className="map-title">{MAPS[this.state.selectedMap].title}</div>
+            <div className="map-title">{this.getSelectedMap().title}</div>
             <Omnibox
               companies={this.state.companiesGeojson.features}
               onSelectCompany={this.handleSelectCompany}
-              onOpenSettingsPane={() => this.handleToggleSettingsPane(true)} />
+              onOpenSettingsPane={() => this.setState({settingsPaneOpen: true})} />
           </div>
         </div>
       </div>

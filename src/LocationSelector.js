@@ -11,7 +11,7 @@ class LocationSelector extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({selectedMap: asOption(this.props.selectedMap)});
+    this.setState({selectedMap: asOption(this.props.selectedMapId)});
   }
 
   render() {
