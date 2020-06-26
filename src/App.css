@@ -1,3 +1,4 @@
+/* General CSS rules */
 body {
   margin: 0;
   padding: 0;
@@ -18,7 +19,7 @@ div#map-container {
 .mapboxgl-popup-content > .popup > * {
   margin: 0;
 }
-#map-overlay {
+.map-overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -26,82 +27,165 @@ div#map-container {
   height: 100%;
   padding: 8px;
   pointer-events: none;
-  z-index: 1000;
 }
-#map-overlay * {
+.map-overlay * {
   pointer-events: all !important;
 }
-#title-and-search {
+.map-title-and-search {
   float: left;
 }
-#map-title {
+.map-title {
   color: #fff;
   font-size: 16pt;
   font-family: 'Roboto', sans-serif;
   margin-bottom: 8px;
 }
-#place-search {
-  width: 25%;
-  top: 12pt;
-  min-width: 300px;
-}
-#company-filter {
-  float: right;
-  position: relative;
-  margin-right: 18px;
-  border-radius: 3px;
-  z-index: 10000000;
-  background: rgba(244, 244, 244, 0.85);
-  max-height: 92vh;
-}
-#company-filter .header {
-  font-size: 14pt;
-  font-family: 'Roboto', sans-serif;
-}
-#company-filter .content {
-  max-height: 80vh;
-  transition: all 0.5s;
-  overflow: scroll;
-  padding: 4px;
-  font-family: 'Open Sans', sans-serif;
-  color: #3f3f3f;
-}
-#company-filter.hidden .content {
-  max-height: 0;
-  padding-top: 0;
-  padding-bottom: 0;
+/* Omnibox */
+/* Remove display of react-burger-menu components */
+.bm-burger-button, .bm-burger-bars {
   display: none;
 }
-#company-filter #filter-toggle {
-  background-color: #02346d;
-  color: #ffffff;
-  min-width: 300px;
+.omnibox {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background: #fdfdfd;
+  position: relative;
+  width: 364px;
+  height: 38px;
+}
+.omnibox-burger-menu {
+  position: absolute;
+  background: transparent;
+  height: 38px;
+  width: 38px;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  z-index: 1000;
+  font-size: 0px;
+}
+.omnibox-burger-bar {
+  width: 20px;
+  height: 2.5px;
+  background: #444;
+  position: absolute;
+  left: 10px;
+  border-radius: 2px;
+}
+.omnibox-burger-bar-top {
+  top: 12px;
+}
+.omnibox-burger-bar-middle {
+  top: 18px;
+}
+.omnibox-burger-bar-bottom {
+  top: 24px;
+}
+.omnibox-burger-menu:hover .omnibox-burger-bar {
+  opacity: 0.75;
+}
+.omnibox-burger-menu:active .omnibox-burger-bar {
+  opacity: 0.5;
+}
+.omnibox-burger-menu::after {
+  content: "";
+  position: absolute;
+  left: 40px;
+  top: 5px;
+  border-left: 1px solid #ddd;
+  height: 28px;
+}
+.omnibox-search-input-container {
+  position: absolute;
+  left: 48px;
+  flex-grow: 1;
+  width: 0.8fr;
+}
+.omnibox-search-input {
+  height: 36px;
+  width: 268px;
+  padding: 1px;
+  font-size: 12pt;
+  font-family: 'Roboto', sans-serif;
+  border-style: none;
+}
+.omnibox-search-input::placeholder {
+  color: #444;
+}
+.omnibox-search-button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  background: transparent;
+  cursor: pointer;
+  display: block;
+  height: 38px;
+  width: 38px;
+  padding: 0;
+  border: 0;
+  cursor: pointer;
+  font-size: 16pt;
+}
+.omnibox-search-suggestions-container {
+  background-color: #fefefe;
   border: 1px solid #ccc;
   border-radius: 3px;
-  padding: 4px;
-  outline: none !important;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 -1px 0 rgba(0, 0, 0, 0.02);
+  position: absolute;
+  top: 38px;
+  left: 40px;
+  width: 323px;
+}
+.omnibox-search-suggestions {
+  max-height: 300px;
+  overflow: scroll;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  color: #333;
+}
+.omnibox-search-suggestions li {
+  padding: 8px;
+  border-bottom: 1px solid #ccc;
+}
+.omnibox-search-suggestions li:nth-last-child(1) {
+  border-bottom: none;
+}
+.omnibox-search-suggestions li:hover {
+  background-color: #d9edff;
   cursor: pointer;
-  position: relative;
 }
-#company-filter #filter-toggle:hover {
-  background-color: #12447d;
+.magnifying-glass {
+  transform: rotate(-45deg);
 }
-#company-filter #filter-toggle:active {
-  background-color: #22548d;
+/* Map settings pane */
+.bm-menu-wrap {
+  transition: all 0.25s ease-in-out !important;
+  box-shadow: 0px 0px 4px #111;
+  min-width: 320px;
 }
-#company-filter .hamburger-menu {
-  height: 24px;
-  width: 28px;
-  padding: 2px;
-  flex-grow: 0;
+.bm-cross {
+  background-color: #fff;
+  border-radius: 1px;
+  top: -2px;
 }
-#company-filter .hamburger-menu > div {
-  background: #eee;
-  height: 2px;
-  margin: 4px;
+.map-settings-pane-content {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 10pt;
+  color: #3f3f3f;
+  padding: 4px;
+  background: rgba(244, 244, 244, 0.93);
+  min-height: 100vh;
 }
-#company-filter label {
+.map-settings-pane-section-header {
+  background-color: #02346d;
+  color: #ffffff;
+  border: 0px;
+  text-align: center;
+  font-size: 14pt;
+  font-family: 'Roboto', sans-serif;
+  padding: 8px;
+}
+.map-settings-pane label {
   font-size: 10pt;
 }
 i.category-legend {
@@ -110,7 +194,7 @@ i.category-legend {
   float: left;
   border-radius: 3px;
 }
-#company-filter #categories {
+.map-settings-pane #categories {
   line-height: 1em;
 }
 button.select-all {

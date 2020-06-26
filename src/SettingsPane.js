@@ -1,30 +1,25 @@
 import React from 'react';
+import Menu from 'react-burger-menu/lib/menus/slide'
 import { TAXONOMY_COLORS, DISPLAY_CATEGORIES } from './taxonomy-colors.js';
 import { normalizeCategory } from './common.js';
 
-class CompanyFilter extends React.Component {
-  state = {
-    displayCategories: true,
-  };
 
+class SettingsPane extends React.Component {
   constructor(props) {
     super(props);
+    this.onToggleOpen = this.onToggleOpen.bind(this);
     this.handleSelectCategory = this.handleSelectCategory.bind(this);
     this.selectAll = this.selectAll.bind(this);
     this.deselectAll = this.deselectAll.bind(this);
-    this.toggleDisplayCategoryList = this.toggleDisplayCategoryList.bind(this);
   }
+
+  onToggleOpen(state) { this.props.onToggleOpen(state.isOpen); }
+
+  handleSelectCategory(e) { this.props.onToggleCategory(e); }
 
   selectAll() { this.props.onSelectAllCategories(); }
 
   deselectAll() { this.props.onDeselectAllCategories(); }
-
-  handleSelectCategory(e) { this.props.onToggleCategory(e); }
-
-  toggleDisplayCategoryList() {
-    const displayCategories = this.state.displayCategories;
-    this.setState({displayCategories: !displayCategories});
-  }
 
   render() {
     const tableRows = DISPLAY_CATEGORIES.map(category => {
@@ -51,23 +46,26 @@ class CompanyFilter extends React.Component {
     });
 
     return (
-      <div id="company-filter" className={this.state.displayCategories ? null : "hidden"}>
-        <button id="filter-toggle" onClick={this.toggleDisplayCategoryList}>
-          <div className="flex-row">
-            <div className="flex-grow"><span className="header">Filter by category</span></div>
-            <div className="hamburger-menu"><div></div><div></div><div></div></div>
+      <div>
+        <Menu
+          isOpen={this.props.settingsPaneOpen}
+          onStateChange={this.onToggleOpen}
+          styles={{ sidebar: { background: "white" } }}>
+          <div className="map-settings-pane">
+            <div className="map-settings-pane-section-header">
+              <span>Filter by Category</span>
+              <div className="bm-cross-button"></div>
+            </div>
+            <div className="map-settings-pane-content">
+              <button id="select-all" className="select-all" onClick={this.selectAll}>Select all</button>
+              <button id="select-none" className="select-all" onClick={this.deselectAll}>Clear all</button>
+              <table id="categories"><tbody>{tableRows}</tbody></table>
+            </div>
           </div>
-        </button>
-        <div className="content">
-          <div>
-            <button id="select-all" className="select-all" onClick={this.selectAll}>Select all</button>
-            <button id="select-none" className="select-all" onClick={this.deselectAll}>Clear all</button>
-            <table id="categories"><tbody>{tableRows}</tbody></table>
-          </div>
-        </div>
+        </Menu>
       </div>
     );
   }
 }
 
-export default CompanyFilter;
+export default SettingsPane;
