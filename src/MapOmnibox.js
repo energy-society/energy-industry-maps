@@ -1,5 +1,4 @@
 import React from 'react';
-import Select from 'react-select';
 
 class MapOmnibox extends React.Component {
   state = {option: ''};
@@ -17,27 +16,23 @@ class MapOmnibox extends React.Component {
   render() {
     var options = [];
     if (this.props.companies) {
-      const companies = this.props.companies.map(f => f.properties.company);
-      options = companies.map(company => {
-        return {value: company, label: company};
-      });
+      options = this.props.companies.map(f => f.properties.company);
     }
     return (
       <div className="map-omnibox">
-        <div className="omnibox-burger-menu">
+        <div className="omnibox-burger-menu" onClick={this.props.onOpenSettingsPane}>
           <span>
             <span className="omnibox-burger-bar omnibox-burger-bar-top" />
             <span className="omnibox-burger-bar omnibox-burger-bar-middle" />
             <span className="omnibox-burger-bar omnibox-burger-bar-bottom" />
           </span>
-          <button onClick={this.props.onOpenSettingsPane}>Menu</button>
+          <button>Menu</button>
         </div>
-        <div id="place-search">
-          <Select
-            options={options}
-            placeholder="Search..."
-            onChange={this.handleChange}
-            value={this.state.option} />
+        <div className="place-search">
+          <input type="text" className="omnibox-search-input" placeholder="Search..." />
+        </div>
+        <div className="omnibox-search-button-container">
+          <button id="omnibox-search-button">&#9906;</button>
         </div>
       </div>);
   }

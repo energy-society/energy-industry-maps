@@ -46,17 +46,16 @@ div#map-container {
   display: none;
 }
 .map-omnibox {
-  display: flex;
-  flex-direction: row;
   border: 1px solid #ccc;
   border-radius: 5px;
-  background: #fcfcfc;
-  position: absolute;
-  top: 36px;
-  left: 10px;
+  background: #fdfdfd;
+  position: relative;
+  width: 364px;
+  height: 38px;
 }
 .omnibox-burger-menu {
-  background: #fcfcfc;
+  position: absolute;
+  background: #fdfdfd;
   border-radius: 3px;
   height: 38px;
   width: 38px;
@@ -65,9 +64,11 @@ div#map-container {
 }
 .omnibox-burger-menu button {
   background: transparent;
+  display: block;
   position: absolute;
   height: 38px;
   width: 38px;
+  padding: 0;
   font-size: 0px;
   border: 0px;
   cursor: pointer;
@@ -95,10 +96,48 @@ div#map-container {
 .omnibox-burger-menu:active .omnibox-burger-bar {
   opacity: 0.5;
 }
-#place-search {
-  top: 12pt;
-  min-width: 260px;
+.omnibox-burger-menu::after {
+  content: "";
+  position: absolute;
+  left: 40px;
+  top: 4px;
+  border-left: 1px solid #ddd;
+  height: 28px;
+}
+.place-search {
+  position: absolute;
+  left: 48px;
   flex-grow: 1;
+  width: 0.8fr;
+}
+.omnibox-search-input {
+  height: 36px;
+  width: 268px;
+  padding: 1px;
+  font-size: 12pt;
+  font-family: 'Roboto', sans-serif;
+  border-style: none;
+}
+.omnibox-search-button-container {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 38px;
+  width: 38px;
+}
+#omnibox-search-button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: block;
+  position: absolute;
+  height: 38px;
+  width: 38px;
+  padding: 0;
+  border: 0px;
+  cursor: pointer;
+  transform: rotate(-45deg);
+  font-size: 16pt;
 }
 /* Map settings pane */
 .bm-menu-wrap {
@@ -109,6 +148,7 @@ div#map-container {
 .bm-cross {
   background-color: #fff;
   border-radius: 1px;
+  top: -2px;
 }
 .map-settings-pane-content {
   font-family: 'Open Sans', sans-serif;
