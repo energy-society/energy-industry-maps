@@ -45,32 +45,24 @@ div#map-container {
 .bm-burger-button, .bm-burger-bars {
   display: none;
 }
-.map-omnibox {
-  display: flex;
-  flex-direction: row;
+.omnibox {
   border: 1px solid #ccc;
   border-radius: 5px;
-  background: #fcfcfc;
-  position: absolute;
-  top: 36px;
-  left: 10px;
+  background: #fdfdfd;
+  position: relative;
+  width: 364px;
+  height: 38px;
 }
 .omnibox-burger-menu {
-  background: #fcfcfc;
-  border-radius: 3px;
+  position: absolute;
+  background: transparent;
   height: 38px;
   width: 38px;
+  border: 0;
+  padding: 0;
   cursor: pointer;
   z-index: 1000;
-}
-.omnibox-burger-menu button {
-  background: transparent;
-  position: absolute;
-  height: 38px;
-  width: 38px;
   font-size: 0px;
-  border: 0px;
-  cursor: pointer;
 }
 .omnibox-burger-bar {
   width: 20px;
@@ -95,20 +87,86 @@ div#map-container {
 .omnibox-burger-menu:active .omnibox-burger-bar {
   opacity: 0.5;
 }
-#place-search {
-  top: 12pt;
-  min-width: 260px;
+.omnibox-burger-menu::after {
+  content: "";
+  position: absolute;
+  left: 40px;
+  top: 5px;
+  border-left: 1px solid #ddd;
+  height: 28px;
+}
+.omnibox-search-input-container {
+  position: absolute;
+  left: 48px;
   flex-grow: 1;
+  width: 0.8fr;
+}
+.omnibox-search-input {
+  height: 36px;
+  width: 268px;
+  padding: 1px;
+  font-size: 12pt;
+  font-family: 'Roboto', sans-serif;
+  border-style: none;
+}
+.omnibox-search-input::placeholder {
+  color: #444;
+}
+.omnibox-search-button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  background: transparent;
+  cursor: pointer;
+  display: block;
+  height: 38px;
+  width: 38px;
+  padding: 0;
+  border: 0;
+  cursor: pointer;
+  font-size: 16pt;
+}
+.omnibox-search-suggestions-container {
+  background-color: #fefefe;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  position: absolute;
+  top: 38px;
+  left: 40px;
+  width: 323px;
+}
+.omnibox-search-suggestions {
+  max-height: 300px;
+  overflow: scroll;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  color: #333;
+}
+.omnibox-search-suggestions li {
+  padding: 8px;
+  border-bottom: 1px solid #ccc;
+}
+.omnibox-search-suggestions li:nth-last-child(1) {
+  border-bottom: none;
+}
+.omnibox-search-suggestions li:hover {
+  background-color: #d9edff;
+  cursor: pointer;
+}
+.magnifying-glass {
+  transform: rotate(-45deg);
 }
 /* Map settings pane */
 .bm-menu-wrap {
   transition: all 0.25s ease-in-out !important;
-  box-shadow: 2px 0px 5px #111;
+  box-shadow: 0px 0px 4px #111;
   min-width: 320px;
 }
 .bm-cross {
   background-color: #fff;
   border-radius: 1px;
+  top: -2px;
 }
 .map-settings-pane-content {
   font-family: 'Open Sans', sans-serif;
