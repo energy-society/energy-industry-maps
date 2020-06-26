@@ -5,6 +5,7 @@ import SettingsPane from "./SettingsPane.js";
 import { CIRCLE_COLORS, DISPLAY_CATEGORIES } from './taxonomy-colors.js';
 import { loadGeojsonData } from './data-loader.js';
 import { normalizeCategory } from './common.js';
+import { MAPS } from './config.js';
 import './App.css';
 
 const POINT_LAYER = 'energy-companies-point-layer'
@@ -31,14 +32,15 @@ function compileCategoryList(companiesGeojson) {
 
 class App extends React.Component {
   map;
+
   state = {
-    center: [-121, 36.5],
+    selectedMap: 'sf', // FIXME (shouldn't need a default)
+    center: MAPS['sf'].center, // FIXME (shouldn't need a default)
     zoom: 6,
     minZoom: 6,
     companiesGeojson: {},
     selectedCategories: new Set(),
     settingsPaneOpen: false,
-    mapTitle: 'Silicon Valley Energy Ecosystem, 2019',
   };
 
   constructor(props) {
@@ -47,6 +49,7 @@ class App extends React.Component {
     this.handleSelectAllCategories = this.handleSelectAllCategories.bind(this);
     this.handleDeselectAllCategories = this.handleDeselectAllCategories.bind(this);
     this.handleSelectCompany = this.handleSelectCompany.bind(this);
+    this.handleSelectMap = this.handleSelectMap.bind(this);
     this.handleToggleSettingsPane = this.handleToggleSettingsPane.bind(this);
     this.displayPopup = this.displayPopup.bind(this);
   }
@@ -82,16 +85,17 @@ class App extends React.Component {
       });
     });
 
-    const geojsonLoaded = loadGeojsonData().then(companiesGeojson => {
-      this.setState({
-        companiesGeojson: companiesGeojson,
-        categories: compileCategoryList(companiesGeojson),
-      });
+    const geojsonLoaded = loadGeojsonData(MAPS[this.state.selectedMap].datasetId)
+      .then(companiesGeojson => {
+        this.setState({
+          companiesGeojson: companiesGeojson,
+          categories: compileCategoryList(companiesGeojson),
+        });
 
-      // initially select all categories
-      this.handleSelectAllCategories();
+        // initially select all categories
+        this.handleSelectAllCategories();
 
-      return companiesGeojson;
+        return companiesGeojson;
     });
 
     this.map.on('load', () => {
@@ -132,7 +136,7 @@ class App extends React.Component {
         this.map.on('click', POINT_LAYER, e => this.displayPopup(e.features[0]));
 
         this.map.flyTo({
-          center: [-122.21, 37.65], // [lng, lat]
+          center: this.state.selectedMap.flyTo, // [lng, lat]
           zoom: 8,
           speed: 0.5,
         });
@@ -169,6 +173,10 @@ class App extends React.Component {
     });
   }
 
+  handleSelectMap(e) {
+    console.log(e);
+  }
+
   handleToggleSettingsPane(open) {
     this.setState({settingsPaneOpen: open});
   }
@@ -193,6 +201,8 @@ class App extends React.Component {
       <div id="app-container">
         <SettingsPane
           onToggleOpen={this.handleToggleSettingsPane}
+          onSelectMap={this.handleSelectMap}
+          selectedMap={this.state.selectedMap}
           settingsPaneOpen={this.state.settingsPaneOpen}
           selectedCategories={this.state.selectedCategories}
           onSelectAllCategories={this.handleSelectAllCategories}
@@ -201,7 +211,7 @@ class App extends React.Component {
         <div ref={el => this.mapContainer = el} id="map-container" />
         <div className="map-overlay">
           <div className="map-title-and-search">
-            <div className="map-title">{this.state.mapTitle}</div>
+            <div className="map-title">{MAPS[this.state.selectedMap].title}</div>
             <Omnibox
               companies={this.state.companiesGeojson.features}
               onSelectCompany={this.handleSelectCompany}

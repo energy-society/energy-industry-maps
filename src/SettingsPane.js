@@ -1,26 +1,11 @@
 import React from 'react';
-import Menu from 'react-burger-menu/lib/menus/slide'
+import Menu from 'react-burger-menu/lib/menus/slide';
+import LocationSelector from './LocationSelector';
 import { TAXONOMY_COLORS, DISPLAY_CATEGORIES } from './taxonomy-colors.js';
 import { normalizeCategory } from './common.js';
 
 
 class SettingsPane extends React.Component {
-  constructor(props) {
-    super(props);
-    this.onToggleOpen = this.onToggleOpen.bind(this);
-    this.handleSelectCategory = this.handleSelectCategory.bind(this);
-    this.selectAll = this.selectAll.bind(this);
-    this.deselectAll = this.deselectAll.bind(this);
-  }
-
-  onToggleOpen(state) { this.props.onToggleOpen(state.isOpen); }
-
-  handleSelectCategory(e) { this.props.onToggleCategory(e); }
-
-  selectAll() { this.props.onSelectAllCategories(); }
-
-  deselectAll() { this.props.onDeselectAllCategories(); }
-
   render() {
     const tableRows = DISPLAY_CATEGORIES.map(category => {
       const sanitizedCat = normalizeCategory(category);
@@ -35,7 +20,7 @@ class SettingsPane extends React.Component {
               name={sanitizedCat}
               checked={isChecked}
               className='category-filter-checkbox'
-              onChange={this.handleSelectCategory} />
+              onChange={e => this.props.onToggleCategory(e)} />
           </td>
           <td>
             <i className="category-legend"
@@ -49,16 +34,32 @@ class SettingsPane extends React.Component {
       <div>
         <Menu
           isOpen={this.props.settingsPaneOpen}
-          onStateChange={this.onToggleOpen}
+          onStateChange={state => this.props.onToggleOpen(state.isOpen)}
           styles={{ sidebar: { background: "white" } }}>
           <div className="map-settings-pane">
-            <div className="map-settings-pane-section-header">
-              <span>Filter by Category</span>
-              <div className="bm-cross-button"></div>
+            <div className="map-settings-pane-header">
+              <span>Options</span>
             </div>
             <div className="map-settings-pane-content">
-              <button id="select-all" className="select-all" onClick={this.selectAll}>Select all</button>
-              <button id="select-none" className="select-all" onClick={this.deselectAll}>Clear all</button>
+              <div className="map-settings-pane-section-header">
+                <span>Select a location</span>
+              </div>
+              <LocationSelector
+                onSelectMap={this.props.onSelectMap}
+                selectedMap={this.props.selectedMap} />
+              <div><hr className="map-settings-pane-section-divider" /></div>
+              <div className="map-settings-pane-section-header">
+                <span>Filter by category</span>
+                <div className="bm-cross-button"></div>
+              </div>
+              <button
+                id="select-all"
+                className="select-all"
+                onClick={this.props.onSelectAllCategories}>Select all</button>
+              <button
+                id="select-none"
+                className="select-all"
+                onClick={this.props.onDeselectAllCategories}>Clear all</button>
               <table id="categories"><tbody>{tableRows}</tbody></table>
             </div>
           </div>

@@ -51,7 +51,7 @@ class Omnibox extends React.Component {
 
   render() {
     const searchSuggestions = this.state.searchResults.map(r => (
-      <li key={r} onMouseDown={() => this.handleResultSelection(r)}>{r}</li>));
+      <li key={r} tabIndex="-1" onMouseDown={() => this.handleResultSelection(r)}>{r}</li>));
     return (
       <div className="omnibox">
         <button
@@ -78,15 +78,17 @@ class Omnibox extends React.Component {
             id="omnibox-search-input"
             ref={input => this.searchInput = input}
             onChange={this.handleInputChange}
+            tabIndex="0"
             value={this.state.query}
-            onFocus={() => this.setHasFocus(true)}
+            onFocus={() => this.setState({hasFocus: true})}
             onBlur={() => this.setHasFocus(false)}
             placeholder="Search..." />
         </div>
         <div
           className="omnibox-search-suggestions-container"
+          tabIndex="-1"
           style={{display: this.shouldDisplaySuggestions() ? "block" : "none"}}>
-          <ul className="omnibox-search-suggestions">{searchSuggestions}</ul>
+          <ul className="omnibox-search-suggestions" tabIndex="-1">{searchSuggestions}</ul>
         </div>
         <button
           className="omnibox-search-button"
