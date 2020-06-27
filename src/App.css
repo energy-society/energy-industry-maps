@@ -52,6 +52,7 @@ div#map-container {
   position: relative;
   width: 364px;
   height: 38px;
+  max-width: 92%;
 }
 .omnibox-burger-menu {
   position: absolute;
@@ -162,6 +163,7 @@ div#map-container {
   transition: all 0.25s ease-in-out !important;
   box-shadow: 0px 0px 4px #111;
   min-width: 320px;
+  max-width: 100%;
 }
 .bm-cross-button {
   z-index: 10001;
@@ -172,6 +174,7 @@ div#map-container {
 }
 .map-settings-pane {
   background: rgba(244, 244, 244, 0.93);
+  overflow-y: hidden;
 }
 .map-settings-pane-content {
   font-family: 'Open Sans', sans-serif;

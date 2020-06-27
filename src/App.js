@@ -21,7 +21,9 @@ function getPopupContent(props) {
       <h3 class="company-name">${props['company']}</h3>
       <span class="category-info">${categoryInfo}</span><br />
       <span class="city-info">${props['city']}</span><br />
-      <span><a href=${props['website']} target="blank">${props['website']}</a></span>
+      <span>
+        <a href=${props['website']} target="blank">${props['website']}</a>
+      </span>
     </div>`;
 }
 
@@ -68,7 +70,7 @@ class App extends React.Component {
     new mapboxgl.Popup({})
       .setLngLat(coordinates)
       .setHTML(getPopupContent(feature.properties))
-      .setMaxWidth("40vw")
+      .setMaxWidth("300px")
       .addTo(this.map);
   }
 
