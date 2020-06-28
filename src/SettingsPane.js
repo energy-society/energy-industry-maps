@@ -1,20 +1,38 @@
 import React from 'react';
-import Menu from 'react-burger-menu/lib/menus/slide';
 import LocationSelector from './LocationSelector';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
+import Drawer from '@material-ui/core/Drawer';
 import FormControl from '@material-ui/core/FormControl';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
+import Divider from '@material-ui/core/Divider';
 import { TAXONOMY_COLORS, DISPLAY_CATEGORIES } from './taxonomy-colors';
 import { normalizeCategory } from './common';
 
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    margin: 2,
+  settingsPane: {
+    background: 'rgba(244, 244, 244, 0.93)',
+    'max-width': 320,
+  },
+  settingsPaneHeader: {
+    'background-color': '#02346d',
+    color: '#ffffff',
+    border: 0,
+    'text-align': 'center',
+    'font-size': '14pt',
+    padding: 8,
+  },
+  settingsPaneContent: {
+    padding: 4,
+  },
+  settingsPaneSubheader: {
+    'font-family': 'Roboto',
+    'font-size': '12pt',
+    padding: 6,
   },
   categoryLabel: {
     display: 'flex',
@@ -75,27 +93,25 @@ export default function SettingsPane(props) {
   });
 
   return (
-    <div>
-      <Menu
-        isOpen={props.settingsPaneOpen}
-        onStateChange={state => props.onToggleOpen(state.isOpen)}
-        styles={{ sidebar: { background: "white" } }}>
-        <div className="map-settings-pane">
-          <div className="map-settings-pane-header">
-            <span>Options</span>
-            <div className="bm-cross-button"></div>
+    <Drawer
+      open={props.settingsPaneOpen}
+      onClose={() => props.onToggleOpen(false)}>
+      <div className={classes.settingsPane}>
+        <div className={classes.settingsPaneHeader}>
+          <span>Options</span>
+        </div>
+        <div className={classes.settingsPaneContent}>
+          <div className={classes.settingsPaneSubheader}>
+            <span>Select a location</span>
           </div>
-          <div className="map-settings-pane-content">
-            <div className="map-settings-pane-section-header">
-              <span>Select a location</span>
-            </div>
-            <LocationSelector
-              onSelectMap={props.onSelectMap}
-              selectedMapId={props.selectedMapId} />
-            <div><hr className="map-settings-pane-section-divider" /></div>
-            <div className="map-settings-pane-section-header">
-              <span>Filter by category</span>
-            </div>
+          <LocationSelector
+            onSelectMap={props.onSelectMap}
+            selectedMapId={props.selectedMapId} />
+          <Divider />
+          <div className={classes.settingsPaneSubheader}>
+            <span>Filter by category</span>
+          </div>
+          <div>
             <ButtonGroup color="primary" variant="contained">
               <Button
                 id="select-all"
@@ -105,13 +121,13 @@ export default function SettingsPane(props) {
                 id="select-none"
                 className={classes.selectAllNone}
                 onClick={props.onDeselectAllCategories}>Clear all</Button>
-              </ButtonGroup>
-            <FormControl component="fieldset" className={classes.formControl}>
-              <FormGroup>{formControlLabels}</FormGroup>
-            </FormControl>
+            </ButtonGroup>
           </div>
+          <FormControl component="fieldset" className={classes.formControl}>
+            <FormGroup>{formControlLabels}</FormGroup>
+          </FormControl>
         </div>
-      </Menu>
-    </div>
+      </div>
+    </Drawer>
   );
 }
