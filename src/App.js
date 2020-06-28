@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import Omnibox from './Omnibox.js';
 import SettingsPane from "./SettingsPane.js";
 import { CIRCLE_COLORS, DISPLAY_CATEGORIES } from './taxonomy-colors.js';
-import { loadGeojsonData } from './data-loader.js';
 import { normalizeCategory } from './common.js';
 import { MAPS } from './config.js';
 import './App.css';
@@ -12,6 +11,25 @@ const COMPANIES_SOURCE = 'companies';
 const POINT_LAYER = 'energy-companies-point-layer';
 
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_API_TOKEN;
+
+const DATASETS_ENDPOINT = "https://api.mapbox.com/datasets/v1";
+const USER = process.env.REACT_APP_MAPBOX_USER;
+
+function fetchMapData(datasetId) {
+  let url = `${DATASETS_ENDPOINT}/${USER}/${datasetId}/features?access_token=${mapboxgl.accessToken}`;
+  return fetch(url)
+    .then(response => response.json())
+    .then(parsed => {
+      parsed.features.forEach(feature => {
+        // canonicalize categories for use as labels
+        ['tax1', 'tax2', 'tax3'].forEach(label => {
+          const newprop = `${label}sanitized`;
+          feature.properties[newprop] = normalizeCategory(feature.properties[label]);
+        })
+      });
+      return parsed;
+    });
+}
 
 function getPopupContent(props) {
   const categoryInfo = ['tax1', 'tax2', 'tax3']
@@ -28,6 +46,62 @@ function getPopupContent(props) {
     </div>`;
 }
 
+function displayPopup(map, feature) {
+  const coordinates = feature.geometry.coordinates.slice();
+  var popUps = document.getElementsByClassName('mapboxgl-popup');
+  // Check if there is already a popup on the map and if so, remove it
+  // This prevents multiple popups in the case of overlapping circles
+  if (popUps[0]) popUps[0].remove();
+
+  new mapboxgl.Popup({})
+    .setLngLat(coordinates)
+    .setHTML(getPopupContent(feature.properties))
+    .setMaxWidth("300px")
+    .addTo(map);
+}
+
+function populateMapData(map, mapId, mapData) {
+  mapData.then(data => {
+    map.addSource(COMPANIES_SOURCE, {
+      type: 'geojson',
+      data: data,
+    });
+
+    map.addLayer({
+      id: POINT_LAYER,
+      type: 'circle',
+      source: COMPANIES_SOURCE,
+      paint: {
+        // make circles larger as the user zooms
+        'circle-radius': {
+          stops: [[7, 5], [14, 12], [20, 50]]
+        },
+        'circle-opacity': 0.85,
+        // color circles by primary category
+        'circle-color': ['match', ['get', 'tax1']].concat(CIRCLE_COLORS),
+        'circle-stroke-color': '#fff',
+        'circle-stroke-width': 0.4,
+      }
+    });
+
+    map.on('mouseenter', POINT_LAYER, (e) => {
+      map.getCanvas().style.cursor = 'pointer';
+    });
+
+    map.on('mouseleave', POINT_LAYER, () => {
+      map.getCanvas().style.cursor = '';
+    });
+
+    map.on('click', POINT_LAYER, e => displayPopup(map, e.features[0]));
+
+    map.flyTo({
+      center: MAPS[mapId].flyTo,
+      zoom: 8,
+      speed: 0.5,
+    });
+  });
+}
+
 export default function App() {
   const [thisMap, setThisMap] = useState(null);
   const [selectedMapId, setSelectedMapId] = useState('sf'); // FIXME: no default
@@ -35,69 +109,13 @@ export default function App() {
   const [selectedCategories, setSelectedCategories] = useState(new Set());
   const [settingsPaneOpen, setSettingsPaneOpen] = useState(false);
 
-  function displayPopup(map, feature) {
-    const coordinates = feature.geometry.coordinates.slice();
-    var popUps = document.getElementsByClassName('mapboxgl-popup');
-    // Check if there is already a popup on the map and if so, remove it
-    // This prevents multiple popups in the case of overlapping circles
-    if (popUps[0]) popUps[0].remove();
-
-    new mapboxgl.Popup({})
-      .setLngLat(coordinates)
-      .setHTML(getPopupContent(feature.properties))
-      .setMaxWidth("300px")
-      .addTo(map);
-  }
-
-  function fetchMapData(mapId) {
-    return loadGeojsonData(MAPS[mapId].datasetId)
+  function loadGeojsonData(mapId) {
+    return fetchMapData(MAPS[mapId].datasetId)
       .then(geojson => {
         setCompaniesGeojson(geojson);
         // initially select all categories
         handleSelectAllCategories();
         return geojson;
-    });
-  }
-
-  function populateMapData(m, mapId, mapData) {
-    mapData.then(data => {
-      m.addSource(COMPANIES_SOURCE, {
-        type: 'geojson',
-        data: data,
-      });
-
-      m.addLayer({
-        id: POINT_LAYER,
-        type: 'circle',
-        source: COMPANIES_SOURCE,
-        paint: {
-          // make circles larger as the user zooms
-          'circle-radius': {
-            stops: [[7, 5], [14, 12], [20, 50]]
-          },
-          'circle-opacity': 0.85,
-          // color circles by primary category
-          'circle-color': ['match', ['get', 'tax1']].concat(CIRCLE_COLORS),
-          'circle-stroke-color': '#fff',
-          'circle-stroke-width': 0.4,
-        }
-      });
-
-      m.on('mouseenter', POINT_LAYER, (e) => {
-        m.getCanvas().style.cursor = 'pointer';
-      });
-
-      m.on('mouseleave', POINT_LAYER, () => {
-        m.getCanvas().style.cursor = '';
-      });
-
-      m.on('click', POINT_LAYER, e => displayPopup(m, e.features[0]));
-
-      m.flyTo({
-        center: MAPS[mapId].flyTo,
-        zoom: 8,
-        speed: 0.5,
-      });
     });
   }
 
@@ -136,7 +154,7 @@ export default function App() {
       thisMap.removeSource(COMPANIES_SOURCE);
       setSelectedMapId(mapId);
       setSettingsPaneOpen(false);
-      populateMapData(thisMap, mapId, fetchMapData(mapId));
+      populateMapData(thisMap, mapId, loadGeojsonData(mapId));
     }
   }
 
@@ -148,7 +166,7 @@ export default function App() {
       zoom: 6,
       minZoom: 6,
     });
-    let mapData = fetchMapData(selectedMapId);
+    let mapData = loadGeojsonData(selectedMapId);
 
     map.on('load', () => {
       map.addControl(new mapboxgl.FullscreenControl(), 'bottom-right');
