@@ -11,6 +11,8 @@ export const MAPS = {
     id: 'chicago',
     title: 'Chicago Energy Ecosystem',
     shortName: 'Chicago',
-    datasetId: 'unknown',
+    datasetId: 'ckbz9iagz0jjv29qrzry2ogtj', // TEMPORARY; FIXME!
+    center: [-88.5, 41.1],
+    flyTo: [-87.829, 41.879],
   }
 }

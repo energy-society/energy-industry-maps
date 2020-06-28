@@ -8,7 +8,8 @@ import { normalizeCategory } from './common.js';
 import { MAPS } from './config.js';
 import './App.css';
 
-const POINT_LAYER = 'energy-companies-point-layer'
+const COMPANIES_SOURCE = 'companies';
+const POINT_LAYER = 'energy-companies-point-layer';
 
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_API_TOKEN;
 
@@ -37,9 +38,6 @@ class App extends React.Component {
 
   state = {
     selectedMapId: 'sf', // FIXME (shouldn't need a default)
-    center: MAPS['sf'].center, // FIXME (shouldn't need a default)
-    zoom: 6,
-    minZoom: 6,
     companiesGeojson: {},
     selectedCategories: new Set(),
     settingsPaneOpen: false,
@@ -47,13 +45,14 @@ class App extends React.Component {
 
   constructor(props) {
     super(props);
+    this.getSelectedMap = this.getSelectedMap.bind(this);
+    this.displayPopup = this.displayPopup.bind(this);
+    this.populateMapData = this.populateMapData.bind(this);
     this.handleToggleCategory = this.handleToggleCategory.bind(this);
     this.handleSelectAllCategories = this.handleSelectAllCategories.bind(this);
     this.handleDeselectAllCategories = this.handleDeselectAllCategories.bind(this);
     this.handleSelectCompany = this.handleSelectCompany.bind(this);
     this.handleSelectMap = this.handleSelectMap.bind(this);
-    this.displayPopup = this.displayPopup.bind(this);
-    this.getSelectedMap = this.getSelectedMap.bind(this);
   }
 
   getSelectedMap() {
@@ -74,24 +73,9 @@ class App extends React.Component {
       .addTo(this.map);
   }
 
-  componentDidMount() {
-    this.map = new mapboxgl.Map({
-      container: this.mapContainer,
-      style: 'mapbox://styles/mapbox/dark-v10',
-      center: this.state.center,
-      zoom: this.state.zoom,
-      minZoom: this.state.minZoom,
-    });
-
-    this.map.on('move', () => {
-      this.setState({
-        lng: this.map.getCenter().lng.toFixed(4),
-        lat: this.map.getCenter().lat.toFixed(4),
-        zoom: this.map.getZoom().toFixed(2)
-      });
-    });
-
-    const geojsonLoaded = loadGeojsonData(this.getSelectedMap().datasetId)
+  populateMapData(mapId) {
+    const selectedMap = MAPS[mapId];
+    const geojsonLoaded = loadGeojsonData(selectedMap.datasetId)
       .then(companiesGeojson => {
         this.setState({
           companiesGeojson: companiesGeojson,
@@ -104,48 +88,43 @@ class App extends React.Component {
         return companiesGeojson;
     });
 
-    this.map.on('load', () => {
-      this.map.addControl(new mapboxgl.FullscreenControl(), 'bottom-right');
-      this.map.addControl(new mapboxgl.NavigationControl(), 'bottom-right');
+    geojsonLoaded.then(companiesGeojson => {
+      this.map.addSource(COMPANIES_SOURCE, {
+        type: 'geojson',
+        data: companiesGeojson,
+      });
 
-      geojsonLoaded.then(companiesGeojson => {
-        this.map.addSource('companies', {
-          type: 'geojson',
-          data: companiesGeojson,
-        });
+      this.map.addLayer({
+        id: POINT_LAYER,
+        type: 'circle',
+        source: COMPANIES_SOURCE,
+        paint: {
+          // make circles larger as the user zooms
+          'circle-radius': {
+            stops: [[7, 5], [14, 12], [20, 50]]
+          },
+          'circle-opacity': 0.85,
+          // color circles by primary category
+          'circle-color': ['match', ['get', 'tax1']].concat(CIRCLE_COLORS),
+          'circle-stroke-color': '#fff',
+          'circle-stroke-width': 0.4,
+        }
+      });
 
-        this.map.addLayer({
-          id: POINT_LAYER,
-          type: 'circle',
-          source: 'companies',
-          paint: {
-            // make circles larger as the user zooms
-            'circle-radius': {
-              stops: [[7, 5], [14, 12], [20, 50]]
-            },
-            'circle-opacity': 0.85,
-            // color circles by primary category
-            'circle-color': ['match', ['get', 'tax1']].concat(CIRCLE_COLORS),
-            'circle-stroke-color': '#fff',
-            'circle-stroke-width': 0.4,
-          }
-        });
+      this.map.on('mouseenter', POINT_LAYER, (e) => {
+        this.map.getCanvas().style.cursor = 'pointer';
+      });
 
-        this.map.on('mouseenter', POINT_LAYER, (e) => {
-          this.map.getCanvas().style.cursor = 'pointer';
-        });
+      this.map.on('mouseleave', POINT_LAYER, () => {
+        this.map.getCanvas().style.cursor = '';
+      });
 
-        this.map.on('mouseleave', POINT_LAYER, () => {
-          this.map.getCanvas().style.cursor = '';
-        });
+      this.map.on('click', POINT_LAYER, e => this.displayPopup(e.features[0]));
 
-        this.map.on('click', POINT_LAYER, e => this.displayPopup(e.features[0]));
-
-        this.map.flyTo({
-          center: this.getSelectedMap().flyTo, // [lng, lat]
-          zoom: 8,
-          speed: 0.5,
-        });
+      this.map.flyTo({
+        center: selectedMap.flyTo,
+        zoom: 8,
+        speed: 0.5,
       });
     });
   }
@@ -181,14 +160,38 @@ class App extends React.Component {
 
   handleSelectMap(mapId) {
     if (mapId !== this.state.selectedMapId) {
-      console.log("different! doing stuff.");
+      this.map.removeLayer(POINT_LAYER);
+      this.map.removeSource(COMPANIES_SOURCE);
       this.setState({
         selectedMapId: mapId,
         settingsPaneOpen: false,
       });
-    } else {
-      console.log("same as before, no action to take ");
+      this.populateMapData(mapId);
     }
+  }
+
+  componentDidMount() {
+    this.map = new mapboxgl.Map({
+      container: this.mapContainer,
+      style: 'mapbox://styles/mapbox/dark-v10',
+      center: this.getSelectedMap().center,
+      zoom: 6,
+      minZoom: 6,
+    });
+
+    this.map.on('move', () => {
+      this.setState({
+        lng: this.map.getCenter().lng.toFixed(4),
+        lat: this.map.getCenter().lat.toFixed(4),
+        zoom: this.map.getZoom().toFixed(2)
+      });
+    });
+
+    this.map.on('load', () => {
+      this.map.addControl(new mapboxgl.FullscreenControl(), 'bottom-right');
+      this.map.addControl(new mapboxgl.NavigationControl(), 'bottom-right');
+      this.populateMapData(this.state.selectedMapId);
+    });
   }
 
   componentDidUpdate() {
