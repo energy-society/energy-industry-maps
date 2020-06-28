@@ -1,6 +1,6 @@
 const BROWN = '#603e1e'
 
-const TAXONOMY_COLORS = {
+export const TAXONOMY_COLORS = {
   'Academia/Research': '#07a4bc',
   'Accelerator/Incubator': '#c30',
   'Biofuels': '#7cc908',
@@ -38,9 +38,7 @@ const TAXONOMY_COLORS = {
   'Wind': '#167d7f',
 };
 
-const DISPLAY_CATEGORIES = Object.keys(TAXONOMY_COLORS);
+export const DISPLAY_CATEGORIES = Object.keys(TAXONOMY_COLORS);
 
 // Last entry is fallthrough color
-const CIRCLE_COLORS = Object.entries(TAXONOMY_COLORS).flat().concat(['#ccc']);
-
-export { TAXONOMY_COLORS, DISPLAY_CATEGORIES, CIRCLE_COLORS };
+export const CIRCLE_COLORS = Object.entries(TAXONOMY_COLORS).flat().concat(['#ccc']);
