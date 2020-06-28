@@ -49,20 +49,21 @@ export default function App() {
       .addTo(map);
   }
 
-  function populateMapData(m, mapId) {
-    const selectedMap = MAPS[mapId];
-    const geojsonLoaded = loadGeojsonData(selectedMap.datasetId)
+  function fetchMapData(mapId) {
+    return loadGeojsonData(MAPS[mapId].datasetId)
       .then(geojson => {
         setCompaniesGeojson(geojson);
         // initially select all categories
         handleSelectAllCategories();
         return geojson;
     });
+  }
 
-    geojsonLoaded.then(companiesGeojson => {
+  function populateMapData(m, mapId, mapData) {
+    mapData.then(data => {
       m.addSource(COMPANIES_SOURCE, {
         type: 'geojson',
-        data: companiesGeojson,
+        data: data,
       });
 
       m.addLayer({
@@ -93,7 +94,7 @@ export default function App() {
       m.on('click', POINT_LAYER, e => displayPopup(m, e.features[0]));
 
       m.flyTo({
-        center: selectedMap.flyTo,
+        center: MAPS[mapId].flyTo,
         zoom: 8,
         speed: 0.5,
       });
@@ -135,7 +136,7 @@ export default function App() {
       thisMap.removeSource(COMPANIES_SOURCE);
       setSelectedMapId(mapId);
       setSettingsPaneOpen(false);
-      populateMapData(thisMap, mapId);
+      populateMapData(thisMap, mapId, fetchMapData(mapId));
     }
   }
 
@@ -147,11 +148,12 @@ export default function App() {
       zoom: 6,
       minZoom: 6,
     });
+    let mapData = fetchMapData(selectedMapId);
 
     map.on('load', () => {
       map.addControl(new mapboxgl.FullscreenControl(), 'bottom-right');
       map.addControl(new mapboxgl.NavigationControl(), 'bottom-right');
-      populateMapData(map, selectedMapId);
+      populateMapData(map, selectedMapId, mapData);
     });
     setThisMap(map);
   }
