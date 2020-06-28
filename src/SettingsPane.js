@@ -7,6 +7,7 @@ import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Button from '@material-ui/core/Button';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
 import { TAXONOMY_COLORS, DISPLAY_CATEGORIES } from './taxonomy-colors';
 import { normalizeCategory } from './common';
 
@@ -35,7 +36,6 @@ const useStyles = makeStyles((theme) => ({
   },
   selectAllNone: {
     'text-transform': 'none',
-    margin: 1,
   },
 }));
 
@@ -96,20 +96,16 @@ export default function SettingsPane(props) {
             <div className="map-settings-pane-section-header">
               <span>Filter by category</span>
             </div>
-            <Button
-              id="select-all"
-              className="select-all"
-              color="primary"
-              variant="contained"
-              className={classes.selectAllNone}
-              onClick={props.onSelectAllCategories}>Select all</Button>
-            <Button
-              id="select-none"
-              className="select-all"
-              color="primary"
-              variant="contained"
-              className={classes.selectAllNone}
-              onClick={props.onDeselectAllCategories}>Clear all</Button>
+            <ButtonGroup color="primary" variant="contained">
+              <Button
+                id="select-all"
+                className={classes.selectAllNone}
+                onClick={props.onSelectAllCategories}>Select all</Button>
+              <Button
+                id="select-none"
+                className={classes.selectAllNone}
+                onClick={props.onDeselectAllCategories}>Clear all</Button>
+              </ButtonGroup>
             <FormControl component="fieldset" className={classes.formControl}>
               <FormGroup>{formControlLabels}</FormGroup>
             </FormControl>
