@@ -1,10 +1,12 @@
 import mapboxgl from 'mapbox-gl';
 import React, { useState, useEffect } from 'react';
-import Omnibox from './Omnibox.js';
-import SettingsPane from "./SettingsPane.js";
-import { CIRCLE_COLORS, DISPLAY_CATEGORIES } from './taxonomy-colors.js';
-import { normalizeCategory } from './common.js';
-import { MAPS } from './config.js';
+import { ThemeProvider } from '@material-ui/core/styles';
+import Omnibox from './Omnibox';
+import SettingsPane from './SettingsPane';
+import { CIRCLE_COLORS, DISPLAY_CATEGORIES } from './taxonomy-colors';
+import { normalizeCategory } from './common';
+import { MAPS } from './config';
+import { THEME } from './Theme';
 import './App.css';
 
 const COMPANIES_SOURCE = 'companies';
@@ -198,25 +200,27 @@ export default function App() {
 
   return (
     <div id="app-container">
-      <SettingsPane
-        selectedMapId={selectedMapId}
-        settingsPaneOpen={settingsPaneOpen}
-        selectedCategories={selectedCategories}
-        onToggleOpen={setSettingsPaneOpen}
-        onSelectMap={handleSelectMap}
-        onSelectAllCategories={handleSelectAllCategories}
-        onDeselectAllCategories={handleDeselectAllCategories}
-        onToggleCategory={handleToggleCategory} />
-      <div id="map-container" />
-      <div className="map-overlay">
-        <div className="map-title-and-search">
-          <div className="map-title">{MAPS[selectedMapId].title}</div>
-          <Omnibox
-            companies={companiesGeojson.features}
-            onSelectCompany={handleSelectCompany}
-            onOpenSettingsPane={() => setSettingsPaneOpen(true)} />
+      <ThemeProvider theme={THEME}>
+        <SettingsPane
+          selectedMapId={selectedMapId}
+          settingsPaneOpen={settingsPaneOpen}
+          selectedCategories={selectedCategories}
+          onToggleOpen={setSettingsPaneOpen}
+          onSelectMap={handleSelectMap}
+          onSelectAllCategories={handleSelectAllCategories}
+          onDeselectAllCategories={handleDeselectAllCategories}
+          onToggleCategory={handleToggleCategory} />
+        <div id="map-container" />
+        <div className="map-overlay">
+          <div className="map-title-and-search">
+            <div className="map-title">{MAPS[selectedMapId].title}</div>
+            <Omnibox
+              companies={companiesGeojson.features}
+              onSelectCompany={handleSelectCompany}
+              onOpenSettingsPane={() => setSettingsPaneOpen(true)} />
+          </div>
         </div>
-      </div>
+      </ThemeProvider>
     </div>
   );
 }

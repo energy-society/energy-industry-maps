@@ -1,8 +1,8 @@
 import React from 'react';
 import Menu from 'react-burger-menu/lib/menus/slide';
 import LocationSelector from './LocationSelector';
-import { TAXONOMY_COLORS, DISPLAY_CATEGORIES } from './taxonomy-colors.js';
-import { normalizeCategory } from './common.js';
+import { TAXONOMY_COLORS, DISPLAY_CATEGORIES } from './taxonomy-colors';
+import { normalizeCategory } from './common';
 
 
 export default function SettingsPane(props) {
