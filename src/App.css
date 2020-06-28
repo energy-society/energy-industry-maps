@@ -207,38 +207,3 @@ div#map-container {
   border-top: none;
   margin: 12px;
 }
-/* Taxonomy categories/legend rules */
-.map-settings-pane label {
-  font-size: 10pt;
-}
-i.category-legend {
-  width: 12px;
-  height: 12px;
-  float: left;
-  border-radius: 3px;
-}
-.map-settings-pane #categories {
-  line-height: 1em;
-}
-.select-all {
-  margin: 2px;
-  font-size: 10pt;
-  font-family: 'Open Sans', sans-serif;
-  color: #fff;
-  background-color: #02346d;
-  border: 1px solid #666;
-  cursor: pointer;
-  border-radius: 3px;
-}
-.select-all:hover {
-  background-color: #12447d;
-}
-.select-all:active {
-  background-color: #22548d;
-}
-div.flex-row {
-  display: flex;
-}
-div.flex-grow {
-  flex-grow: 1;
-}

@@ -21,6 +21,8 @@ const useStyles = makeStyles((theme) => ({
   },
   locationSelectorDropdown: {
     'flex-grow': 1,
+    'font-family': 'Open Sans',
+    'font-size': '10pt',
   },
   divider: {
     height: 22,

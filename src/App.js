@@ -11,11 +11,11 @@ import './App.css';
 
 const COMPANIES_SOURCE = 'companies';
 const POINT_LAYER = 'energy-companies-point-layer';
-
-mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_API_TOKEN;
-
 const DATASETS_ENDPOINT = "https://api.mapbox.com/datasets/v1";
 const USER = process.env.REACT_APP_MAPBOX_USER;
+const ALL_CATEGORIES = new Set(DISPLAY_CATEGORIES.map(normalizeCategory));
+
+mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_API_TOKEN;
 
 function fetchMapData(datasetId) {
   let url = `${DATASETS_ENDPOINT}/${USER}/${datasetId}/features?access_token=${mapboxgl.accessToken}`;
@@ -108,7 +108,7 @@ export default function App() {
   const [thisMap, setThisMap] = useState(null);
   const [selectedMapId, setSelectedMapId] = useState('sf'); // FIXME: no default
   const [companiesGeojson, setCompaniesGeojson] = useState({});
-  const [selectedCategories, setSelectedCategories] = useState(new Set());
+  const [selectedCategories, setSelectedCategories] = useState(ALL_CATEGORIES);
   const [settingsPaneOpen, setSettingsPaneOpen] = useState(false);
 
   function loadGeojsonData(mapId) {
@@ -122,7 +122,7 @@ export default function App() {
   }
 
   function handleToggleCategory(e) {
-    var s = selectedCategories;
+    var s = new Set(selectedCategories);
     if (s.has(e.target.name)) {
       s.delete(e.target.name);
     } else {
@@ -132,8 +132,7 @@ export default function App() {
   }
 
   function handleSelectAllCategories() {
-    let normalized = DISPLAY_CATEGORIES.map(normalizeCategory);
-    setSelectedCategories(new Set(normalized));
+    setSelectedCategories(ALL_CATEGORIES);
   }
 
   function handleDeselectAllCategories() {
