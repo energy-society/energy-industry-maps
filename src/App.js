@@ -1,5 +1,5 @@
 import mapboxgl from 'mapbox-gl';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Omnibox from './Omnibox.js';
 import SettingsPane from "./SettingsPane.js";
 import { CIRCLE_COLORS, DISPLAY_CATEGORIES } from './taxonomy-colors.js';
@@ -28,38 +28,14 @@ function getPopupContent(props) {
     </div>`;
 }
 
-function compileCategoryList(companiesGeojson) {
-  const c = new Set(companiesGeojson.features.map(f => f.properties['tax1']));
-  return Object.values(Array.from(c)).sort();
-}
+export default function App() {
+  const [thisMap, setThisMap] = useState(null);
+  const [selectedMapId, setSelectedMapId] = useState('sf'); // FIXME: no default
+  const [companiesGeojson, setCompaniesGeojson] = useState({});
+  const [selectedCategories, setSelectedCategories] = useState(new Set());
+  const [settingsPaneOpen, setSettingsPaneOpen] = useState(false);
 
-class App extends React.Component {
-  map;
-
-  state = {
-    selectedMapId: 'sf', // FIXME (shouldn't need a default)
-    companiesGeojson: {},
-    selectedCategories: new Set(),
-    settingsPaneOpen: false,
-  };
-
-  constructor(props) {
-    super(props);
-    this.getSelectedMap = this.getSelectedMap.bind(this);
-    this.displayPopup = this.displayPopup.bind(this);
-    this.populateMapData = this.populateMapData.bind(this);
-    this.handleToggleCategory = this.handleToggleCategory.bind(this);
-    this.handleSelectAllCategories = this.handleSelectAllCategories.bind(this);
-    this.handleDeselectAllCategories = this.handleDeselectAllCategories.bind(this);
-    this.handleSelectCompany = this.handleSelectCompany.bind(this);
-    this.handleSelectMap = this.handleSelectMap.bind(this);
-  }
-
-  getSelectedMap() {
-    return MAPS[this.state.selectedMapId];
-  }
-
-  displayPopup(feature) {
+  function displayPopup(map, feature) {
     const coordinates = feature.geometry.coordinates.slice();
     var popUps = document.getElementsByClassName('mapboxgl-popup');
     // Check if there is already a popup on the map and if so, remove it
@@ -70,31 +46,26 @@ class App extends React.Component {
       .setLngLat(coordinates)
       .setHTML(getPopupContent(feature.properties))
       .setMaxWidth("300px")
-      .addTo(this.map);
+      .addTo(map);
   }
 
-  populateMapData(mapId) {
+  function populateMapData(m, mapId) {
     const selectedMap = MAPS[mapId];
     const geojsonLoaded = loadGeojsonData(selectedMap.datasetId)
-      .then(companiesGeojson => {
-        this.setState({
-          companiesGeojson: companiesGeojson,
-          categories: compileCategoryList(companiesGeojson),
-        });
-
+      .then(geojson => {
+        setCompaniesGeojson(geojson);
         // initially select all categories
-        this.handleSelectAllCategories();
-
-        return companiesGeojson;
+        handleSelectAllCategories();
+        return geojson;
     });
 
     geojsonLoaded.then(companiesGeojson => {
-      this.map.addSource(COMPANIES_SOURCE, {
+      m.addSource(COMPANIES_SOURCE, {
         type: 'geojson',
         data: companiesGeojson,
       });
 
-      this.map.addLayer({
+      m.addLayer({
         id: POINT_LAYER,
         type: 'circle',
         source: COMPANIES_SOURCE,
@@ -111,17 +82,17 @@ class App extends React.Component {
         }
       });
 
-      this.map.on('mouseenter', POINT_LAYER, (e) => {
-        this.map.getCanvas().style.cursor = 'pointer';
+      m.on('mouseenter', POINT_LAYER, (e) => {
+        m.getCanvas().style.cursor = 'pointer';
       });
 
-      this.map.on('mouseleave', POINT_LAYER, () => {
-        this.map.getCanvas().style.cursor = '';
+      m.on('mouseleave', POINT_LAYER, () => {
+        m.getCanvas().style.cursor = '';
       });
 
-      this.map.on('click', POINT_LAYER, e => this.displayPopup(e.features[0]));
+      m.on('click', POINT_LAYER, e => displayPopup(m, e.features[0]));
 
-      this.map.flyTo({
+      m.flyTo({
         center: selectedMap.flyTo,
         zoom: 8,
         speed: 0.5,
@@ -129,111 +100,103 @@ class App extends React.Component {
     });
   }
 
-  handleToggleCategory(e) {
-    var s = this.state.selectedCategories;
+  function handleToggleCategory(e) {
+    var s = selectedCategories;
     if (s.has(e.target.name)) {
       s.delete(e.target.name);
     } else {
       s.add(e.target.name);
     }
-    this.setState({selectedCategories: s});
+    setSelectedCategories(s);
   }
 
-  handleSelectAllCategories() {
+  function handleSelectAllCategories() {
     let normalized = DISPLAY_CATEGORIES.map(normalizeCategory);
-    this.setState({selectedCategories: new Set(normalized)});
+    setSelectedCategories(new Set(normalized));
   }
 
-  handleDeselectAllCategories() {
-    this.setState({selectedCategories: new Set()});
+  function handleDeselectAllCategories() {
+    setSelectedCategories(new Set());
   }
 
-  handleSelectCompany(e) {
-    const selectedCompany = this.state.companiesGeojson.features.find(
+  function handleSelectCompany(e) {
+    const selectedCompany = companiesGeojson.features.find(
         feature => feature.properties.company === e);
-    this.displayPopup(selectedCompany);
-    this.map.flyTo({
+    displayPopup(thisMap, selectedCompany);
+    thisMap.flyTo({
       center: selectedCompany.geometry.coordinates,
       zoom: 14,
     });
   }
 
-  handleSelectMap(mapId) {
-    if (mapId !== this.state.selectedMapId) {
-      this.map.removeLayer(POINT_LAYER);
-      this.map.removeSource(COMPANIES_SOURCE);
-      this.setState({
-        selectedMapId: mapId,
-        settingsPaneOpen: false,
-      });
-      this.populateMapData(mapId);
+  function handleSelectMap(mapId) {
+    if (mapId !== selectedMapId) {
+      thisMap.removeLayer(POINT_LAYER);
+      thisMap.removeSource(COMPANIES_SOURCE);
+      setSelectedMapId(mapId);
+      setSettingsPaneOpen(false);
+      populateMapData(thisMap, mapId);
     }
   }
 
-  componentDidMount() {
-    this.map = new mapboxgl.Map({
-      container: this.mapContainer,
+  function initMap() {
+    let map = new mapboxgl.Map({
+      container: "map-container",
       style: 'mapbox://styles/mapbox/dark-v10',
-      center: this.getSelectedMap().center,
+      center: MAPS[selectedMapId].center,
       zoom: 6,
       minZoom: 6,
     });
 
-    this.map.on('move', () => {
-      this.setState({
-        lng: this.map.getCenter().lng.toFixed(4),
-        lat: this.map.getCenter().lat.toFixed(4),
-        zoom: this.map.getZoom().toFixed(2)
-      });
+    map.on('load', () => {
+      map.addControl(new mapboxgl.FullscreenControl(), 'bottom-right');
+      map.addControl(new mapboxgl.NavigationControl(), 'bottom-right');
+      populateMapData(map, selectedMapId);
     });
-
-    this.map.on('load', () => {
-      this.map.addControl(new mapboxgl.FullscreenControl(), 'bottom-right');
-      this.map.addControl(new mapboxgl.NavigationControl(), 'bottom-right');
-      this.populateMapData(this.state.selectedMapId);
-    });
+    setThisMap(map);
   }
 
-  componentDidUpdate() {
-    if (this.map.getLayer(POINT_LAYER)) {
-      var filters = ["any"];
-      // If ANY of the 3 taxonomies for a company are selected, it should be
-      // displayed on the map.
-      const selectedCategories = this.state.selectedCategories;
-      [1, 2, 3].forEach(i => {
-        var filter = ["in", `tax${i}sanitized`];
-        selectedCategories.forEach(category => filter.push(category));
-        filters.push(filter);
-      });
-      this.map.setFilter(POINT_LAYER, filters);
+  useEffect(() => {
+    if (!thisMap) {
+      initMap();
     }
-  }
 
-  render() {
-    return (
-      <div id="app-container">
-        <SettingsPane
-          onToggleOpen={isOpen => this.setState({settingsPaneOpen: isOpen})}
-          onSelectMap={this.handleSelectMap}
-          selectedMapId={this.state.selectedMapId}
-          settingsPaneOpen={this.state.settingsPaneOpen}
-          selectedCategories={this.state.selectedCategories}
-          onSelectAllCategories={this.handleSelectAllCategories}
-          onDeselectAllCategories={this.handleDeselectAllCategories}
-          onToggleCategory={this.handleToggleCategory} />
-        <div ref={el => this.mapContainer = el} id="map-container" />
-        <div className="map-overlay">
-          <div className="map-title-and-search">
-            <div className="map-title">{this.getSelectedMap().title}</div>
-            <Omnibox
-              companies={this.state.companiesGeojson.features}
-              onSelectCompany={this.handleSelectCompany}
-              onOpenSettingsPane={() => this.setState({settingsPaneOpen: true})} />
-          </div>
+    if (thisMap) {
+      if (thisMap.getLayer(POINT_LAYER)) {
+        var filters = ["any"];
+        // If ANY of the 3 taxonomies for a company are selected, it should be
+        // displayed on the map.
+        [1, 2, 3].forEach(i => {
+          var filter = ["in", `tax${i}sanitized`];
+          selectedCategories.forEach(category => filter.push(category));
+          filters.push(filter);
+        });
+        thisMap.setFilter(POINT_LAYER, filters);
+      }
+    }
+  });
+
+  return (
+    <div id="app-container">
+      <SettingsPane
+        selectedMapId={selectedMapId}
+        settingsPaneOpen={settingsPaneOpen}
+        selectedCategories={selectedCategories}
+        onToggleOpen={setSettingsPaneOpen}
+        onSelectMap={handleSelectMap}
+        onSelectAllCategories={handleSelectAllCategories}
+        onDeselectAllCategories={handleDeselectAllCategories}
+        onToggleCategory={handleToggleCategory} />
+      <div id="map-container" />
+      <div className="map-overlay">
+        <div className="map-title-and-search">
+          <div className="map-title">{MAPS[selectedMapId].title}</div>
+          <Omnibox
+            companies={companiesGeojson.features}
+            onSelectCompany={handleSelectCompany}
+            onOpenSettingsPane={() => setSettingsPaneOpen(true)} />
         </div>
       </div>
-    );
-  }
+    </div>
+  );
 }
-
-export default App;
