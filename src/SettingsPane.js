@@ -26,15 +26,12 @@ const useStyles = makeStyles((theme) => ({
     color: '#ffffff',
     border: 0,
     'text-align': 'center',
-    'font-size': '14pt',
     padding: 8,
   },
   settingsPaneContent: {
     padding: 4,
   },
   settingsPaneSubheader: {
-    'font-family': 'Roboto',
-    'font-size': '12pt',
     padding: 6,
   },
   formControlLabel: {
