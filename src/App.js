@@ -68,6 +68,9 @@ function displayPopup(map, feature) {
 }
 
 function populateMapData(map, mapId, mapData) {
+  map.setCenter(MAPS[mapId].center);
+  map.setZoom(6);
+
   mapData.then(data => {
     map.addSource(COMPANIES_SOURCE, {
       type: 'geojson',
