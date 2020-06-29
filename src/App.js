@@ -1,6 +1,7 @@
 import mapboxgl from 'mapbox-gl';
 import React, { useState, useEffect } from 'react';
 import { ThemeProvider } from '@material-ui/core/styles';
+import LogoOverlay from './LogoOverlay';
 import Omnibox from './Omnibox';
 import SettingsPane from './SettingsPane';
 import { CIRCLE_COLORS, DISPLAY_CATEGORIES } from './taxonomy-colors';
@@ -215,12 +216,15 @@ export default function App() {
           onToggleCategory={handleToggleCategory} />
         <div id="map-container" />
         <div className="map-overlay">
-          <div className="map-title-and-search">
-            <div className="map-title">{MAPS[selectedMapId].title}</div>
-            <Omnibox
-              companies={companiesGeojson.features}
-              onSelectCompany={handleSelectCompany}
-              onOpenSettingsPane={() => setSettingsPaneOpen(true)} />
+          <div className="map-overlay-pane">
+            <div className="map-title-and-search">
+              <div className="map-title">{MAPS[selectedMapId].title}</div>
+              <Omnibox
+                companies={companiesGeojson.features}
+                onSelectCompany={handleSelectCompany}
+                onOpenSettingsPane={() => setSettingsPaneOpen(true)} />
+            </div>
+            <LogoOverlay selectedMapId={selectedMapId} />
           </div>
         </div>
       </ThemeProvider>
