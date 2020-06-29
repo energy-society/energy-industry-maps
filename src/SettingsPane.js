@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Checkbox from '@material-ui/core/Checkbox';
@@ -10,6 +10,7 @@ import FormControl from '@material-ui/core/FormControl';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import IconButton from '@material-ui/core/IconButton';
+import Typography from '@material-ui/core/Typography';
 import LocationSelector from './LocationSelector';
 import { TAXONOMY_COLORS, DISPLAY_CATEGORIES } from './taxonomy-colors';
 import { normalizeCategory } from './common';
@@ -40,6 +41,9 @@ const useStyles = makeStyles((theme) => ({
     padding: 1,
     'margin-left': -4,
   },
+  categoryCheckbox: {
+    padding: 2,
+  },
   categoryLabel: {
     display: 'flex',
     'flex-direction': 'row',
@@ -58,9 +62,6 @@ const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(0.1),
   },
-  selectAllNone: {
-    'text-transform': 'none',
-  },
   paneCloseButton: {
     position: 'absolute',
     top: 0,
@@ -69,19 +70,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const LightBlueCheckbox = withStyles({
-  root: {
-    color: '#666',
-    '&$checked': {
-      color: '#77ddf2',
-    },
-    padding: 2,
-  },
-  checked: {},
-})((props) => <Checkbox color="default" {...props} />);
-
 export default function SettingsPane(props) {
   const classes = useStyles();
+
+  const closeSettingsPane = () => props.onToggleOpen(false);
 
   const formControlLabels = DISPLAY_CATEGORIES.map((category, idx) => {
     const sanitizedCat = normalizeCategory(category);
@@ -92,7 +84,8 @@ export default function SettingsPane(props) {
         key={idx}
         className={classes.formControlLabel}
         control={
-          <LightBlueCheckbox
+          <Checkbox
+            className={classes.categoryCheckbox}
             checked={isChecked}
             onChange={props.onToggleCategory}
             name={sanitizedCat} />}
@@ -109,39 +102,37 @@ export default function SettingsPane(props) {
   return (
     <Drawer
       open={props.settingsPaneOpen}
-      onClose={() => props.onToggleOpen(false)}>
+      onClose={closeSettingsPane}>
       <div className={classes.settingsPane}>
         <div className={classes.settingsPaneHeader}>
-          <span>Options</span>
+          <Typography variant="h2">Options</Typography>
           <IconButton
             edge="start"
             color="inherit"
             aria-label="close-menu"
             className={classes.paneCloseButton}
-            onClick={() => props.onToggleOpen(false)}>
+            onClick={closeSettingsPane}>
             <CloseIcon />
           </IconButton>
         </div>
         <div className={classes.settingsPaneContent}>
           <div className={classes.settingsPaneSubheader}>
-            <span>Select a location</span>
+            <Typography variant="h3">Select a location</Typography>
           </div>
           <LocationSelector
             onSelectMap={props.onSelectMap}
             selectedMapId={props.selectedMapId} />
-          <Divider />
+          <Divider style={{margin: 4}} />
           <div className={classes.settingsPaneSubheader}>
-            <span>Filter by category</span>
+            <Typography variant="h3">Filter by category</Typography>
           </div>
           <div>
             <ButtonGroup color="primary" variant="contained">
               <Button
                 id="select-all"
-                className={classes.selectAllNone}
                 onClick={props.onSelectAllCategories}>Select all</Button>
               <Button
                 id="select-none"
-                className={classes.selectAllNone}
                 onClick={props.onDeselectAllCategories}>Clear all</Button>
             </ButtonGroup>
           </div>

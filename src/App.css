@@ -7,7 +7,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-div#map-container {
+#map-container {
   height: 100vh;
   width: 100vw;
   position: absolute;
@@ -15,6 +15,7 @@ div#map-container {
   right: 0;
   left: 0;
   bottom: 0;
+  background-color: #333;
 }
 .mapboxgl-popup-content > .popup > * {
   margin: 0;
@@ -40,8 +41,6 @@ div#map-container {
   position: absolute;
   top: 0;
   left: 0;
-  background-color: rgba(25, 25, 25, 0.2);
-  border-radius: 5px;
   pointer-events: auto;
 }
 .map-title {
