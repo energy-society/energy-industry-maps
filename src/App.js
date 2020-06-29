@@ -1,6 +1,7 @@
 import mapboxgl from 'mapbox-gl';
 import React, { useState, useEffect } from 'react';
 import { ThemeProvider } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
 import LogoOverlay from './LogoOverlay';
 import Omnibox from './Omnibox';
 import SettingsPane from './SettingsPane';
@@ -218,8 +219,10 @@ export default function App() {
         <div className="map-overlay">
           <div className="map-overlay-pane">
             <div className="map-title-and-search">
-              <div className="map-title">{MAPS[selectedMapId].title}</div>
-              <Omnibox
+              <div className="map-title">
+                <Typography variant="h1">{MAPS[selectedMapId].title}</Typography>
+              </div>
+            <Omnibox
                 companies={companiesGeojson.features}
                 onSelectCompany={handleSelectCompany}
                 onOpenSettingsPane={() => setSettingsPaneOpen(true)} />

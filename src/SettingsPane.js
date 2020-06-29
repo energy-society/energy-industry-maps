@@ -10,6 +10,7 @@ import FormControl from '@material-ui/core/FormControl';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import IconButton from '@material-ui/core/IconButton';
+import Typography from '@material-ui/core/Typography';
 import LocationSelector from './LocationSelector';
 import { TAXONOMY_COLORS, DISPLAY_CATEGORIES } from './taxonomy-colors';
 import { normalizeCategory } from './common';
@@ -61,9 +62,6 @@ const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(0.1),
   },
-  selectAllNone: {
-    'text-transform': 'none',
-  },
   paneCloseButton: {
     position: 'absolute',
     top: 0,
@@ -107,7 +105,7 @@ export default function SettingsPane(props) {
       onClose={closeSettingsPane}>
       <div className={classes.settingsPane}>
         <div className={classes.settingsPaneHeader}>
-          <span>Options</span>
+          <Typography variant="h2">Options</Typography>
           <IconButton
             edge="start"
             color="inherit"
@@ -119,24 +117,22 @@ export default function SettingsPane(props) {
         </div>
         <div className={classes.settingsPaneContent}>
           <div className={classes.settingsPaneSubheader}>
-            <span>Select a location</span>
+            <Typography variant="h3">Select a location</Typography>
           </div>
           <LocationSelector
             onSelectMap={props.onSelectMap}
             selectedMapId={props.selectedMapId} />
-          <Divider />
+          <Divider style={{margin: 4}} />
           <div className={classes.settingsPaneSubheader}>
-            <span>Filter by category</span>
+            <Typography variant="h3">Filter by category</Typography>
           </div>
           <div>
             <ButtonGroup color="primary" variant="contained">
               <Button
                 id="select-all"
-                className={classes.selectAllNone}
                 onClick={props.onSelectAllCategories}>Select all</Button>
               <Button
                 id="select-none"
-                className={classes.selectAllNone}
                 onClick={props.onDeselectAllCategories}>Clear all</Button>
             </ButtonGroup>
           </div>
