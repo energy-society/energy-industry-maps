@@ -1,71 +1,133 @@
 import React from 'react';
-import Menu from 'react-burger-menu/lib/menus/slide'
-import { TAXONOMY_COLORS, DISPLAY_CATEGORIES } from './taxonomy-colors.js';
-import { normalizeCategory } from './common.js';
+import LocationSelector from './LocationSelector';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
+import Drawer from '@material-ui/core/Drawer';
+import FormControl from '@material-ui/core/FormControl';
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+import Button from '@material-ui/core/Button';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
+import Divider from '@material-ui/core/Divider';
+import { TAXONOMY_COLORS, DISPLAY_CATEGORIES } from './taxonomy-colors';
+import { normalizeCategory } from './common';
 
 
-class SettingsPane extends React.Component {
-  constructor(props) {
-    super(props);
-    this.onToggleOpen = this.onToggleOpen.bind(this);
-    this.handleSelectCategory = this.handleSelectCategory.bind(this);
-    this.selectAll = this.selectAll.bind(this);
-    this.deselectAll = this.deselectAll.bind(this);
-  }
+const useStyles = makeStyles((theme) => ({
+  settingsPane: {
+    background: 'rgba(244, 244, 244, 0.93)',
+    'max-width': 320,
+  },
+  settingsPaneHeader: {
+    'background-color': '#02346d',
+    color: '#ffffff',
+    border: 0,
+    'text-align': 'center',
+    'font-size': '14pt',
+    padding: 8,
+  },
+  settingsPaneContent: {
+    padding: 4,
+  },
+  settingsPaneSubheader: {
+    'font-family': 'Roboto',
+    'font-size': '12pt',
+    padding: 6,
+  },
+  categoryLabel: {
+    display: 'flex',
+    'flex-direction': 'row',
+    'verical-align': 'middle',
+    'font-family': 'Open Sans',
+    'font-size': '10pt',
+  },
+  categoryLegend: {
+    content: '',
+    width: 15,
+    height: 15,
+    margin: 4,
+    padding: 0,
+    'border-radius': 3,
+  },
+  formControl: {
+    margin: theme.spacing(0.1),
+  },
+  selectAllNone: {
+    'text-transform': 'none',
+  },
+}));
 
-  onToggleOpen(state) { this.props.onToggleOpen(state.isOpen); }
+const LightBlueCheckbox = withStyles({
+  root: {
+    color: '#666',
+    '&$checked': {
+      color: '#50a2b2',
+    },
+  },
+  checked: {},
+})((props) => <Checkbox color="default" {...props} />);
 
-  handleSelectCategory(e) { this.props.onToggleCategory(e); }
+export default function SettingsPane(props) {
+  const classes = useStyles();
 
-  selectAll() { this.props.onSelectAllCategories(); }
-
-  deselectAll() { this.props.onDeselectAllCategories(); }
-
-  render() {
-    const tableRows = DISPLAY_CATEGORIES.map(category => {
-      const sanitizedCat = normalizeCategory(category);
-      const checkboxId = `${sanitizedCat}-checkbox`;
-      const isChecked = this.props.selectedCategories.has(sanitizedCat);
-      return (
-        <tr key={sanitizedCat}>
-          <td>
-            <input
-              type="checkbox"
-              id={checkboxId}
-              name={sanitizedCat}
-              checked={isChecked}
-              className='category-filter-checkbox'
-              onChange={this.handleSelectCategory} />
-          </td>
-          <td>
-            <i className="category-legend"
-            style={{background: TAXONOMY_COLORS[category]}}></i>
-          </td>
-          <td><label htmlFor={checkboxId}>{category}</label></td>
-        </tr>);
-    });
+  const formControlLabels = DISPLAY_CATEGORIES.map((category, idx) => {
+    const sanitizedCat = normalizeCategory(category);
+    const isChecked = props.selectedCategories.has(sanitizedCat);
 
     return (
-      <div>
-        <Menu
-          isOpen={this.props.settingsPaneOpen}
-          onStateChange={this.onToggleOpen}
-          styles={{ sidebar: { background: "white" } }}>
-          <div className="map-settings-pane">
-            <div className="map-settings-pane-section-header">
-              <span>Filter by Category</span>
-              <div className="bm-cross-button"></div>
-            </div>
-            <div className="map-settings-pane-content">
-              <button id="select-all" className="select-all" onClick={this.selectAll}>Select all</button>
-              <button id="select-none" className="select-all" onClick={this.deselectAll}>Clear all</button>
-              <table id="categories"><tbody>{tableRows}</tbody></table>
-            </div>
-          </div>
-        </Menu>
-      </div>
-    );
-  }
-}
+      <FormControlLabel
+        key={idx}
+        control={
+          <LightBlueCheckbox
+            checked={isChecked}
+            onChange={props.onToggleCategory}
+            name={sanitizedCat} />}
+        label={
+          <div className={classes.categoryLabel}>
+            <span
+              className={classes.categoryLegend}
+              style={{background: TAXONOMY_COLORS[category]}} />
+          {category}
+          </div>}
+      />);
+  });
 
-export default SettingsPane;
+  return (
+    <Drawer
+      open={props.settingsPaneOpen}
+      onClose={() => props.onToggleOpen(false)}>
+      <div className={classes.settingsPane}>
+        <div className={classes.settingsPaneHeader}>
+          <span>Options</span>
+        </div>
+        <div className={classes.settingsPaneContent}>
+          <div className={classes.settingsPaneSubheader}>
+            <span>Select a location</span>
+          </div>
+          <LocationSelector
+            onSelectMap={props.onSelectMap}
+            selectedMapId={props.selectedMapId} />
+          <Divider />
+          <div className={classes.settingsPaneSubheader}>
+            <span>Filter by category</span>
+          </div>
+          <div>
+            <ButtonGroup color="primary" variant="contained">
+              <Button
+                id="select-all"
+                className={classes.selectAllNone}
+                onClick={props.onSelectAllCategories}>Select all</Button>
+              <Button
+                id="select-none"
+                className={classes.selectAllNone}
+                onClick={props.onDeselectAllCategories}>Clear all</Button>
+            </ButtonGroup>
+          </div>
+          <FormControl component="fieldset" className={classes.formControl}>
+            <FormGroup>{formControlLabels}</FormGroup>
+          </FormControl>
+        </div>
+      </div>
+    </Drawer>
+  );
+}

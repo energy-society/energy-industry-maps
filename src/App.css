@@ -1,4 +1,4 @@
-/* General CSS rules */
+/* Most CSS rules are in JS components */
 body {
   margin: 0;
   padding: 0;
@@ -25,7 +25,7 @@ div#map-container {
   left: 0;
   width: 100%;
   height: 100%;
-  padding: 8px;
+  padding: 4px 8px;
   pointer-events: none;
 }
 .map-overlay * {
@@ -33,188 +33,13 @@ div#map-container {
 }
 .map-title-and-search {
   float: left;
+  background-color: rgba(25, 25, 25, 0.2);
+  border-radius: 5px;
 }
 .map-title {
   color: #fff;
+  padding: 4px 0px;
   font-size: 16pt;
   font-family: 'Roboto', sans-serif;
-  margin-bottom: 8px;
-}
-/* Omnibox */
-/* Remove display of react-burger-menu components */
-.bm-burger-button, .bm-burger-bars {
-  display: none;
-}
-.omnibox {
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background: #fdfdfd;
-  position: relative;
-  width: 364px;
-  height: 38px;
-}
-.omnibox-burger-menu {
-  position: absolute;
-  background: transparent;
-  height: 38px;
-  width: 38px;
-  border: 0;
-  padding: 0;
-  cursor: pointer;
-  z-index: 1000;
-  font-size: 0px;
-}
-.omnibox-burger-bar {
-  width: 20px;
-  height: 2.5px;
-  background: #444;
-  position: absolute;
-  left: 10px;
-  border-radius: 2px;
-}
-.omnibox-burger-bar-top {
-  top: 12px;
-}
-.omnibox-burger-bar-middle {
-  top: 18px;
-}
-.omnibox-burger-bar-bottom {
-  top: 24px;
-}
-.omnibox-burger-menu:hover .omnibox-burger-bar {
-  opacity: 0.75;
-}
-.omnibox-burger-menu:active .omnibox-burger-bar {
-  opacity: 0.5;
-}
-.omnibox-burger-menu::after {
-  content: "";
-  position: absolute;
-  left: 40px;
-  top: 5px;
-  border-left: 1px solid #ddd;
-  height: 28px;
-}
-.omnibox-search-input-container {
-  position: absolute;
-  left: 48px;
-  flex-grow: 1;
-  width: 0.8fr;
-}
-.omnibox-search-input {
-  height: 36px;
-  width: 268px;
-  padding: 1px;
-  font-size: 12pt;
-  font-family: 'Roboto', sans-serif;
-  border-style: none;
-}
-.omnibox-search-input::placeholder {
-  color: #444;
-}
-.omnibox-search-button {
-  position: absolute;
-  right: 0;
-  top: 0;
-  background: transparent;
-  cursor: pointer;
-  display: block;
-  height: 38px;
-  width: 38px;
-  padding: 0;
-  border: 0;
-  cursor: pointer;
-  font-size: 16pt;
-}
-.omnibox-search-suggestions-container {
-  background-color: #fefefe;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  position: absolute;
-  top: 38px;
-  left: 40px;
-  width: 323px;
-}
-.omnibox-search-suggestions {
-  max-height: 300px;
-  overflow: scroll;
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-  color: #333;
-}
-.omnibox-search-suggestions li {
-  padding: 8px;
-  border-bottom: 1px solid #ccc;
-}
-.omnibox-search-suggestions li:nth-last-child(1) {
-  border-bottom: none;
-}
-.omnibox-search-suggestions li:hover {
-  background-color: #d9edff;
-  cursor: pointer;
-}
-.magnifying-glass {
-  transform: rotate(-45deg);
-}
-/* Map settings pane */
-.bm-menu-wrap {
-  transition: all 0.25s ease-in-out !important;
-  box-shadow: 0px 0px 4px #111;
-  min-width: 320px;
-}
-.bm-cross {
-  background-color: #fff;
-  border-radius: 1px;
-  top: -2px;
-}
-.map-settings-pane-content {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 10pt;
-  color: #3f3f3f;
-  padding: 4px;
-  background: rgba(244, 244, 244, 0.93);
-  min-height: 100vh;
-}
-.map-settings-pane-section-header {
-  background-color: #02346d;
-  color: #ffffff;
-  border: 0px;
-  text-align: center;
-  font-size: 14pt;
-  font-family: 'Roboto', sans-serif;
-  padding: 8px;
-}
-.map-settings-pane label {
-  font-size: 10pt;
-}
-i.category-legend {
-  width: 12px;
-  height: 12px;
-  float: left;
-  border-radius: 3px;
-}
-.map-settings-pane #categories {
-  line-height: 1em;
-}
-button.select-all {
-  margin: 2px;
-  font-size: 10pt;
-  color: #fff;
-  background-color: #02346d;
-  border: 1px solid #666;
-  cursor: pointer;
-  border-radius: 3px;
-}
-button.select-all:hover {
-  background-color: #12447d;
-}
-button.select-all:active {
-  background-color: #22548d;
-}
-div.flex-row {
-  display: flex;
-}
-div.flex-grow {
-  flex-grow: 1;
+  margin-bottom: 4px;
 }

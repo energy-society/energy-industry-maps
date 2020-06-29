@@ -1,102 +1,91 @@
 import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
+import TextField from '@material-ui/core/TextField';
+import Autocomplete from '@material-ui/lab/Autocomplete';
 
-class Omnibox extends React.Component {
-  state = {
-    query: '',
-    hasFocus: false,
-    searchResults: [],
-  };
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: 'flex',
+    'background-color': '#fff',
+    border: '1px solid #ccc',
+    'border-radius': 5,
+    'max-width': 364,
+    position: 'relative',
+    'padding-right': 4,
+    height: 42,
+  },
+  menuButton: {
+    margin: 0,
+    padding: 7,
+  },
+  verticalDivider: {
+    display: 'block',
+    width: 1,
+    height: 28,
+    'margin-top': 7,
+    backgroundColor: '#ccc',
+    content: '',
+  },
+  searchInputContainer: {
+    position: 'absolute',
+    left: 48,
+    'flex-grow': 1,
+  },
+  searchInput: {
+    height: 40,
+    width: 312,
+    padding: 1,
+    margin: '0px 8px',
+  },
+}));
 
-  constructor(props) {
-    super(props);
-    this.getCompanies = this.getCompanies.bind(this);
-    this.shouldDisplaySuggestions = this.shouldDisplaySuggestions.bind(this);
-    this.setHasFocus = this.setHasFocus.bind(this);
-    this.handleResultSelection = this.handleResultSelection.bind(this);
-    this.handleInputChange = this.handleInputChange.bind(this);
-  }
 
-  getCompanies() {
-    if (this.props.companies) {
-      return this.props.companies.map(f => f.properties.company);
+export default function Omnibox(props) {
+  const classes = useStyles();
+
+  function getCompanies() {
+    if (props.companies) {
+      return props.companies.map(f => f.properties.company);
     }
     return [];
   }
 
-  shouldDisplaySuggestions() {
-    return this.state.hasFocus && this.state.searchResults.length > 0;
-  }
-
-  setHasFocus(hasFocus) {
-    this.setState({hasFocus: hasFocus});
-  }
-
-  handleResultSelection(value) {
-    this.props.onSelectCompany(value);
-    this.setState({query: value, searchResults: []});
-  }
-
-  handleInputChange() {
-    const query = this.searchInput.value;
-    this.setState({query: query});
-    if (query.length >= 2) {
-      this.setState({
-        searchResults: this.getCompanies().filter(
-          result => result.toLowerCase().includes(query.toLowerCase()))
-      });
-    } else {
-      this.setState({searchResults: []});
+  function handleResultSelection(value) {
+    if (value) {
+      props.onSelectCompany(value);
     }
   }
 
-  render() {
-    const searchSuggestions = this.state.searchResults.map(r => (
-      <li key={r} onMouseDown={() => this.handleResultSelection(r)}>{r}</li>));
-    return (
-      <div className="omnibox">
-        <button
-          className="omnibox-burger-menu"
-          onClick={this.props.onOpenSettingsPane}
-          title="Menu"
-          aria-label="Menu">
-          <span>
-            <span
-              className="omnibox-burger-bar omnibox-burger-bar-top"
-              aria-hidden="true" />
-            <span
-              className="omnibox-burger-bar omnibox-burger-bar-middle"
-              aria-hidden="true" />
-            <span
-              className="omnibox-burger-bar omnibox-burger-bar-bottom"
-              aria-hidden="true" />
-          </span>
-        </button>
-        <div className="omnibox-search-input-container">
-          <input
-            type="text"
-            className="omnibox-search-input"
-            id="omnibox-search-input"
-            ref={input => this.searchInput = input}
-            onChange={this.handleInputChange}
-            value={this.state.query}
-            onFocus={() => this.setHasFocus(true)}
-            onBlur={() => this.setHasFocus(false)}
-            placeholder="Search..." />
-        </div>
-        <div
-          className="omnibox-search-suggestions-container"
-          style={{display: this.shouldDisplaySuggestions() ? "block" : "none"}}>
-          <ul className="omnibox-search-suggestions">{searchSuggestions}</ul>
-        </div>
-        <button
-          className="omnibox-search-button"
-          title="Search"
-          aria-label="Search"
-          onClick={() => document.getElementById("omnibox-search-input").focus()}>
-          <div className="magnifying-glass" aria-hidden="true">&#9906;</div>
-        </button>
-      </div>);
-  }
+  // TODO: Get the clear button (x) to work! (Take away disableClearable.)
+  // TODO: Allow searching by hitting <Enter>.
+  return (
+    <div className={classes.root}>
+      <IconButton
+        edge="start"
+        color="inherit"
+        aria-label="menu"
+        className={classes.menuButton}
+        onClick={props.onOpenSettingsPane}>
+        <MenuIcon style={{fontSize: '1.8rem'}} />
+      </IconButton>
+      <span className={classes.verticalDivider} />
+      <Autocomplete
+        id="omnibox-search-input"
+        freeSolo
+        selectOnFocus
+        handleHomeEndKeys
+        disableClearable
+        onChange={e => handleResultSelection(e.target.textContent)}
+        options={getCompanies()}
+        renderInput={(params) => (
+          <TextField {...params}
+            placeholder="Search"
+            className={classes.searchInput}
+            margin="dense"
+            variant="outlined" />
+        )}
+      />
+    </div>);
 }
-
-export default Omnibox;
