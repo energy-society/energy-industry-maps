@@ -20,24 +20,16 @@ const useStyles = makeStyles((theme) => ({
     margin: 0,
     padding: 7,
   },
-  verticalDivider: {
-    display: 'block',
-    width: 1,
-    height: 28,
-    'margin-top': 7,
-    backgroundColor: '#ccc',
-    content: '',
-  },
   searchInputContainer: {
     position: 'absolute',
-    left: 48,
+    left: 42,
     'flex-grow': 1,
   },
   searchInput: {
     height: 40,
-    width: 312,
+    width: 318,
     padding: 1,
-    margin: '0px 8px',
+    margin: '0px 2px',
   },
 }));
 
@@ -63,7 +55,6 @@ export default function Omnibox(props) {
         onClick={props.onOpenSettingsPane}>
         <MenuIcon style={{fontSize: '1.8rem'}} />
       </IconButton>
-      <span className={classes.verticalDivider} />
       <Autocomplete
         freeSolo
         selectOnFocus
