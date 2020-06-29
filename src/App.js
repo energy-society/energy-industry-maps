@@ -48,13 +48,16 @@ function getPopupContent(props) {
     </div>`;
 }
 
-function displayPopup(map, feature) {
-  const coordinates = feature.geometry.coordinates.slice();
+function clearPopups() {
   var popUps = document.getElementsByClassName('mapboxgl-popup');
   // Check if there is already a popup on the map and if so, remove it
   // This prevents multiple popups in the case of overlapping circles
   if (popUps[0]) popUps[0].remove();
+}
 
+function displayPopup(map, feature) {
+  const coordinates = feature.geometry.coordinates.slice();
+  clearPopups();
   new mapboxgl.Popup({})
     .setLngLat(coordinates)
     .setHTML(getPopupContent(feature.properties))
@@ -151,6 +154,7 @@ export default function App() {
 
   function handleSelectMap(mapId) {
     if (mapId !== selectedMapId) {
+      clearPopups();
       thisMap.removeLayer(POINT_LAYER);
       thisMap.removeSource(COMPANIES_SOURCE);
       setSelectedMapId(mapId);
