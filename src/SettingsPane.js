@@ -65,7 +65,7 @@ const LightBlueCheckbox = withStyles({
   root: {
     color: '#666',
     '&$checked': {
-      color: '#50a2b2',
+      color: '#77ddf2',
     },
     padding: 2,
   },
