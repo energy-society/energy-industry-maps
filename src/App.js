@@ -1,6 +1,7 @@
 import mapboxgl from 'mapbox-gl';
 import React, { useState, useEffect } from 'react';
 import { ThemeProvider } from '@material-ui/core/styles';
+import LogoOverlay from './LogoOverlay';
 import Omnibox from './Omnibox';
 import SettingsPane from './SettingsPane';
 import { CIRCLE_COLORS, DISPLAY_CATEGORIES } from './taxonomy-colors';
@@ -48,13 +49,16 @@ function getPopupContent(props) {
     </div>`;
 }
 
-function displayPopup(map, feature) {
-  const coordinates = feature.geometry.coordinates.slice();
+function clearPopups() {
   var popUps = document.getElementsByClassName('mapboxgl-popup');
   // Check if there is already a popup on the map and if so, remove it
   // This prevents multiple popups in the case of overlapping circles
   if (popUps[0]) popUps[0].remove();
+}
 
+function displayPopup(map, feature) {
+  const coordinates = feature.geometry.coordinates.slice();
+  clearPopups();
   new mapboxgl.Popup({})
     .setLngLat(coordinates)
     .setHTML(getPopupContent(feature.properties))
@@ -151,6 +155,7 @@ export default function App() {
 
   function handleSelectMap(mapId) {
     if (mapId !== selectedMapId) {
+      clearPopups();
       thisMap.removeLayer(POINT_LAYER);
       thisMap.removeSource(COMPANIES_SOURCE);
       setSelectedMapId(mapId);
@@ -211,12 +216,15 @@ export default function App() {
           onToggleCategory={handleToggleCategory} />
         <div id="map-container" />
         <div className="map-overlay">
-          <div className="map-title-and-search">
-            <div className="map-title">{MAPS[selectedMapId].title}</div>
-            <Omnibox
-              companies={companiesGeojson.features}
-              onSelectCompany={handleSelectCompany}
-              onOpenSettingsPane={() => setSettingsPaneOpen(true)} />
+          <div className="map-overlay-pane">
+            <div className="map-title-and-search">
+              <div className="map-title">{MAPS[selectedMapId].title}</div>
+              <Omnibox
+                companies={companiesGeojson.features}
+                onSelectCompany={handleSelectCompany}
+                onOpenSettingsPane={() => setSettingsPaneOpen(true)} />
+            </div>
+            <LogoOverlay selectedMapId={selectedMapId} />
           </div>
         </div>
       </ThemeProvider>

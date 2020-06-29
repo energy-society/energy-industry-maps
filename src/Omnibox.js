@@ -20,24 +20,16 @@ const useStyles = makeStyles((theme) => ({
     margin: 0,
     padding: 7,
   },
-  verticalDivider: {
-    display: 'block',
-    width: 1,
-    height: 28,
-    'margin-top': 7,
-    backgroundColor: '#ccc',
-    content: '',
-  },
   searchInputContainer: {
     position: 'absolute',
-    left: 48,
+    left: 42,
     'flex-grow': 1,
   },
   searchInput: {
     height: 40,
-    width: 312,
+    width: 318,
     padding: 1,
-    margin: '0px 8px',
+    margin: '0px 2px',
   },
 }));
 
@@ -45,21 +37,14 @@ const useStyles = makeStyles((theme) => ({
 export default function Omnibox(props) {
   const classes = useStyles();
 
-  function getCompanies() {
-    if (props.companies) {
-      return props.companies.map(f => f.properties.company);
-    }
-    return [];
-  }
+  let companies = (props.companies || []).map(f => f.properties.company);
 
-  function handleResultSelection(value) {
-    if (value) {
+  function handleResultSelection(event, value) {
+    if (value && companies.includes(value)) {
       props.onSelectCompany(value);
     }
   }
 
-  // TODO: Get the clear button (x) to work! (Take away disableClearable.)
-  // TODO: Allow searching by hitting <Enter>.
   return (
     <div className={classes.root}>
       <IconButton
@@ -70,18 +55,15 @@ export default function Omnibox(props) {
         onClick={props.onOpenSettingsPane}>
         <MenuIcon style={{fontSize: '1.8rem'}} />
       </IconButton>
-      <span className={classes.verticalDivider} />
       <Autocomplete
-        id="omnibox-search-input"
         freeSolo
         selectOnFocus
         handleHomeEndKeys
-        disableClearable
-        onChange={e => handleResultSelection(e.target.textContent)}
-        options={getCompanies()}
+        onChange={handleResultSelection}
+        options={companies}
         renderInput={(params) => (
           <TextField {...params}
-            placeholder="Search"
+            placeholder="Search..."
             className={classes.searchInput}
             margin="dense"
             variant="outlined" />

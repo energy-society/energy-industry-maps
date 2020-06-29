@@ -23,18 +23,26 @@ div#map-container {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  padding: 4px 8px;
+  right: 0;
+  bottom: 0;
+  padding: 4px;
   pointer-events: none;
 }
-.map-overlay * {
-  pointer-events: all !important;
+.map-overlay-pane {
+  display: block;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 .map-title-and-search {
-  float: left;
+  position: absolute;
+  top: 0;
+  left: 0;
   background-color: rgba(25, 25, 25, 0.2);
   border-radius: 5px;
+  pointer-events: auto;
 }
 .map-title {
   color: #fff;

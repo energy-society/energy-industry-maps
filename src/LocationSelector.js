@@ -24,6 +24,10 @@ const useStyles = makeStyles((theme) => ({
     'font-family': 'Open Sans',
     'font-size': '10pt',
   },
+  menuItem: {
+    'font-family': 'Open Sans',
+    'font-size': '10pt',
+  },
   divider: {
     height: 22,
     width: 2,
@@ -51,7 +55,8 @@ export default function LocationSelector(props) {
             {items.map((item, index) => (
               <MenuItem
                 key={index}
-                value={item.value}>
+                value={item.value}
+                className={classes.menuItem}>
                 {item.label}
               </MenuItem>))}
           </Select>

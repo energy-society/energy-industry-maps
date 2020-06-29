@@ -1,14 +1,16 @@
 import React from 'react';
-import LocationSelector from './LocationSelector';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
+import Checkbox from '@material-ui/core/Checkbox';
+import CloseIcon from '@material-ui/icons/Close';
+import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
 import FormControl from '@material-ui/core/FormControl';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import Button from '@material-ui/core/Button';
-import ButtonGroup from '@material-ui/core/ButtonGroup';
-import Divider from '@material-ui/core/Divider';
+import IconButton from '@material-ui/core/IconButton';
+import LocationSelector from './LocationSelector';
 import { TAXONOMY_COLORS, DISPLAY_CATEGORIES } from './taxonomy-colors';
 import { normalizeCategory } from './common';
 
@@ -34,6 +36,10 @@ const useStyles = makeStyles((theme) => ({
     'font-size': '12pt',
     padding: 6,
   },
+  formControlLabel: {
+    padding: 1,
+    'margin-left': -4,
+  },
   categoryLabel: {
     display: 'flex',
     'flex-direction': 'row',
@@ -55,14 +61,21 @@ const useStyles = makeStyles((theme) => ({
   selectAllNone: {
     'text-transform': 'none',
   },
+  paneCloseButton: {
+    position: 'absolute',
+    top: 0,
+    right: 8,
+    padding: 7,
+  },
 }));
 
 const LightBlueCheckbox = withStyles({
   root: {
     color: '#666',
     '&$checked': {
-      color: '#50a2b2',
+      color: '#77ddf2',
     },
+    padding: 2,
   },
   checked: {},
 })((props) => <Checkbox color="default" {...props} />);
@@ -77,6 +90,7 @@ export default function SettingsPane(props) {
     return (
       <FormControlLabel
         key={idx}
+        className={classes.formControlLabel}
         control={
           <LightBlueCheckbox
             checked={isChecked}
@@ -99,6 +113,14 @@ export default function SettingsPane(props) {
       <div className={classes.settingsPane}>
         <div className={classes.settingsPaneHeader}>
           <span>Options</span>
+          <IconButton
+            edge="start"
+            color="inherit"
+            aria-label="close-menu"
+            className={classes.paneCloseButton}
+            onClick={() => props.onToggleOpen(false)}>
+            <CloseIcon />
+          </IconButton>
         </div>
         <div className={classes.settingsPaneContent}>
           <div className={classes.settingsPaneSubheader}>
