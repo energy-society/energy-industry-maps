@@ -28,13 +28,11 @@ div#map-container {
   padding: 4px 8px;
   pointer-events: none;
 }
-.map-overlay * {
-  pointer-events: all !important;
-}
 .map-title-and-search {
   float: left;
   background-color: rgba(25, 25, 25, 0.2);
   border-radius: 5px;
+  pointer-events: auto;
 }
 .map-title {
   color: #fff;

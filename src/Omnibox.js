@@ -58,7 +58,6 @@ export default function Omnibox(props) {
     }
   }
 
-  // TODO: Get the clear button (x) to work! (Take away disableClearable.)
   // TODO: Allow searching by hitting <Enter>.
   return (
     <div className={classes.root}>
@@ -76,7 +75,6 @@ export default function Omnibox(props) {
         freeSolo
         selectOnFocus
         handleHomeEndKeys
-        disableClearable
         onChange={e => handleResultSelection(e.target.textContent)}
         options={getCompanies()}
         renderInput={(params) => (
