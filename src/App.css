@@ -1,4 +1,4 @@
-/* General CSS rules */
+/* Most CSS rules are in JS components */
 body {
   margin: 0;
   padding: 0;
@@ -42,62 +42,4 @@ div#map-container {
   font-size: 16pt;
   font-family: 'Roboto', sans-serif;
   margin-bottom: 4px;
-}
-/* Omnibox */
-.omnibox-search-input {
-  height: 36px;
-  max-width: 268px;
-  padding: 1;
-  font-size: 12pt;
-  font-family: 'Roboto', sans-serif;
-  border-style: none;
-}
-.omnibox-search-input::placeholder {
-  color: #444;
-}
-.omnibox-search-button {
-  position: absolute;
-  right: 0;
-  top: 0;
-  background: transparent;
-  cursor: pointer;
-  display: block;
-  height: 38px;
-  width: 38px;
-  padding: 0;
-  border: 0;
-  cursor: pointer;
-  font-size: 16pt;
-}
-.omnibox-search-suggestions-container {
-  background-color: #fefefe;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  position: absolute;
-  top: 38px;
-  left: 40px;
-  max-width: 296px;
-  min-width: 200px;
-}
-.omnibox-search-suggestions {
-  max-height: 300px;
-  overflow: scroll;
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-  color: #333;
-}
-.omnibox-search-suggestions li {
-  padding: 8px;
-  border-bottom: 1px solid #ccc;
-}
-.omnibox-search-suggestions li:nth-last-child(1) {
-  border-bottom: none;
-}
-.omnibox-search-suggestions li:hover {
-  background-color: #d9edff;
-  cursor: pointer;
-}
-.magnifying-glass {
-  transform: rotate(-45deg);
 }

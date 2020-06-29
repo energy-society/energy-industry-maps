@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import TextField from '@material-ui/core/TextField';
+import Autocomplete from '@material-ui/lab/Autocomplete';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -13,6 +14,7 @@ const useStyles = makeStyles((theme) => ({
     'max-width': 364,
     position: 'relative',
     'padding-right': 4,
+    height: 42,
   },
   menuButton: {
     margin: 0,
@@ -21,8 +23,8 @@ const useStyles = makeStyles((theme) => ({
   verticalDivider: {
     display: 'block',
     width: 1,
-    height: 24,
-    'margin-top': 8,
+    height: 28,
+    'margin-top': 7,
     backgroundColor: '#ccc',
     content: '',
   },
@@ -31,14 +33,30 @@ const useStyles = makeStyles((theme) => ({
     left: 48,
     'flex-grow': 1,
   },
+  searchInput: {
+    height: 40,
+    width: 268,
+    padding: 1,
+    margin: '0px 8px',
+  },
+  searchButton: {
+    position: 'absolute',
+    right: 0,
+    top: 0,
+    background: 'transparent',
+    cursor: 'pointer',
+    display: 'block',
+    height: 42,
+    width: 42,
+    padding: 0,
+    border: 0,
+    cursor: 'pointer',
+    'font-size': '18pt',
+  },
 }));
 
 
 export default function Omnibox(props) {
-  const [query, setQuery] = useState('');
-  const [hasFocus, setHasFocus] = useState(false);
-  const [searchResults, setSearchResults] = useState([]);
-
   const classes = useStyles();
 
   function getCompanies() {
@@ -48,33 +66,14 @@ export default function Omnibox(props) {
     return [];
   }
 
-  const shouldDisplaySuggestions = () => hasFocus && searchResults.length > 0;
-
   function handleResultSelection(value) {
-    props.onSelectCompany(value);
-    setQuery(value);
-    setSearchResults([]);
-  }
-
-  function handleInputChange(e) {
-    let query = e.target.value;
-    setQuery(query);
-    if (query.length >= 2) {
-      setSearchResults(getCompanies().filter(
-          result => result.toLowerCase().includes(query.toLowerCase())));
-    } else {
-      setSearchResults([]);
+    if (value) {
+      props.onSelectCompany(value);
     }
   }
 
-  const searchSuggestions = searchResults.map(r => (
-    <li
-      key={r}
-      tabIndex="-1"
-      onMouseDown={() => handleResultSelection(r)}>
-      {r}
-    </li>));
-
+  // TODO: Get the clear button (x) to work! (Take away disableClearable.)
+  // TODO: Allow searching by hitting <Enter>.
   return (
     <div className={classes.root}>
       <IconButton
@@ -86,30 +85,30 @@ export default function Omnibox(props) {
         <MenuIcon />
       </IconButton>
       <span className={classes.verticalDivider} />
-      <div className={classes.searchInputContainer}>
-        <input
-          type="text"
-          id="omnibox-search-input"
-          className="omnibox-search-input"
-          onChange={handleInputChange}
-          tabIndex="0"
-          value={query}
-          onFocus={() => setHasFocus(true)}
-          onBlur={() => setHasFocus(false)}
-          placeholder="Search..." />
-      </div>
-      <div
-        className="omnibox-search-suggestions-container"
-        tabIndex="-1"
-        style={{display: shouldDisplaySuggestions() ? "block" : "none"}}>
-        <ul className="omnibox-search-suggestions" tabIndex="-1">{searchSuggestions}</ul>
-      </div>
+      <Autocomplete
+        id="omnibox-search-input"
+        freeSolo
+        selectOnFocus
+        handleHomeEndKeys
+        disableClearable
+        onChange={e => handleResultSelection(e.target.textContent)}
+        options={getCompanies()}
+        renderInput={(params) => (
+          <TextField {...params}
+            placeholder="Search"
+            className={classes.searchInput}
+            margin="dense"
+            variant="outlined" />
+        )}
+      />
       <button
-        className="omnibox-search-button"
+        className={classes.searchButton}
         title="Search"
         aria-label="Search"
         onClick={() => document.getElementById("omnibox-search-input").focus()}>
-        <div className="magnifying-glass" aria-hidden="true">&#9906;</div>
+        <div
+          style={{transform: 'rotate(-45deg)'}}
+          aria-hidden="true">&#9906;</div>
       </button>
     </div>);
 }
