@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   },
   menuButton: {
     margin: 0,
-    padding: 8,
+    padding: 7,
   },
   verticalDivider: {
     display: 'block',
@@ -35,23 +35,9 @@ const useStyles = makeStyles((theme) => ({
   },
   searchInput: {
     height: 40,
-    width: 268,
+    width: 312,
     padding: 1,
     margin: '0px 8px',
-  },
-  searchButton: {
-    position: 'absolute',
-    right: 0,
-    top: 0,
-    background: 'transparent',
-    cursor: 'pointer',
-    display: 'block',
-    height: 42,
-    width: 42,
-    padding: 0,
-    border: 0,
-    cursor: 'pointer',
-    'font-size': '18pt',
   },
 }));
 
@@ -82,7 +68,7 @@ export default function Omnibox(props) {
         aria-label="menu"
         className={classes.menuButton}
         onClick={props.onOpenSettingsPane}>
-        <MenuIcon />
+        <MenuIcon style={{fontSize: '1.8rem'}} />
       </IconButton>
       <span className={classes.verticalDivider} />
       <Autocomplete
@@ -101,14 +87,5 @@ export default function Omnibox(props) {
             variant="outlined" />
         )}
       />
-      <button
-        className={classes.searchButton}
-        title="Search"
-        aria-label="Search"
-        onClick={() => document.getElementById("omnibox-search-input").focus()}>
-        <div
-          style={{transform: 'rotate(-45deg)'}}
-          aria-hidden="true">&#9906;</div>
-      </button>
     </div>);
 }

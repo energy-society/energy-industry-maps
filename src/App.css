@@ -38,7 +38,7 @@ div#map-container {
 }
 .map-title {
   color: #fff;
-  padding: 4px;
+  padding: 4px 0px;
   font-size: 16pt;
   font-family: 'Roboto', sans-serif;
   margin-bottom: 4px;
