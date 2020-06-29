@@ -34,6 +34,10 @@ const useStyles = makeStyles((theme) => ({
     'font-size': '12pt',
     padding: 6,
   },
+  formControlLabel: {
+    padding: 1,
+    'margin-left': -4,
+  },
   categoryLabel: {
     display: 'flex',
     'flex-direction': 'row',
@@ -63,6 +67,7 @@ const LightBlueCheckbox = withStyles({
     '&$checked': {
       color: '#50a2b2',
     },
+    padding: 2,
   },
   checked: {},
 })((props) => <Checkbox color="default" {...props} />);
@@ -77,6 +82,7 @@ export default function SettingsPane(props) {
     return (
       <FormControlLabel
         key={idx}
+        className={classes.formControlLabel}
         control={
           <LightBlueCheckbox
             checked={isChecked}
