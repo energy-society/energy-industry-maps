@@ -1,6 +1,5 @@
 export const MAPS = {
   'sf': {
-    id: 'sf',
     title: 'Silicon Valley Energy Ecosystem, 2019',
     shortName: 'San Francisco Bay Area',
     datasetId: 'ck901ssdl1sxn2mmnj56s9ibm',
@@ -8,7 +7,6 @@ export const MAPS = {
     flyTo: [-122.21, 37.65],
   },
   'chicago': {
-    id: 'chicago',
     title: 'Chicago Energy Ecosystem',
     shortName: 'Chicago',
     datasetId: 'ckbz9iagz0jjv29qrzry2ogtj', // TEMPORARY; FIXME!
