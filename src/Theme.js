@@ -1,5 +1,4 @@
 import { createMuiTheme } from '@material-ui/core/styles';
-import green from '@material-ui/core/colors/green';
 
 export const THEME = createMuiTheme({
   palette: {
@@ -7,7 +6,7 @@ export const THEME = createMuiTheme({
       main: "#02346d",
     },
     secondary: {
-      main: green[500],
+      main: '#77ddf2',
     },
   },
 });

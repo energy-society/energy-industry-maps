@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Checkbox from '@material-ui/core/Checkbox';
@@ -40,6 +40,9 @@ const useStyles = makeStyles((theme) => ({
     padding: 1,
     'margin-left': -4,
   },
+  categoryCheckbox: {
+    padding: 2,
+  },
   categoryLabel: {
     display: 'flex',
     'flex-direction': 'row',
@@ -69,19 +72,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const LightBlueCheckbox = withStyles({
-  root: {
-    color: '#666',
-    '&$checked': {
-      color: '#77ddf2',
-    },
-    padding: 2,
-  },
-  checked: {},
-})((props) => <Checkbox color="default" {...props} />);
-
 export default function SettingsPane(props) {
   const classes = useStyles();
+
+  const closeSettingsPane = () => props.onToggleOpen(false);
 
   const formControlLabels = DISPLAY_CATEGORIES.map((category, idx) => {
     const sanitizedCat = normalizeCategory(category);
@@ -92,7 +86,8 @@ export default function SettingsPane(props) {
         key={idx}
         className={classes.formControlLabel}
         control={
-          <LightBlueCheckbox
+          <Checkbox
+            className={classes.categoryCheckbox}
             checked={isChecked}
             onChange={props.onToggleCategory}
             name={sanitizedCat} />}
@@ -109,7 +104,7 @@ export default function SettingsPane(props) {
   return (
     <Drawer
       open={props.settingsPaneOpen}
-      onClose={() => props.onToggleOpen(false)}>
+      onClose={closeSettingsPane}>
       <div className={classes.settingsPane}>
         <div className={classes.settingsPaneHeader}>
           <span>Options</span>
@@ -118,7 +113,7 @@ export default function SettingsPane(props) {
             color="inherit"
             aria-label="close-menu"
             className={classes.paneCloseButton}
-            onClick={() => props.onToggleOpen(false)}>
+            onClick={closeSettingsPane}>
             <CloseIcon />
           </IconButton>
         </div>
