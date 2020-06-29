@@ -45,20 +45,14 @@ const useStyles = makeStyles((theme) => ({
 export default function Omnibox(props) {
   const classes = useStyles();
 
-  function getCompanies() {
-    if (props.companies) {
-      return props.companies.map(f => f.properties.company);
-    }
-    return [];
-  }
+  let companies = (props.companies || []).map(f => f.properties.company);
 
-  function handleResultSelection(value) {
-    if (value) {
+  function handleResultSelection(event, value) {
+    if (value && companies.includes(value)) {
       props.onSelectCompany(value);
     }
   }
 
-  // TODO: Allow searching by hitting <Enter>.
   return (
     <div className={classes.root}>
       <IconButton
@@ -71,15 +65,14 @@ export default function Omnibox(props) {
       </IconButton>
       <span className={classes.verticalDivider} />
       <Autocomplete
-        id="omnibox-search-input"
         freeSolo
         selectOnFocus
         handleHomeEndKeys
-        onChange={e => handleResultSelection(e.target.textContent)}
-        options={getCompanies()}
+        onChange={handleResultSelection}
+        options={companies}
         renderInput={(params) => (
           <TextField {...params}
-            placeholder="Search"
+            placeholder="Search..."
             className={classes.searchInput}
             margin="dense"
             variant="outlined" />
