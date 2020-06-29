@@ -1,9 +1,45 @@
 import React, { useState } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
+import TextField from '@material-ui/core/TextField';
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: 'flex',
+    'background-color': '#fff',
+    border: '1px solid #ccc',
+    'border-radius': 5,
+    'max-width': 364,
+    position: 'relative',
+    'padding-right': 4,
+  },
+  menuButton: {
+    margin: 0,
+    padding: 8,
+  },
+  verticalDivider: {
+    display: 'block',
+    width: 1,
+    height: 24,
+    'margin-top': 8,
+    backgroundColor: '#ccc',
+    content: '',
+  },
+  searchInputContainer: {
+    position: 'absolute',
+    left: 48,
+    'flex-grow': 1,
+  },
+}));
+
 
 export default function Omnibox(props) {
   const [query, setQuery] = useState('');
   const [hasFocus, setHasFocus] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
+
+  const classes = useStyles();
 
   function getCompanies() {
     if (props.companies) {
@@ -40,29 +76,21 @@ export default function Omnibox(props) {
     </li>));
 
   return (
-    <div className="omnibox">
-      <button
-        className="omnibox-burger-menu"
-        onClick={props.onOpenSettingsPane}
-        title="Menu"
-        aria-label="Menu">
-        <span>
-          <span
-            className="omnibox-burger-bar omnibox-burger-bar-top"
-            aria-hidden="true" />
-          <span
-            className="omnibox-burger-bar omnibox-burger-bar-middle"
-            aria-hidden="true" />
-          <span
-            className="omnibox-burger-bar omnibox-burger-bar-bottom"
-            aria-hidden="true" />
-        </span>
-      </button>
-      <div className="omnibox-search-input-container">
+    <div className={classes.root}>
+      <IconButton
+        edge="start"
+        color="inherit"
+        aria-label="menu"
+        className={classes.menuButton}
+        onClick={props.onOpenSettingsPane}>
+        <MenuIcon />
+      </IconButton>
+      <span className={classes.verticalDivider} />
+      <div className={classes.searchInputContainer}>
         <input
           type="text"
-          className="omnibox-search-input"
           id="omnibox-search-input"
+          className="omnibox-search-input"
           onChange={handleInputChange}
           tabIndex="0"
           value={query}
