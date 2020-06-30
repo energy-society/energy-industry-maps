@@ -1,3 +1,5 @@
+export const DEFAULT_MAP_ID = 'sf';
+
 export const MAPS = {
   'sf': {
     title: 'Silicon Valley Energy Ecosystem, 2019',

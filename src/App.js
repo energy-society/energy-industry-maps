@@ -7,7 +7,7 @@ import Omnibox from './Omnibox';
 import SettingsPane from './SettingsPane';
 import { CIRCLE_COLORS, DISPLAY_CATEGORIES } from './taxonomy-colors';
 import { normalizeCategory } from './common';
-import { MAPS } from './config';
+import { MAPS, DEFAULT_MAP_ID } from './config';
 import { THEME } from './Theme';
 import './App.css';
 
@@ -112,9 +112,32 @@ function populateMapData(map, mapId, mapData) {
   });
 }
 
+const getUrlFragment = () => window.location.hash.replace('#', '');
+
+function useUrlFragment(fragment, callback) {
+  useEffect(() => {
+    window.location.hash = '#' + fragment;
+    const handleHashChange = () => {
+      callback(getUrlFragment());
+    }
+    window.addEventListener('hashchange', handleHashChange);
+    return () => {
+      window.removeEventListener('hashchange', handleHashChange);
+    }
+  });
+}
+
+function getInitialMapId() {
+  let initialMapId = getUrlFragment();
+  if (MAPS.hasOwnProperty(initialMapId)) {
+    return initialMapId;
+  }
+  return DEFAULT_MAP_ID;
+}
+
 export default function App() {
   const [thisMap, setThisMap] = useState(null);
-  const [selectedMapId, setSelectedMapId] = useState('sf'); // FIXME: no default
+  const [selectedMapId, setSelectedMapId] = useState(getInitialMapId());
   const [companiesGeojson, setCompaniesGeojson] = useState({});
   const [selectedCategories, setSelectedCategories] = useState(ALL_CATEGORIES);
   const [settingsPaneOpen, setSettingsPaneOpen] = useState(false);
@@ -203,6 +226,12 @@ export default function App() {
         });
         thisMap.setFilter(POINT_LAYER, filters);
       }
+    }
+  });
+
+  useUrlFragment(selectedMapId, urlFragment => {
+    if (MAPS.hasOwnProperty(urlFragment)) {
+      handleSelectMap(urlFragment);
     }
   });
 
