@@ -1,3 +1,4 @@
+import json
 import logging
 import sys
 import numpy as np
@@ -5,6 +6,7 @@ import pandas as pd
 
 USAGE = f"python {__file__} <input_csv>"
 
+CATEGORIES = None
 COLUMNS_OF_INTEREST = (
     "company city fte tax1 tax2 tax3 website lat lng".split(" "))
 
@@ -12,48 +14,13 @@ logging.basicConfig(format='%(message)s')
 logging.getLogger().setLevel('INFO')
 
 
-# TODO: DON'T REPEAT YOURSELF! SYNCHRONIZE WITH JS TAXONOMY COLORS.
-CATEGORIES = frozenset([
-    'Academia/Research',
-    'Accelerator/Incubator',
-    'Biofuels',
-    'Buildings',
-    'Chemistry',
-    'Circular Economy',
-    'Construction',
-    'Enabling Technology/Components',
-    'Energy Systems/Management',
-    'Engineering',
-    'Environmental Remediation',
-    'Evaluation/Compliance',
-    'Finance',
-    'Generation/Transmission',
-    'Geology',
-    'Hydrogen',
-    'IIoT/IoT',
-    'Lighting',
-    'Manufacturing',
-    'Materials',
-    'Media',
-    'Mobility as a Service',
-    'Nuclear',
-    'Oil and Gas',
-    'Policy',
-    'Professional Services',
-    'Security/Cybersecurity',
-    'Sensors',
-    'Solar',
-    'Storage',
-    'Sustainable Agriculture',
-    'Thermal Energy',
-    'Utility/Grid',
-    'Wave/Water/Hydro',
-    'Wind',
-])
-
-
 def lookup(coll):
     return lambda k: coll[k]
+
+
+def load_categories():
+    with open('../src/taxonomy.json') as f:
+        return sorted(list(json.load(f).keys()))
 
 
 def check_no_missing(df, col):
@@ -67,6 +34,9 @@ def check_no_missing(df, col):
 
 
 def is_invalid_category(v):
+    global CATEGORIES
+    if CATEGORIES is None:
+        CATEGORIES = load_categories()
     return not (v is np.nan or v in CATEGORIES)
 
 

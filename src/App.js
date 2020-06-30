@@ -5,33 +5,36 @@ import Typography from '@material-ui/core/Typography';
 import LogoOverlay from './LogoOverlay';
 import Omnibox from './Omnibox';
 import SettingsPane from './SettingsPane';
-import { CIRCLE_COLORS, DISPLAY_CATEGORIES } from './taxonomy-colors';
 import { normalizeCategory } from './common';
 import { MAPS, DEFAULT_MAP_ID } from './config';
 import { THEME } from './Theme';
+import taxonomy from './taxonomy.json';
 import './App.css';
 
 const COMPANIES_SOURCE = 'companies';
 const POINT_LAYER = 'energy-companies-point-layer';
-const DATASETS_ENDPOINT = "https://api.mapbox.com/datasets/v1";
-const USER = process.env.REACT_APP_MAPBOX_USER;
+const DISPLAY_CATEGORIES = Object.keys(taxonomy);
 const ALL_CATEGORIES = new Set(DISPLAY_CATEGORIES.map(normalizeCategory));
+// Last entry is fallthrough color
+const CIRCLE_COLORS = Object.entries(taxonomy).flat().concat(['#ccc']);
 
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_API_TOKEN;
 
-function fetchMapData(datasetId) {
-  let url = `${DATASETS_ENDPOINT}/${USER}/${datasetId}/features?access_token=${mapboxgl.accessToken}`;
+function fetchMapData(mapId) {
+  let url = `./data/${mapId}.json`;
+
   return fetch(url)
-    .then(response => response.json())
-    .then(parsed => {
-      parsed.features.forEach(feature => {
-        // canonicalize categories for use as labels
-        ['tax1', 'tax2', 'tax3'].forEach(label => {
-          const newprop = `${label}sanitized`;
-          feature.properties[newprop] = normalizeCategory(feature.properties[label]);
-        })
+    .then(response => {
+      return response.json().then(parsed => {
+        parsed.features.forEach(feature => {
+          // canonicalize categories for use as labels
+          ['tax1', 'tax2', 'tax3'].forEach(label => {
+            const newprop = `${label}sanitized`;
+            feature.properties[newprop] = normalizeCategory(feature.properties[label]);
+          })
+        });
+        return parsed;
       });
-      return parsed;
     });
 }
 
@@ -143,7 +146,7 @@ export default function App() {
   const [settingsPaneOpen, setSettingsPaneOpen] = useState(false);
 
   function loadGeojsonData(mapId) {
-    return fetchMapData(MAPS[mapId].datasetId)
+    return fetchMapData(mapId)
       .then(geojson => {
         setCompaniesGeojson(geojson);
         // initially select all categories
