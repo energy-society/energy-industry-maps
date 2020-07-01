@@ -1,8 +1,8 @@
 import { normalizeCategory } from './common';
-import MAPS from './config.json';
+import CONFIG from './config.json';
 import taxonomy from './taxonomy.json';
 
-const CATEGORIES = Object.keys(taxonomy);
+const CATEGORIES = Object.keys(taxonomy).sort();
 
 function getCategory(k) {
   if (k === -1) {
@@ -49,7 +49,7 @@ function toGeoJson(data) {
 }
 
 export function fetchMapData(mapId) {
-  let hashFrag = MAPS[mapId].datasetHash;
+  let hashFrag = CONFIG['maps'][mapId].datasetHash;
   let url = process.env.PUBLIC_URL + `/data/${mapId}-${hashFrag}.json`;
 
   return fetch(url).then(r => r.json()).then(toGeoJson);

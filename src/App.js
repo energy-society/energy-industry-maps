@@ -6,15 +6,15 @@ import LogoOverlay from './LogoOverlay';
 import Omnibox from './Omnibox';
 import SettingsPane from './SettingsPane';
 import { normalizeCategory } from './common';
-import MAPS from './config.json';
+import CONFIG from './config.json';
 import { fetchMapData } from './data-loader';
 import { THEME } from './Theme';
 import taxonomy from './taxonomy.json';
 import './App.css';
 
 const COMPANIES_SOURCE = 'companies';
+const MAPS = CONFIG['maps'];
 const POINT_LAYER = 'energy-companies-point-layer';
-const DEFAULT_MAP_ID = 'silicon-valley';
 const DISPLAY_CATEGORIES = Object.keys(taxonomy);
 const ALL_CATEGORIES = new Set(DISPLAY_CATEGORIES.map(normalizeCategory));
 // Last entry is fallthrough color
@@ -119,7 +119,7 @@ function getInitialMapId() {
   if (MAPS.hasOwnProperty(initialMapId)) {
     return initialMapId;
   }
-  return DEFAULT_MAP_ID;
+  return CONFIG['defaultMapId'];
 }
 
 export default function App() {

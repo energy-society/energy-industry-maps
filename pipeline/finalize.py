@@ -69,7 +69,7 @@ def make_final_output(input_df):
 
 def update_config_file(location_id, hashfrag):
     config = read_config()
-    config[location_id]['datasetHash'] = hashfrag
+    config['maps'][location_id]['datasetHash'] = hashfrag
     write_config(config)
 
 
@@ -98,7 +98,7 @@ def main():
         sys.exit(1)
     input_csv, location_id = sys.argv[1:3]
     config = read_config()
-    if location_id not in config:
+    if location_id not in config['maps']:
         raise RuntimeError(f"Location id '{location_id}' not in config!")
     df = pd.read_csv(input_csv, index_col='idx')
     validate.validate(df)
