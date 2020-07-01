@@ -1,0 +1,32 @@
+{
+  "defaultMapId": "silicon-valley",
+  "maps": {
+    "silicon-valley": {
+      "title": "Silicon Valley Energy Ecosystem, 2019",
+      "shortName": "Silicon Valley",
+      "center": [
+        -121,
+        36.5
+      ],
+      "flyTo": [
+        -122.21,
+        37.65
+      ],
+      "datasetHash": "d9240e9",
+      "displayStanfordLogo": true
+    },
+    "chicago": {
+      "title": "Chicago Energy Ecosystem",
+      "shortName": "Chicago",
+      "center": [
+        -88.5,
+        41.1
+      ],
+      "flyTo": [
+        -87.829,
+        41.879
+      ],
+      "datasetHash": "ea99606"
+    }
+  }
+}
