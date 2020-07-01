@@ -2,6 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import aesLogoWhite from './img/aes-logo-white-shadow.png';
 import suTreeDark from './img/su-tree-dark.png';
+import CONFIG from './config.json';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -27,7 +28,8 @@ const useStyles = makeStyles((theme) => ({
 export default function LogoOverlay(props) {
   const classes = useStyles();
 
-  const suLogoDisplay = props.selectedMapId === 'sf' ? 'block' : 'none';
+  const map = CONFIG['maps'][props.selectedMapId];
+  var suLogoDisplay = map['displayStanfordLogo'] ? 'block' : 'none'
 
   return (
     <div className={classes.root}>

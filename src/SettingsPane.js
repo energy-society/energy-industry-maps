@@ -12,9 +12,10 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import LocationSelector from './LocationSelector';
-import { TAXONOMY_COLORS, DISPLAY_CATEGORIES } from './taxonomy-colors';
 import { normalizeCategory } from './common';
+import taxonomy from './taxonomy.json';
 
+const DISPLAY_CATEGORIES = Object.keys(taxonomy);
 
 const useStyles = makeStyles((theme) => ({
   settingsPane: {
@@ -26,15 +27,12 @@ const useStyles = makeStyles((theme) => ({
     color: '#ffffff',
     border: 0,
     'text-align': 'center',
-    'font-size': '14pt',
     padding: 8,
   },
   settingsPaneContent: {
     padding: 4,
   },
   settingsPaneSubheader: {
-    'font-family': 'Roboto',
-    'font-size': '12pt',
     padding: 6,
   },
   formControlLabel: {
@@ -93,7 +91,7 @@ export default function SettingsPane(props) {
           <div className={classes.categoryLabel}>
             <span
               className={classes.categoryLegend}
-              style={{background: TAXONOMY_COLORS[category]}} />
+              style={{background: taxonomy[category]}} />
           {category}
           </div>}
       />);

@@ -5,35 +5,22 @@ import Typography from '@material-ui/core/Typography';
 import LogoOverlay from './LogoOverlay';
 import Omnibox from './Omnibox';
 import SettingsPane from './SettingsPane';
-import { CIRCLE_COLORS, DISPLAY_CATEGORIES } from './taxonomy-colors';
 import { normalizeCategory } from './common';
-import { MAPS } from './config';
+import CONFIG from './config.json';
+import { fetchMapData } from './data-loader';
 import { THEME } from './Theme';
+import taxonomy from './taxonomy.json';
 import './App.css';
 
 const COMPANIES_SOURCE = 'companies';
+const MAPS = CONFIG['maps'];
 const POINT_LAYER = 'energy-companies-point-layer';
-const DATASETS_ENDPOINT = "https://api.mapbox.com/datasets/v1";
-const USER = process.env.REACT_APP_MAPBOX_USER;
+const DISPLAY_CATEGORIES = Object.keys(taxonomy);
 const ALL_CATEGORIES = new Set(DISPLAY_CATEGORIES.map(normalizeCategory));
+// Last entry is fallthrough color
+const CIRCLE_COLORS = Object.entries(taxonomy).flat().concat(['#ccc']);
 
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_API_TOKEN;
-
-function fetchMapData(datasetId) {
-  let url = `${DATASETS_ENDPOINT}/${USER}/${datasetId}/features?access_token=${mapboxgl.accessToken}`;
-  return fetch(url)
-    .then(response => response.json())
-    .then(parsed => {
-      parsed.features.forEach(feature => {
-        // canonicalize categories for use as labels
-        ['tax1', 'tax2', 'tax3'].forEach(label => {
-          const newprop = `${label}sanitized`;
-          feature.properties[newprop] = normalizeCategory(feature.properties[label]);
-        })
-      });
-      return parsed;
-    });
-}
 
 function getPopupContent(props) {
   const categoryInfo = ['tax1', 'tax2', 'tax3']
@@ -68,6 +55,9 @@ function displayPopup(map, feature) {
 }
 
 function populateMapData(map, mapId, mapData) {
+  map.setCenter(MAPS[mapId].center);
+  map.setZoom(6);
+
   mapData.then(data => {
     map.addSource(COMPANIES_SOURCE, {
       type: 'geojson',
@@ -109,15 +99,38 @@ function populateMapData(map, mapId, mapData) {
   });
 }
 
+const getUrlFragment = () => window.location.hash.replace('#', '');
+
+function useUrlFragment(fragment, callback) {
+  useEffect(() => {
+    window.location.hash = '#' + fragment;
+    const handleHashChange = () => {
+      callback(getUrlFragment());
+    }
+    window.addEventListener('hashchange', handleHashChange);
+    return () => {
+      window.removeEventListener('hashchange', handleHashChange);
+    }
+  });
+}
+
+function getInitialMapId() {
+  let initialMapId = getUrlFragment();
+  if (MAPS.hasOwnProperty(initialMapId)) {
+    return initialMapId;
+  }
+  return CONFIG['defaultMapId'];
+}
+
 export default function App() {
   const [thisMap, setThisMap] = useState(null);
-  const [selectedMapId, setSelectedMapId] = useState('sf'); // FIXME: no default
+  const [selectedMapId, setSelectedMapId] = useState(getInitialMapId());
   const [companiesGeojson, setCompaniesGeojson] = useState({});
   const [selectedCategories, setSelectedCategories] = useState(ALL_CATEGORIES);
   const [settingsPaneOpen, setSettingsPaneOpen] = useState(false);
 
   function loadGeojsonData(mapId) {
-    return fetchMapData(MAPS[mapId].datasetId)
+    return fetchMapData(mapId)
       .then(geojson => {
         setCompaniesGeojson(geojson);
         // initially select all categories
@@ -200,6 +213,12 @@ export default function App() {
         });
         thisMap.setFilter(POINT_LAYER, filters);
       }
+    }
+  });
+
+  useUrlFragment(selectedMapId, urlFragment => {
+    if (MAPS.hasOwnProperty(urlFragment)) {
+      handleSelectMap(urlFragment);
     }
   });
 
