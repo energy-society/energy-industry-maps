@@ -5,16 +5,19 @@ import sys
 
 USAGE = f"python {__file__} <csv_input_file> <csv_output_file>"
 
-logging.basicConfig(format='%(message)s')
-logging.getLogger().setLevel('INFO')
+logging.basicConfig(level='INFO', format='%(levelname)s: %(message)s')
 
 
 CATEGORY_MAPPING = {
+    'Academia': 'Academia/Research',
     'Buildings': 'Built Environment',
     'Design': 'Architecture/Design',
     'Enabling Technology/Components': 'Enabling Technologies/Components',
     'Energy Management': 'Energy Systems/Management',
     'IIoT/IoT': 'IoT/IIoT',
+    'MaaS': 'Mobility as a Service',
+    'Research': 'Academia/Research',
+    'Cybersecurity': 'Security/Cybersecurity',
 }
 COUNTERS = {k: 0 for k in CATEGORY_MAPPING}
 
@@ -45,6 +48,7 @@ def main():
                 f"Replaced {COUNTERS[k]} instances of '{k}' with "
                 f"'{CATEGORY_MAPPING[k]}'")
     df.round(6).to_csv(output_file)
+    logging.info(f"Wrote output to {output_file}")
 
 
 if __name__ == '__main__':

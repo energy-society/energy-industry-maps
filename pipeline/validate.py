@@ -3,8 +3,7 @@ import sys
 import pandas as pd
 import taxonomy
 
-logging.basicConfig(format='%(message)s')
-logging.getLogger().setLevel('INFO')
+logging.basicConfig(level='INFO', format='%(levelname)s: %(message)s')
 
 
 USAGE = f"python {__file__} <csv_file>"
@@ -40,7 +39,7 @@ def check_valid_taxonomy_values(df):
             valid = False
             for idx in invalid_category.index:
                 record = df.loc[idx]
-                logging.warning(
+                logging.error(
                     f"Invalid category value '{record[col]}' in column '{col}'"
                     f" for record {idx} with name '{record['company']}'")
     return valid
