@@ -27,7 +27,10 @@ const useStyles = makeStyles((theme) => ({
 export default function LogoOverlay(props) {
   const classes = useStyles();
 
-  const suLogoDisplay = props.selectedMapId === 'sf' ? 'block' : 'none';
+  var suLogoDisplay = 'none';
+  if (props.selectedMapId === 'silicon-valley') {
+    suLogoDisplay = 'block';
+  }
 
   return (
     <div className={classes.root}>
