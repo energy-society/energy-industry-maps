@@ -22,7 +22,7 @@ def check_no_missing(df, col):
     if col_na:
         valid = False
         for idx in col_na:
-            logging.warning(f"Missing column '{col}' for record {idx}")
+            logging.error(f"Missing column '{col}' for record {idx}")
     return valid
 
 

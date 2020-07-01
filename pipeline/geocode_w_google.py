@@ -23,7 +23,7 @@ def geocode(row):
         r = requests.get(requesturl)
         r.raise_for_status()
         api_status = r.json()['status']
-        if api_status != 'OK':
+        if api_status not in ('OK', 'ZERO_RESULTS'):
             raise RuntimeError(f'Status: {api_status}')
         results = r.json().get('results', [])
         # throttle
