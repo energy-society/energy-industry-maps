@@ -12,7 +12,7 @@ USAGE = f"python {__file__} <csv_file> <location_id>"
 CONFIG_FILE = '../src/config.json'
 
 COLUMNS_TO_KEEP = (
-    "company city fte tax1 tax2 tax3 website lat lng".split(" "))
+    "company city tax1 tax2 tax3 website lat lng".split(" "))
 
 logging.basicConfig(format='%(message)s')
 logging.getLogger().setLevel('INFO')
@@ -39,9 +39,6 @@ def make_final_output(input_df):
     cities = sorted(df.city.unique())
     city_to_idx = {c: i for i, c in enumerate(cities)}
     df.city = df.city.apply(lookup(city_to_idx))
-
-    # FTE is integer, not float
-    df.fte = df.fte.fillna(0).astype('int')
 
     # Categorize taxonomy columns
     categories = taxonomy.load_categories()

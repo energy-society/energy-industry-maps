@@ -1,6 +1,5 @@
 import logging
 import sys
-import numpy as np
 import pandas as pd
 import taxonomy
 
@@ -11,7 +10,7 @@ logging.getLogger().setLevel('INFO')
 USAGE = f"python {__file__} <csv_file>"
 
 COLUMNS_OF_INTEREST = (
-    "company city fte tax1 tax2 tax3 website lat lng".split(" "))
+    "company city tax1 tax2 tax3 website lat lng".split(" "))
 
 
 def lookup(coll):
