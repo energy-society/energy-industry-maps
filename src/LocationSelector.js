@@ -4,7 +4,7 @@ import FormControl from '@material-ui/core/FormControl';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import Button from '@material-ui/core/Button';
-import { MAPS } from './config';
+import MAPS from './config.json';
 
 const asOption = mapId => ({label: MAPS[mapId].shortName, value: mapId});
 

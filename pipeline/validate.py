@@ -1,26 +1,21 @@
-import json
 import logging
 import sys
 import numpy as np
 import pandas as pd
-
-USAGE = f"python {__file__} <input_csv>"
-
-CATEGORIES = None
-COLUMNS_OF_INTEREST = (
-    "company city fte tax1 tax2 tax3 website lat lng".split(" "))
+import taxonomy
 
 logging.basicConfig(format='%(message)s')
 logging.getLogger().setLevel('INFO')
 
 
+USAGE = f"python {__file__} <csv_file>"
+
+COLUMNS_OF_INTEREST = (
+    "company city fte tax1 tax2 tax3 website lat lng".split(" "))
+
+
 def lookup(coll):
     return lambda k: coll[k]
-
-
-def load_categories():
-    with open('../src/taxonomy.json') as f:
-        return sorted(list(json.load(f).keys()))
 
 
 def check_no_missing(df, col):
@@ -34,10 +29,7 @@ def check_no_missing(df, col):
 
 
 def is_invalid_category(v):
-    global CATEGORIES
-    if CATEGORIES is None:
-        CATEGORIES = load_categories()
-    return not (v is np.nan or v in CATEGORIES)
+    return not (v is np.nan or v in taxonomy.load_categories())
 
 
 def check_valid_taxonomy_values(df):
@@ -78,16 +70,18 @@ def validate(input_df):
 
     check_uncommon_city_names(df)
 
-    if not valid:
-        raise RuntimeError("Invalid data! Please fix and retry.")
-    logging.info("Success! Data validated.")
+    return valid
 
 
 def main():
     if len(sys.argv) != 2:
         print(USAGE)
         sys.exit()
-    validate(pd.read_csv(sys.argv[1], index_col='idx'))
+    df = pd.read_csv(sys.argv[1], index_col='idx')
+    if validate(df):
+        logging.info("Success! Data validated.")
+    else:
+        raise RuntimeError("Invalid data! Please fix and retry.")
 
 
 if __name__ == '__main__':

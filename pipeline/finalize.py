@@ -1,17 +1,31 @@
+import hashlib
 import json
 import logging
+import os
 import pandas as pd
 import sys
+import taxonomy
 import validate
 
-USAGE = f"python {__file__} <input_csv> <location_id>"
+USAGE = f"python {__file__} <csv_file> <location_id>"
+
+CONFIG_FILE = '../src/config.json'
 
 COLUMNS_TO_KEEP = (
     "company city fte tax1 tax2 tax3 website lat lng".split(" "))
 
-
 logging.basicConfig(format='%(message)s')
 logging.getLogger().setLevel('INFO')
+
+
+def read_config():
+    with open(CONFIG_FILE) as f:
+        return json.load(f)
+
+
+def write_config(config):
+    with open(CONFIG_FILE, 'w') as f:
+        print(json.dumps(config, indent=2), file=f)
 
 
 def lookup(coll):
@@ -30,11 +44,10 @@ def make_final_output(input_df):
     df.fte = df.fte.fillna(0).astype('int')
 
     # Categorize taxonomy columns
-    categories = set([])
-    for i in (1, 2, 3):
-        categories |= set(df['tax%s' % i].fillna('').unique())
+    categories = taxonomy.load_categories()
 
     cat_to_idx = {c: i for i, c in enumerate(categories)}
+    cat_to_idx[''] = -1
     for i in (1, 2, 3):
         df['tax%s' % i] = df['tax%s' % i].fillna('').apply(lookup(cat_to_idx))
 
@@ -54,18 +67,39 @@ def make_final_output(input_df):
     }
 
 
+def update_config_file(location_id, hashfrag):
+    config = read_config()
+    config[location_id]['datasetHash'] = hashfrag
+    write_config(config)
+
+
 def save_final_output(output, location_id):
-    output_location = f'../public/data/{location_id}.json'
-    with open(output_location, 'w') as f:
+    strout = json.dumps(output)
+    h = hashlib.sha256()
+    h.update(strout.encode())
+    digest_fragment = h.hexdigest()[:7]
+    filename = f'{location_id}-{digest_fragment}.json'
+    output_path = f'../public/data/{filename}'
+    update_config_file(location_id, digest_fragment)
+    with open(output_path, 'w') as f:
         json.dump(output, f)
-        logging.info(f"Saved final output to {output_location}")
+        logging.info(f"Saved final output to {output_path}")
+    old_versions = [v for v in os.listdir('../public/data')
+                    if v.startswith(location_id) and v != filename]
+    if old_versions:
+        logging.info("Make sure to remove old versions:")
+        for v in old_versions:
+            logging.info(v)
 
 
 def main():
     if len(sys.argv) != 3:
         print(USAGE)
-        sys.exit()
+        sys.exit(1)
     input_csv, location_id = sys.argv[1:3]
+    config = read_config()
+    if location_id not in config:
+        raise RuntimeError(f"Location id '{location_id}' not in config!")
     df = pd.read_csv(input_csv, index_col='idx')
     validate.validate(df)
     save_final_output(make_final_output(df), location_id)

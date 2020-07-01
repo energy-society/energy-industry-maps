@@ -2,7 +2,7 @@ import json
 import pandas as pd
 import sys
 
-USAGE = f"python {__file__} <input_geojson> <output_csv>"
+USAGE = f"python {__file__} <geojson_input> <csv_output>"
 
 
 def convert(geojson):
