@@ -29,13 +29,14 @@ def check_no_missing(df, col):
 
 
 def is_invalid_category(v):
-    return not (v is np.nan or v in taxonomy.load_categories())
+    return v not in taxonomy.load_categories()
 
 
 def check_valid_taxonomy_values(df):
     valid = True
     for col in ('tax1', 'tax2', 'tax3'):
-        invalid_category = df[df[col].apply(is_invalid_category)]
+        series = df[col].dropna()
+        invalid_category = series[series.apply(is_invalid_category)]
         if len(invalid_category):
             valid = False
             for idx in invalid_category.index:
