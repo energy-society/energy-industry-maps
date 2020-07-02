@@ -15,6 +15,7 @@ CATEGORY_MAPPING = {
     'Enabling Technology/Components': 'Enabling Technologies/Components',
     'Energy Management': 'Energy Systems/Management',
     'IIoT/IoT': 'IoT/IIoT',
+    'Incubator/Accelerator': 'Accelerator/Incubator',
     'MaaS': 'Mobility as a Service',
     'Research': 'Academia/Research',
     'Cybersecurity': 'Security/Cybersecurity',
