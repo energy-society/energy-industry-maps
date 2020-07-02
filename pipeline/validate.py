@@ -8,6 +8,7 @@ logging.basicConfig(level='INFO', format='%(levelname)s: %(message)s')
 
 USAGE = f"python {__file__} <csv_file>"
 
+CATEGORIES = frozenset(taxonomy.load_categories())
 COLUMNS_OF_INTEREST = (
     "company city tax1 tax2 tax3 website lat lng".split(" "))
 
@@ -27,7 +28,7 @@ def check_no_missing(df, col):
 
 
 def is_invalid_category(v):
-    return v not in taxonomy.load_categories()
+    return v not in CATEGORIES
 
 
 def check_valid_taxonomy_values(df):

@@ -1,6 +1,8 @@
 import logging
 import pandas as pd
 import sys
+import taxonomy
+from collections import Counter
 
 
 USAGE = f"python {__file__} <csv_input_file> <csv_output_file>"
@@ -8,19 +10,8 @@ USAGE = f"python {__file__} <csv_input_file> <csv_output_file>"
 logging.basicConfig(level='INFO', format='%(levelname)s: %(message)s')
 
 
-CATEGORY_MAPPING = {
-    'Academia': 'Academia/Research',
-    'Buildings': 'Built Environment',
-    'Design': 'Architecture/Design',
-    'Enabling Technology/Components': 'Enabling Technologies/Components',
-    'Energy Management': 'Energy Systems/Management',
-    'IIoT/IoT': 'IoT/IIoT',
-    'Incubator/Accelerator': 'Accelerator/Incubator',
-    'MaaS': 'Mobility as a Service',
-    'Research': 'Academia/Research',
-    'Cybersecurity': 'Security/Cybersecurity',
-}
-COUNTERS = {k: 0 for k in CATEGORY_MAPPING}
+CATEGORY_MAPPING = taxonomy.load_category_mapping()
+COUNTERS = Counter()
 
 
 def map_category_name(c):
@@ -44,10 +35,9 @@ def main():
     df = pd.read_csv(input_file, index_col='idx')
     df = normalize_category_names(df)
     for k in COUNTERS:
-        if COUNTERS[k]:
-            logging.info(
-                f"Replaced {COUNTERS[k]} instances of '{k}' with "
-                f"'{CATEGORY_MAPPING[k]}'")
+        logging.info(
+            f"Replaced {COUNTERS[k]} instances of '{k}' with "
+            f"'{CATEGORY_MAPPING[k]}'")
     df.round(6).to_csv(output_file)
     logging.info(f"Wrote output to {output_file}")
 
