@@ -1,49 +1,199 @@
-{
-  "Academia/Research": "#07a4bc",
-  "Accelerator/Incubator": "#c30",
-  "Architecture/Design": "#939",
-  "Bicycles/Scooters": "#07a4bc",
-  "Biofuels": "#7cc908",
-  "Built Environment": "#036",
-  "Chemistry": "#c94208",
-  "Circular Economy": "#5a8925",
-  "Coal": "#333",
-  "Connectivity": "#5a8925",
-  "Construction": "#603e1e",
-  "Consulting": "#164d82",
-  "Displays": "#7cc908",
-  "Enabling Technologies/Components": "#603e1e",
-  "Energy Efficiency": "#50a22a",
-  "Energy Systems/Management": "#40a22a",
-  "Engineering": "#603e1e",
-  "Environmental Remediation": "#89256e",
-  "Evaluation/Compliance": "#9e4e16",
-  "Finance": "#269e11",
-  "Generation/Transmission": "#f80",
-  "Geology": "#9e4e16",
-  "Hydrogen": "#2cf",
-  "Insurance": "#2cf",
-  "IoT/IIoT": "#a92278",
-  "Law": "#2cf",
-  "Lighting": "#f4f390",
-  "Manufacturing": "#7b16ce",
-  "Marketing": "#653",
-  "Materials": "#7b16ce",
-  "Media": "#d11265",
-  "Mobility as a Service": "#b75e35",
-  "Navigation": "#b75e35",
-  "Networks": "#a92278",
-  "Nuclear": "#f0f",
-  "Oil and Gas": "#ce3b16",
-  "Policy": "#660",
-  "Professional Services": "#164d82",
-  "Security/Cybersecurity": "#2c86f4",
-  "Sensors": "#dd4465",
-  "Solar": "#fce119",
-  "Storage": "#093",
-  "Sustainable Agriculture": "#898925",
-  "Thermal Energy": "#bc6d4b",
-  "Utility/Grid": "#f4a41a",
-  "Wave/Water/Hydro": "#20dbdb",
-  "Wind": "#167d7f"
-}
+[
+  {
+    "name": "Academia/Research",
+    "color": "#07a4bc",
+    "aliases": ["Academia", "Research"]
+  },
+  {
+    "name": "Accelerator/Incubator",
+    "color": "#c30",
+    "aliases": ["Incubator/Accelerator"]
+  },
+  {
+    "name": "Architecture/Design",
+    "color": "#939",
+    "aliases": ["Design"]
+  },
+  {
+    "name": "Bicycles/Scooters",
+    "color": "#07a4bc"
+  },
+  {
+    "name": "Biofuels",
+    "color": "#7cc908"
+  },
+  {
+    "name": "Built Environment",
+    "color": "#036",
+    "aliases": ["Buildings"]
+  },
+  {
+    "name": "Chemistry",
+    "color": "#c94208"
+  },
+  {
+    "name": "Circular Economy",
+    "color": "#5a8925"
+  },
+  {
+    "name": "Coal",
+    "color": "#333"
+  },
+  {
+    "name": "Connectivity",
+    "color": "#5a8925"
+  },
+  {
+    "name": "Construction",
+    "color": "#603e1e"
+  },
+  {
+    "name": "Consulting",
+    "color": "#164d82"
+  },
+  {
+    "name": "Displays",
+    "color": "#7cc908"
+  },
+  {
+    "name": "Enabling Technologies/Components",
+    "color": "#603e1e",
+    "aliases": ["Enabling Technology/Components"]
+  },
+  {
+    "name": "Energy Efficiency",
+    "color": "#50a22a"
+  },
+  {
+    "name": "Energy Systems/Management",
+    "color": "#40a22a",
+    "aliases": ["Energy Management"]
+  },
+  {
+    "name": "Engineering",
+    "color": "#603e1e"
+  },
+  {
+    "name": "Environmental Remediation",
+    "color": "#89256e"
+  },
+  {
+    "name": "Evaluation/Compliance",
+    "color": "#9e4e16"
+  },
+  {
+    "name": "Finance",
+    "color": "#269e11"
+  },
+  {
+    "name": "Generation/Transmission",
+    "color": "#f80"
+  },
+  {
+    "name": "Geology",
+    "color": "#9e4e16"
+  },
+  {
+    "name": "Hydrogen",
+    "color": "#2cf"
+  },
+  {
+    "name": "Insurance",
+    "color": "#2cf"
+  },
+  {
+    "name": "IoT/IIoT",
+    "color": "#a92278",
+    "aliases": ["IIoT/IoT"]
+  },
+  {
+    "name": "Law",
+    "color": "#2cf"
+  },
+  {
+    "name": "Lighting",
+    "color": "#f4f390"
+  },
+  {
+    "name": "Manufacturing",
+    "color": "#7b16ce"
+  },
+  {
+    "name": "Marketing",
+    "color": "#653"
+  },
+  {
+    "name": "Materials",
+    "color": "#7b16ce"
+  },
+  {
+    "name": "Media",
+    "color": "#d11265"
+  },
+  {
+    "name": "Mobility as a Service",
+    "color": "#b75e35",
+    "aliases": ["MaaS"]
+  },
+  {
+    "name": "Navigation",
+    "color": "#b75e35"
+  },
+  {
+    "name": "Networks",
+    "color": "#a92278"
+  },
+  {
+    "name": "Nuclear",
+    "color": "#f0f"
+  },
+  {
+    "name": "Oil and Gas",
+    "color": "#ce3b16"
+  },
+  {
+    "name": "Policy",
+    "color": "#660"
+  },
+  {
+    "name": "Professional Services",
+    "color": "#164d82"
+  },
+  {
+    "name": "Security/Cybersecurity",
+    "color": "#2c86f4",
+    "aliases": ["Cybersecurity"]
+  },
+  {
+    "name": "Sensors",
+    "color": "#dd4465"
+  },
+  {
+    "name": "Solar",
+    "color": "#fce119"
+  },
+  {
+    "name": "Storage",
+    "color": "#093"
+  },
+  {
+    "name": "Sustainable Agriculture",
+    "color": "#898925"
+  },
+  {
+    "name": "Thermal Energy",
+    "color": "#bc6d4b"
+  },
+  {
+    "name": "Utility/Grid",
+    "color": "#f4a41a"
+  },
+  {
+    "name": "Wave/Water/Hydro",
+    "color": "#20dbdb"
+  },
+  {
+    "name": "Wind",
+    "color": "#167d7f"
+  }
+]

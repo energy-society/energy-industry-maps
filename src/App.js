@@ -15,10 +15,10 @@ import './App.css';
 const COMPANIES_SOURCE = 'companies';
 const MAPS = CONFIG['maps'];
 const POINT_LAYER = 'energy-companies-point-layer';
-const DISPLAY_CATEGORIES = Object.keys(taxonomy);
-const ALL_CATEGORIES = new Set(DISPLAY_CATEGORIES.map(normalizeCategory));
+const CATEGORIES = new Set(taxonomy.map(c => c.name).map(normalizeCategory));
 // Last entry is fallthrough color
-const CIRCLE_COLORS = Object.entries(taxonomy).flat().concat(['#ccc']);
+const CIRCLE_COLORS =
+  taxonomy.map(c => [c.name, c.color]).flat().concat(['#ccc']);
 
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_API_TOKEN;
 
@@ -126,7 +126,7 @@ export default function App() {
   const [thisMap, setThisMap] = useState(null);
   const [selectedMapId, setSelectedMapId] = useState(getInitialMapId());
   const [companiesGeojson, setCompaniesGeojson] = useState({});
-  const [selectedCategories, setSelectedCategories] = useState(ALL_CATEGORIES);
+  const [selectedCategories, setSelectedCategories] = useState(CATEGORIES);
   const [settingsPaneOpen, setSettingsPaneOpen] = useState(false);
 
   function loadGeojsonData(mapId) {
@@ -150,7 +150,7 @@ export default function App() {
   }
 
   function handleSelectAllCategories() {
-    setSelectedCategories(ALL_CATEGORIES);
+    setSelectedCategories(CATEGORIES);
   }
 
   function handleDeselectAllCategories() {

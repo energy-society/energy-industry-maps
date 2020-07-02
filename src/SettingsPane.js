@@ -15,8 +15,6 @@ import LocationSelector from './LocationSelector';
 import { normalizeCategory } from './common';
 import taxonomy from './taxonomy.json';
 
-const DISPLAY_CATEGORIES = Object.keys(taxonomy);
-
 const useStyles = makeStyles((theme) => ({
   settingsPane: {
     background: 'rgba(244, 244, 244, 0.93)',
@@ -73,8 +71,8 @@ export default function SettingsPane(props) {
 
   const closeSettingsPane = () => props.onToggleOpen(false);
 
-  const formControlLabels = DISPLAY_CATEGORIES.map((category, idx) => {
-    const sanitizedCat = normalizeCategory(category);
+  const formControlLabels = taxonomy.map((category, idx) => {
+    const sanitizedCat = normalizeCategory(category.name);
     const isChecked = props.selectedCategories.has(sanitizedCat);
 
     return (
@@ -91,8 +89,8 @@ export default function SettingsPane(props) {
           <div className={classes.categoryLabel}>
             <span
               className={classes.categoryLegend}
-              style={{background: taxonomy[category]}} />
-          {category}
+              style={{background: category.color}} />
+          {category.name}
           </div>}
       />);
   });

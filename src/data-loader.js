@@ -2,7 +2,7 @@ import { normalizeCategory } from './common';
 import CONFIG from './config.json';
 import taxonomy from './taxonomy.json';
 
-const CATEGORIES = Object.keys(taxonomy).sort();
+const CATEGORIES = taxonomy.map(c => c.name).sort();
 
 function getCategory(k) {
   if (k === -1) {

@@ -14,8 +14,7 @@ CONFIG_FILE = '../src/config.json'
 COLUMNS_TO_KEEP = (
     "company city tax1 tax2 tax3 website lat lng".split(" "))
 
-logging.basicConfig(format='%(message)s')
-logging.getLogger().setLevel('INFO')
+logging.basicConfig(level='INFO', format='%(levelname)s: %(message)s')
 
 
 def read_config():

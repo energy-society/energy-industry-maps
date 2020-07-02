@@ -1,9 +1,12 @@
 # American Energy Society Industry Maps
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). You'll need `npm`/`yarn` installed to do any meaningful work on this project.
+This project was bootstrapped with
+[Create React App](https://github.com/facebook/create-react-app). You'll need
+`npm`/`yarn` installed to do any meaningful work on the app itself.
 
 There is also a `pipeline/` directory containing various data preprocessing
-scripts for getting the industry data ready for upload.
+scripts for getting the industry data ready for upload. To run those scripts,
+you'll need Python 3 installed, along with `pandas` and `numpy`.
 
 See [the wiki](https://github.com/energy-society/energy-industry-maps/wiki) for
 further instructions on contributing.

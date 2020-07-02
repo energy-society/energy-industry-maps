@@ -3,12 +3,12 @@ import sys
 import pandas as pd
 import taxonomy
 
-logging.basicConfig(format='%(message)s')
-logging.getLogger().setLevel('INFO')
+logging.basicConfig(level='INFO', format='%(levelname)s: %(message)s')
 
 
 USAGE = f"python {__file__} <csv_file>"
 
+CATEGORIES = frozenset(taxonomy.load_categories())
 COLUMNS_OF_INTEREST = (
     "company city tax1 tax2 tax3 website lat lng".split(" "))
 
@@ -23,12 +23,12 @@ def check_no_missing(df, col):
     if col_na:
         valid = False
         for idx in col_na:
-            logging.warning(f"Missing column '{col}' for record {idx}")
+            logging.error(f"Missing column '{col}' for record {idx}")
     return valid
 
 
 def is_invalid_category(v):
-    return v not in taxonomy.load_categories()
+    return v not in CATEGORIES
 
 
 def check_valid_taxonomy_values(df):
@@ -40,7 +40,7 @@ def check_valid_taxonomy_values(df):
             valid = False
             for idx in invalid_category.index:
                 record = df.loc[idx]
-                logging.warning(
+                logging.error(
                     f"Invalid category value '{record[col]}' in column '{col}'"
                     f" for record {idx} with name '{record['company']}'")
     return valid
