@@ -1,6 +1,8 @@
+from collections import defaultdict
 import logging
 import sys
 import pandas as pd
+import re
 import taxonomy
 
 logging.basicConfig(level='INFO', format='%(levelname)s: %(message)s')
@@ -46,6 +48,21 @@ def check_valid_taxonomy_values(df):
     return valid
 
 
+def check_duplicate_company_names(df):
+    names = defaultdict(list)
+
+    def reduce_name(s):
+        return ''.join(re.findall(r"[a-z]", s.lower()))
+
+    def save_company_name(s):
+        names[reduce_name(s)].append(s)
+
+    df.company.apply(save_company_name)
+    for original in names.values():
+        if len(original) > 1:
+            logging.warning(f"Saw similar company names: {original}")
+
+
 def check_uncommon_city_names(df):
     vcs = df.city.value_counts()
     occurring_once = frozenset(vcs[vcs == 1].index.values)
@@ -67,6 +84,8 @@ def validate(input_df):
     valid = check_no_missing(df, 'lng') and valid
     valid = check_no_missing(df, 'tax1') and valid
     valid = check_valid_taxonomy_values(df) and valid
+
+    check_duplicate_company_names(df)
 
     check_uncommon_city_names(df)
 
