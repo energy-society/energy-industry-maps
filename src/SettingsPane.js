@@ -9,22 +9,35 @@ import Drawer from '@material-ui/core/Drawer';
 import FormControl from '@material-ui/core/FormControl';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Hidden from '@material-ui/core/Hidden';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import LocationSelector from './LocationSelector';
 import { normalizeCategory } from './common';
 import taxonomy from './taxonomy.json';
 
+const drawerWidth = 320;
+
 const useStyles = makeStyles((theme) => ({
   settingsPane: {
     background: 'rgba(244, 244, 244, 0.93)',
-    'max-width': 320,
+    'max-width': drawerWidth,
+  },
+  drawer: {
+    [theme.breakpoints.up('lg')]: {
+      width: drawerWidth,
+      flexShrink: 0,
+    },
+  },
+  drawerPaper: {
+    width: drawerWidth,
+    border: 0,
   },
   settingsPaneHeader: {
-    'background-color': '#02346d',
+    backgroundColor: '#02346d',
     color: '#ffffff',
     border: 0,
-    'text-align': 'center',
+    textAlign: 'center',
     padding: 8,
   },
   settingsPaneContent: {
@@ -35,17 +48,17 @@ const useStyles = makeStyles((theme) => ({
   },
   formControlLabel: {
     padding: 1,
-    'margin-left': -4,
+    marginLeft: -4,
   },
   categoryCheckbox: {
     padding: 2,
   },
   categoryLabel: {
     display: 'flex',
-    'flex-direction': 'row',
-    'verical-align': 'middle',
-    'font-family': 'Open Sans',
-    'font-size': '10pt',
+    flexDirection: 'row',
+    verticalAlign: 'middle',
+    fontFamily: 'Open Sans',
+    fontSize: '10pt',
   },
   categoryLegend: {
     content: '',
@@ -53,7 +66,7 @@ const useStyles = makeStyles((theme) => ({
     height: 15,
     margin: 4,
     padding: 0,
-    'border-radius': 3,
+    borderRadius: 3,
   },
   formControl: {
     margin: theme.spacing(0.1),
@@ -95,13 +108,11 @@ export default function SettingsPane(props) {
       />);
   });
 
-  return (
-    <Drawer
-      open={props.settingsPaneOpen}
-      onClose={closeSettingsPane}>
-      <div className={classes.settingsPane}>
-        <div className={classes.settingsPaneHeader}>
-          <Typography variant="h2">Options</Typography>
+  const drawer = (
+    <div className={classes.settingsPane}>
+      <div className={classes.settingsPaneHeader}>
+        <Typography variant="h2">Options</Typography>
+        <Hidden lgUp implementation="css">
           <IconButton
             edge="start"
             color="inherit"
@@ -110,33 +121,60 @@ export default function SettingsPane(props) {
             onClick={closeSettingsPane}>
             <CloseIcon />
           </IconButton>
-        </div>
-        <div className={classes.settingsPaneContent}>
-          <div className={classes.settingsPaneSubheader}>
-            <Typography variant="h3">Select a location</Typography>
-          </div>
-          <LocationSelector
-            onSelectMap={props.onSelectMap}
-            selectedMapId={props.selectedMapId} />
-          <Divider style={{margin: 4}} />
-          <div className={classes.settingsPaneSubheader}>
-            <Typography variant="h3">Filter by category</Typography>
-          </div>
-          <div>
-            <ButtonGroup color="primary" variant="contained">
-              <Button
-                id="select-all"
-                onClick={props.onSelectAllCategories}>Select all</Button>
-              <Button
-                id="select-none"
-                onClick={props.onDeselectAllCategories}>Clear all</Button>
-            </ButtonGroup>
-          </div>
-          <FormControl component="fieldset" className={classes.formControl}>
-            <FormGroup>{formControlLabels}</FormGroup>
-          </FormControl>
-        </div>
+        </Hidden>
       </div>
-    </Drawer>
+      <div className={classes.settingsPaneContent}>
+        <div className={classes.settingsPaneSubheader}>
+          <Typography variant="h3">Select a location</Typography>
+        </div>
+        <LocationSelector
+          onSelectMap={props.onSelectMap}
+          selectedMapId={props.selectedMapId} />
+        <Divider style={{margin: 4}} />
+        <div className={classes.settingsPaneSubheader}>
+          <Typography variant="h3">Filter by category</Typography>
+        </div>
+        <div>
+          <ButtonGroup color="primary" variant="contained">
+            <Button
+              id="select-all"
+              onClick={props.onSelectAllCategories}>Select all</Button>
+            <Button
+              id="select-none"
+              onClick={props.onDeselectAllCategories}>Clear all</Button>
+          </ButtonGroup>
+        </div>
+        <FormControl component="fieldset" className={classes.formControl}>
+          <FormGroup>{formControlLabels}</FormGroup>
+        </FormControl>
+      </div>
+    </div>
+  );
+
+  return (
+    <div className={classes.drawer}>
+      <Hidden lgUp implementation="css">
+        <Drawer
+          variant="temporary"
+          open={props.mobileDrawerOpen}
+          onClose={closeSettingsPane}
+          ModalProps={{
+            keepMounted: true, // Better open performance on mobile.
+          }}>
+          {drawer}
+        </Drawer>
+      </Hidden>
+      <Hidden mdDown implementation="css">
+        <Drawer
+          classes={{
+            paper: classes.drawerPaper,
+          }}
+          variant="permanent"
+          open
+          onClose={closeSettingsPane}>
+          {drawer}
+        </Drawer>
+      </Hidden>
+    </div>
   );
 }

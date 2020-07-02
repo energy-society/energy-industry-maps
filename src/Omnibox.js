@@ -1,35 +1,33 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import Autocomplete from '@material-ui/lab/Autocomplete';
+import Hidden from '@material-ui/core/Hidden';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import TextField from '@material-ui/core/TextField';
-import Autocomplete from '@material-ui/lab/Autocomplete';
+import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
-    'background-color': '#fff',
+    flexDirection: 'row',
+    backgroundColor: '#fff',
     border: '1px solid #ccc',
-    'border-radius': 5,
-    'max-width': 364,
+    borderRadius: 5,
+    width: 364,
     position: 'relative',
-    'padding-right': 4,
-    height: 42,
+    height: 44,
   },
   menuButton: {
     margin: 0,
     padding: 7,
   },
-  searchInputContainer: {
-    position: 'absolute',
-    left: 42,
-    'flex-grow': 1,
+  autocomplete: {
+    margin: 2,
+    flexGrow: 1,
   },
   searchInput: {
     height: 40,
-    width: 318,
-    padding: 1,
-    margin: '0px 2px',
+    margin: 0,
   },
 }));
 
@@ -47,20 +45,23 @@ export default function Omnibox(props) {
 
   return (
     <div className={classes.root}>
-      <IconButton
-        edge="start"
-        color="inherit"
-        aria-label="menu"
-        className={classes.menuButton}
-        onClick={props.onOpenSettingsPane}>
-        <MenuIcon style={{fontSize: '1.8rem'}} />
-      </IconButton>
+      <Hidden lgUp implementation="css">
+        <IconButton
+          edge="start"
+          color="inherit"
+          aria-label="menu"
+          className={classes.menuButton}
+          onClick={props.onOpenMobileDrawer}>
+          <MenuIcon style={{fontSize: '1.8rem'}} />
+        </IconButton>
+      </Hidden>
       <Autocomplete
         freeSolo
         selectOnFocus
         handleHomeEndKeys
         onChange={handleResultSelection}
         options={companies}
+        className={classes.autocomplete}
         renderInput={(params) => (
           <TextField {...params}
             placeholder="Search..."
