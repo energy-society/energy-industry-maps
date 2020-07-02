@@ -2,6 +2,7 @@ import mapboxgl from 'mapbox-gl';
 import React, { useState, useEffect } from 'react';
 import { ThemeProvider } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
 import LogoOverlay from './LogoOverlay';
 import Omnibox from './Omnibox';
 import SettingsPane from './SettingsPane';
@@ -122,12 +123,37 @@ function getInitialMapId() {
   return CONFIG['defaultMapId'];
 }
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: 'flex',
+    flexDirection: 'row',
+  },
+  mainContent: {
+    flexGrow: 1,
+    position: 'relative',
+  },
+  titleAndSearch: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    padding: '4px 8px',
+    pointerEvents: 'auto',
+  },
+  mapTitle: {
+    color: '#fff',
+    padding: '4px 0px',
+    marginBottom: 4,
+  },
+}));
+
 export default function App() {
+  const classes = useStyles();
+
   const [thisMap, setThisMap] = useState(null);
   const [selectedMapId, setSelectedMapId] = useState(getInitialMapId());
   const [companiesGeojson, setCompaniesGeojson] = useState({});
   const [selectedCategories, setSelectedCategories] = useState(CATEGORIES);
-  const [settingsPaneOpen, setSettingsPaneOpen] = useState(false);
+  const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
 
   function loadGeojsonData(mapId) {
     return fetchMapData(mapId)
@@ -173,7 +199,7 @@ export default function App() {
       thisMap.removeLayer(POINT_LAYER);
       thisMap.removeSource(COMPANIES_SOURCE);
       setSelectedMapId(mapId);
-      setSettingsPaneOpen(false);
+      setMobileDrawerOpen(false);
       populateMapData(thisMap, mapId, loadGeojsonData(mapId));
     }
   }
@@ -223,33 +249,35 @@ export default function App() {
   });
 
   return (
-    <div id="app-container">
-      <ThemeProvider theme={THEME}>
+    <ThemeProvider theme={THEME}>
+      <div className={classes.root}>
         <SettingsPane
           selectedMapId={selectedMapId}
-          settingsPaneOpen={settingsPaneOpen}
+          mobileDrawerOpen={mobileDrawerOpen}
           selectedCategories={selectedCategories}
-          onToggleOpen={setSettingsPaneOpen}
+          onToggleOpen={setMobileDrawerOpen}
           onSelectMap={handleSelectMap}
           onSelectAllCategories={handleSelectAllCategories}
           onDeselectAllCategories={handleDeselectAllCategories}
           onToggleCategory={handleToggleCategory} />
-        <div id="map-container" />
-        <div className="map-overlay">
-          <div className="map-overlay-pane">
-            <div className="map-title-and-search">
-              <div className="map-title">
-                <Typography variant="h1">{MAPS[selectedMapId].title}</Typography>
+        <main className={classes.mainContent}>
+          <div id="map-container" />
+          <div className="map-overlay">
+            <div className="map-overlay-pane">
+              <div className={classes.titleAndSearch}>
+                <div className={classes.mapTitle}>
+                  <Typography variant="h1">{MAPS[selectedMapId].title}</Typography>
+                </div>
+                <Omnibox
+                  companies={companiesGeojson.features}
+                  onSelectCompany={handleSelectCompany}
+                  onOpenMobileDrawer={() => setMobileDrawerOpen(true)} />
               </div>
-            <Omnibox
-                companies={companiesGeojson.features}
-                onSelectCompany={handleSelectCompany}
-                onOpenSettingsPane={() => setSettingsPaneOpen(true)} />
+              <LogoOverlay selectedMapId={selectedMapId} />
             </div>
-            <LogoOverlay selectedMapId={selectedMapId} />
           </div>
-        </div>
-      </ThemeProvider>
-    </div>
+        </main>
+      </div>
+    </ThemeProvider>
   );
 }
