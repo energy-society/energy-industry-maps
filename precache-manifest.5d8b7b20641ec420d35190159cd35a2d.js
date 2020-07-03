@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "8cf7c1a78d3e28fa45274c36e0f2f0d2",
+    "revision": "2144d455b0330676c0fee420df607b8c",
     "url": "/energy-industry-maps/index.html"
   },
   {
-    "revision": "1789f71308e700d7b8c9",
-    "url": "/energy-industry-maps/static/css/main.e426f2c9.chunk.css"
+    "revision": "4d3ad5de87674f65f5bb",
+    "url": "/energy-industry-maps/static/css/main.58a1dadc.chunk.css"
   },
   {
     "revision": "1975d48965dfd09d656c",
@@ -16,7 +16,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/energy-industry-maps/static/js/2.45d780db.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "1789f71308e700d7b8c9",
+    "revision": "4d3ad5de87674f65f5bb",
     "url": "/energy-industry-maps/static/js/main.157ac660.chunk.js"
   },
   {
