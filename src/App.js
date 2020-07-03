@@ -134,6 +134,31 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     position: 'relative',
   },
+  mapContainer: {
+    height: '100vh',
+    top: 0,
+    right: 0,
+    left: 0,
+    bottom: 0,
+    backgroundColor: '#333',
+  },
+  mapOverlay: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    padding: 0,
+    pointerEvents: 'none',
+  },
+  mapOverlayInner: {
+    display: 'block',
+    position: 'relative',
+    height: '100%',
+    width: '100%',
+    margin: 0,
+    padding: 0,
+  },
   mainControlOverlay: {
     position: 'absolute',
     top: 0,
@@ -272,9 +297,9 @@ export default function App() {
           onDeselectAllCategories={handleDeselectAllCategories}
           onToggleCategory={handleToggleCategory} />
         <main className={classes.mainContent}>
-          <div id="map-container" />
-          <div className="map-overlay">
-            <div className="map-overlay-pane">
+          <div id="map-container" className={classes.mapContainer} />
+          <div className={classes.mapOverlay}>
+            <div className={classes.mapOverlayInner}>
               <div className={classes.mainControlOverlay}>
                 <Hidden smDown implementation="css">
                   <div className={classes.insightLogoContainer}>
