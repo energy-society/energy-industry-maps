@@ -1,6 +1,7 @@
 import mapboxgl from 'mapbox-gl';
 import React, { useState, useEffect } from 'react';
 import { ThemeProvider } from '@material-ui/core/styles';
+import Hidden from '@material-ui/core/Hidden';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import LogoOverlay from './LogoOverlay';
@@ -11,6 +12,7 @@ import CONFIG from './config.json';
 import { fetchMapData } from './data-loader';
 import { THEME } from './Theme';
 import taxonomy from './taxonomy.json';
+import insightLogo from './img/insight-white.png';
 import './App.css';
 
 const COMPANIES_SOURCE = 'companies';
@@ -132,12 +134,46 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     position: 'relative',
   },
-  titleAndSearch: {
+  mapContainer: {
+    height: '100vh',
+    top: 0,
+    right: 0,
+    left: 0,
+    bottom: 0,
+    backgroundColor: '#333',
+  },
+  mapOverlay: {
     position: 'absolute',
     top: 0,
     left: 0,
-    padding: '4px 8px',
+    right: 0,
+    bottom: 0,
+    padding: 0,
+    pointerEvents: 'none',
+  },
+  mapOverlayInner: {
+    display: 'block',
+    position: 'relative',
+    height: '100%',
+    width: '100%',
+    margin: 0,
+    padding: 0,
+  },
+  mainControlOverlay: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    padding: 0,
+    margin: 0,
     pointerEvents: 'auto',
+    display: 'flex',
+    flexDirection: 'row',
+  },
+  insightLogoContainer: {
+    padding: 8,
+  },
+  titleAndSearch: {
+    padding: '4px 8px',
   },
   mapTitle: {
     color: '#fff',
@@ -261,17 +297,24 @@ export default function App() {
           onDeselectAllCategories={handleDeselectAllCategories}
           onToggleCategory={handleToggleCategory} />
         <main className={classes.mainContent}>
-          <div id="map-container" />
-          <div className="map-overlay">
-            <div className="map-overlay-pane">
-              <div className={classes.titleAndSearch}>
-                <div className={classes.mapTitle}>
-                  <Typography variant="h1">{MAPS[selectedMapId].title}</Typography>
-                </div>
-                <Omnibox
-                  companies={companiesGeojson.features}
-                  onSelectCompany={handleSelectCompany}
-                  onOpenMobileDrawer={() => setMobileDrawerOpen(true)} />
+          <div id="map-container" className={classes.mapContainer} />
+          <div className={classes.mapOverlay}>
+            <div className={classes.mapOverlayInner}>
+              <div className={classes.mainControlOverlay}>
+                <Hidden smDown implementation="css">
+                  <div className={classes.insightLogoContainer}>
+                    <img src={insightLogo} alt="aes insight logo" height="80" />
+                  </div>
+                </Hidden>
+                <div className={classes.titleAndSearch}>
+                  <div className={classes.mapTitle}>
+                    <Typography variant="h1">{MAPS[selectedMapId].title}</Typography>
+                  </div>
+                  <Omnibox
+                    companies={companiesGeojson.features}
+                    onSelectCompany={handleSelectCompany}
+                    onOpenMobileDrawer={() => setMobileDrawerOpen(true)} />
+                  </div>
               </div>
               <LogoOverlay selectedMapId={selectedMapId} />
             </div>
