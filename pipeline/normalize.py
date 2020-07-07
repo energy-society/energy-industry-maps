@@ -33,6 +33,7 @@ def main():
         sys.exit()
     input_file, output_file = sys.argv[1], sys.argv[2]
     df = pd.read_csv(input_file, index_col='idx')
+    df = df.dropna(how='all').dropna(how='all', axis=1)
     df = normalize_category_names(df)
     for k in COUNTERS:
         logging.info(
