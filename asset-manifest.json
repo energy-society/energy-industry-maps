@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/energy-industry-maps/static/css/main.7e5bc7ba.chunk.css",
-    "main.js": "/energy-industry-maps/static/js/main.7d21893e.chunk.js",
-    "main.js.map": "/energy-industry-maps/static/js/main.7d21893e.chunk.js.map",
-    "runtime-main.js": "/energy-industry-maps/static/js/runtime-main.b4b9f843.js",
-    "runtime-main.js.map": "/energy-industry-maps/static/js/runtime-main.b4b9f843.js.map",
-    "static/js/2.8d66df75.chunk.js": "/energy-industry-maps/static/js/2.8d66df75.chunk.js",
-    "static/js/2.8d66df75.chunk.js.map": "/energy-industry-maps/static/js/2.8d66df75.chunk.js.map",
-    "index.html": "/energy-industry-maps/index.html",
-    "precache-manifest.abd3e71f04585ea9a8cf38e5a8559bc5.js": "/energy-industry-maps/precache-manifest.abd3e71f04585ea9a8cf38e5a8559bc5.js",
-    "service-worker.js": "/energy-industry-maps/service-worker.js",
-    "static/css/main.7e5bc7ba.chunk.css.map": "/energy-industry-maps/static/css/main.7e5bc7ba.chunk.css.map",
-    "static/js/2.8d66df75.chunk.js.LICENSE.txt": "/energy-industry-maps/static/js/2.8d66df75.chunk.js.LICENSE.txt",
-    "static/media/insight-white.png": "/energy-industry-maps/static/media/insight-white.34d5565a.png",
-    "static/media/su-tree-dark.png": "/energy-industry-maps/static/media/su-tree-dark.af81954d.png"
+    "main.css": "/static/css/main.7e5bc7ba.chunk.css",
+    "main.js": "/static/js/main.d942ae44.chunk.js",
+    "main.js.map": "/static/js/main.d942ae44.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.b29843ee.js",
+    "runtime-main.js.map": "/static/js/runtime-main.b29843ee.js.map",
+    "static/js/2.8d66df75.chunk.js": "/static/js/2.8d66df75.chunk.js",
+    "static/js/2.8d66df75.chunk.js.map": "/static/js/2.8d66df75.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.d9a1e24217cbe24f5522879454bd6d6b.js": "/precache-manifest.d9a1e24217cbe24f5522879454bd6d6b.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.7e5bc7ba.chunk.css.map": "/static/css/main.7e5bc7ba.chunk.css.map",
+    "static/js/2.8d66df75.chunk.js.LICENSE.txt": "/static/js/2.8d66df75.chunk.js.LICENSE.txt",
+    "static/media/insight-white.png": "/static/media/insight-white.34d5565a.png",
+    "static/media/su-tree-dark.png": "/static/media/su-tree-dark.af81954d.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.b4b9f843.js",
+    "static/js/runtime-main.b29843ee.js",
     "static/js/2.8d66df75.chunk.js",
     "static/css/main.7e5bc7ba.chunk.css",
-    "static/js/main.7d21893e.chunk.js"
+    "static/js/main.d942ae44.chunk.js"
   ]
 }
