@@ -18,10 +18,11 @@ function toGeoJson(data) {
     colidx[headers[i]] = i;
   }
   const features = [];
-  data.table.data.forEach(row => {
+  data.table.data.forEach((row, i) => {
     let feature = {
       'type': 'Feature',
       'properties': {
+        'idx': i,
         'company': row[colidx['company']],
         'city': data.cities[row[colidx['city']]],
         'tax1': getCategory(row[colidx['tax1']]),

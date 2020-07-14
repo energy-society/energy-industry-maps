@@ -40,7 +40,7 @@ def make_final_output(input_df):
     df.city = df.city.apply(lookup(city_to_idx))
 
     # Categorize taxonomy columns
-    categories = taxonomy.load_categories()
+    categories = taxonomy.load_categories(filter_obsolete=False)
 
     cat_to_idx = {c: i for i, c in enumerate(categories)}
     cat_to_idx[''] = -1

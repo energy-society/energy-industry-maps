@@ -13,7 +13,8 @@
         37.65
       ],
       "datasetHash": "8fcdc47",
-      "displayStanfordLogo": true
+      "displayStanfordLogo": true,
+      "includeObsoleteCategories": true
     },
     "chicago": {
       "title": "Chicago Energy Ecosystem",

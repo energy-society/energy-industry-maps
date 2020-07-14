@@ -7,7 +7,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import LogoOverlay from './LogoOverlay';
 import Omnibox from './Omnibox';
 import SettingsPane from './SettingsPane';
-import { normalizeCategory } from './common';
+import { getAllCategories } from './common';
 import CONFIG from './config.json';
 import { fetchMapData } from './data-loader';
 import { THEME } from './Theme';
@@ -18,7 +18,6 @@ import './App.css';
 const COMPANIES_SOURCE = 'companies';
 const MAPS = CONFIG['maps'];
 const POINT_LAYER = 'energy-companies-point-layer';
-const CATEGORIES = new Set(taxonomy.map(c => c.name).map(normalizeCategory));
 // Last entry is fallthrough color
 const CIRCLE_COLORS =
   taxonomy.map(c => [c.name, c.color]).flat().concat(['#ccc']);
@@ -188,15 +187,15 @@ export default function App() {
   const [thisMap, setThisMap] = useState(null);
   const [selectedMapId, setSelectedMapId] = useState(getInitialMapId());
   const [companiesGeojson, setCompaniesGeojson] = useState({});
-  const [selectedCategories, setSelectedCategories] = useState(CATEGORIES);
+  const [selectedCategories, setSelectedCategories] =
+    useState(getAllCategories(selectedMapId));
   const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
+
 
   function loadGeojsonData(mapId) {
     return fetchMapData(mapId)
       .then(geojson => {
         setCompaniesGeojson(geojson);
-        // initially select all categories
-        handleSelectAllCategories();
         return geojson;
     });
   }
@@ -211,8 +210,10 @@ export default function App() {
     setSelectedCategories(s);
   }
 
-  function handleSelectAllCategories() {
-    setSelectedCategories(CATEGORIES);
+  function handleSelectAllCategories(mapId) {
+    // takes argument instead of using selectedMapId because selectedMapId
+    // state update can lag behind
+    setSelectedCategories(getAllCategories(mapId));
   }
 
   function handleDeselectAllCategories() {
@@ -220,8 +221,7 @@ export default function App() {
   }
 
   function handleSelectCompany(e) {
-    const selectedCompany = companiesGeojson.features.find(
-        feature => feature.properties.company === e);
+    const selectedCompany = companiesGeojson.features[e.idx];
     displayPopup(thisMap, selectedCompany);
     thisMap.flyTo({
       center: selectedCompany.geometry.coordinates,
@@ -237,6 +237,7 @@ export default function App() {
       setSelectedMapId(mapId);
       setMobileDrawerOpen(false);
       populateMapData(thisMap, mapId, loadGeojsonData(mapId));
+      handleSelectAllCategories(mapId);
     }
   }
 
@@ -249,6 +250,8 @@ export default function App() {
       minZoom: 6,
     });
     let mapData = loadGeojsonData(selectedMapId);
+    // initially select all categories
+    handleSelectAllCategories(selectedMapId);
 
     map.on('load', () => {
       map.addControl(new mapboxgl.FullscreenControl(), 'bottom-right');
@@ -293,7 +296,7 @@ export default function App() {
           selectedCategories={selectedCategories}
           onToggleOpen={setMobileDrawerOpen}
           onSelectMap={handleSelectMap}
-          onSelectAllCategories={handleSelectAllCategories}
+          onSelectAllCategories={() => handleSelectAllCategories(selectedMapId)}
           onDeselectAllCategories={handleDeselectAllCategories}
           onToggleCategory={handleToggleCategory} />
         <main className={classes.mainContent}>
