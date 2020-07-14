@@ -105,6 +105,19 @@
         41.6
       ],
       "datasetHash": "f8e3649"
+    },
+    "kansas-city": {
+      "title": "Kansas City Energy Ecosystem",
+      "shortName": "Kansas City",
+      "center": [
+        -94.5,
+        38.8
+      ],
+      "flyTo": [
+        -94.6,
+        39.1
+      ],
+      "datasetHash": "2f862c7"
     }
   }
 }
