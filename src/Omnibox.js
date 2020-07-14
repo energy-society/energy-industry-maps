@@ -35,10 +35,11 @@ const useStyles = makeStyles((theme) => ({
 export default function Omnibox(props) {
   const classes = useStyles();
 
-  let companies = (props.companies || []).map(f => f.properties.company);
+  let companies = (props.companies || []).map(f => f.properties);
+  let companyNames = companies.map(c => c.company);
 
   function handleResultSelection(event, value) {
-    if (value && companies.includes(value)) {
+    if (value && companyNames.includes(value.company)) {
       props.onSelectCompany(value);
     }
   }
@@ -61,6 +62,7 @@ export default function Omnibox(props) {
         handleHomeEndKeys
         onChange={handleResultSelection}
         options={companies}
+        getOptionLabel={prop => prop.company}
         className={classes.autocomplete}
         renderInput={(params) => (
           <TextField {...params}

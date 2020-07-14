@@ -220,8 +220,7 @@ export default function App() {
   }
 
   function handleSelectCompany(e) {
-    const selectedCompany = companiesGeojson.features.find(
-        feature => feature.properties.company === e);
+    const selectedCompany = companiesGeojson.features[e.idx];
     displayPopup(thisMap, selectedCompany);
     thisMap.flyTo({
       center: selectedCompany.geometry.coordinates,
