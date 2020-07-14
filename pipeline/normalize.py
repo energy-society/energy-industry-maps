@@ -27,8 +27,8 @@ def normalize_category_names(df):
     return df
 
 
-def normalize_company_names(df):
-    df.company = df.company.str.strip()
+def strip_whitespace(df, col):
+    df[col] = df[col].str.strip()
     return df
 
 
@@ -40,7 +40,10 @@ def main():
     df = pd.read_csv(input_file, index_col='idx')
     df = df.dropna(how='all').dropna(how='all', axis=1)
     df = normalize_category_names(df)
-    df = normalize_company_names(df)
+    df = strip_whitespace(df, 'company')
+    df = strip_whitespace(df, 'city')
+    df.lat = df.lat.astype(float)
+    df.lng = df.lng.astype(float)
     for k in COUNTERS:
         logging.info(
             f"Replaced {COUNTERS[k]} instances of '{k}' with "
