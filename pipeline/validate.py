@@ -89,6 +89,9 @@ def validate(input_df):
 
     check_uncommon_city_names(df)
 
+    df.lat.astype(float)
+    df.lng.astype(float)
+
     return valid
 
 

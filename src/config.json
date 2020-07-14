@@ -66,6 +66,58 @@
         39.8
       ],
       "datasetHash": "9440f13"
+    },
+    "madison": {
+      "title": "Madison Energy Ecosystem",
+      "shortName": "Madison",
+      "center": [
+        -89.4,
+        42.9
+      ],
+      "flyTo": [
+        -89.39,
+        43.07
+      ],
+      "datasetHash": "2cc7d85"
+    },
+    "st-louis": {
+      "title": "St. Louis Energy Ecosystem",
+      "shortName": "St. Louis",
+      "center": [
+        -90.4,
+        38.8
+      ],
+      "flyTo": [
+        -90.2,
+        38.63
+      ],
+      "datasetHash": "1df1bc0"
+    },
+    "des-moines": {
+      "title": "Des Moines Energy Ecosystem",
+      "shortName": "Des Moines",
+      "center": [
+        -93.3,
+        41.4
+      ],
+      "flyTo": [
+        -93.6,
+        41.6
+      ],
+      "datasetHash": "f8e3649"
+    },
+    "kansas-city": {
+      "title": "Kansas City Energy Ecosystem",
+      "shortName": "Kansas City",
+      "center": [
+        -94.5,
+        38.8
+      ],
+      "flyTo": [
+        -94.6,
+        39.1
+      ],
+      "datasetHash": "2f862c7"
     }
   }
 }
