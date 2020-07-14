@@ -26,7 +26,46 @@
         -87.829,
         41.879
       ],
-      "datasetHash": "ea99606"
+      "datasetHash": "69a54fa"
+    },
+    "msp": {
+      "title": "Minneapolis/St. Paul Energy Ecosystem",
+      "shortName": "Minneapolis/St. Paul",
+      "center": [
+        -93.1,
+        44.78
+      ],
+      "flyTo": [
+        -93.2,
+        44.9
+      ],
+      "datasetHash": "5f9c3a2"
+    },
+    "milwaukee": {
+      "title": "Milwaukee Energy Ecosystem",
+      "shortName": "Milwaukee",
+      "center": [
+        -88.1,
+        42.8
+      ],
+      "flyTo": [
+        -87.9,
+        43.0
+      ],
+      "datasetHash": "ee15701"
+    },
+    "indianapolis": {
+      "title": "Indianapolis Energy Ecosystem",
+      "shortName": "Indianapolis",
+      "center": [
+        -85.95,
+        39.6
+      ],
+      "flyTo": [
+        -86.15,
+        39.8
+      ],
+      "datasetHash": "9440f13"
     }
   }
 }
