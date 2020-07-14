@@ -16,6 +16,7 @@
   },
   {
     "name": "Bicycles/Scooters",
+    "obsolete": true,
     "color": "#07a4bc"
   },
   {
@@ -41,6 +42,7 @@
   },
   {
     "name": "Connectivity",
+    "obsolete": true,
     "color": "#5a8925"
   },
   {
@@ -53,6 +55,7 @@
   },
   {
     "name": "Displays",
+    "obsolete": true,
     "color": "#7cc908"
   },
   {
@@ -137,10 +140,12 @@
   },
   {
     "name": "Navigation",
+    "obsolete": true,
     "color": "#b75e35"
   },
   {
     "name": "Networks",
+    "obsolete": true,
     "color": "#a92278"
   },
   {
@@ -178,6 +183,7 @@
   },
   {
     "name": "Sustainable Agriculture",
+    "obsolete": true,
     "color": "#898925"
   },
   {
