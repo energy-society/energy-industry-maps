@@ -92,6 +92,19 @@
         38.63
       ],
       "datasetHash": "1df1bc0"
+    },
+    "des-moines": {
+      "title": "Des Moines Energy Ecosystem",
+      "shortName": "Des Moines",
+      "center": [
+        -93.3,
+        41.4
+      ],
+      "flyTo": [
+        -93.6,
+        41.6
+      ],
+      "datasetHash": "f8e3649"
     }
   }
 }
