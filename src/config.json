@@ -39,7 +39,7 @@
         -93.2,
         44.9
       ],
-      "datasetHash": "5f9c3a2"
+      "datasetHash": "aba1f9f"
     },
     "milwaukee": {
       "title": "Milwaukee Energy Ecosystem",
@@ -52,7 +52,7 @@
         -87.9,
         43.0
       ],
-      "datasetHash": "ee15701"
+      "datasetHash": "5ebf0b8"
     },
     "indianapolis": {
       "title": "Indianapolis Energy Ecosystem",
@@ -78,7 +78,7 @@
         -89.39,
         43.07
       ],
-      "datasetHash": "2cc7d85"
+      "datasetHash": "31822e6"
     },
     "st-louis": {
       "title": "St. Louis Energy Ecosystem",
@@ -91,7 +91,7 @@
         -90.2,
         38.63
       ],
-      "datasetHash": "1df1bc0"
+      "datasetHash": "b9bd7fb"
     },
     "des-moines": {
       "title": "Des Moines Energy Ecosystem",
@@ -104,7 +104,7 @@
         -93.6,
         41.6
       ],
-      "datasetHash": "f8e3649"
+      "datasetHash": "ca7f0e4"
     },
     "kansas-city": {
       "title": "Kansas City Energy Ecosystem",
@@ -117,7 +117,7 @@
         -94.6,
         39.1
       ],
-      "datasetHash": "2f862c7"
+      "datasetHash": "7a76235"
     }
   }
 }

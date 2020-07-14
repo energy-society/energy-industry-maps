@@ -42,8 +42,9 @@ def main():
     df = normalize_category_names(df)
     df = strip_whitespace(df, 'company')
     df = strip_whitespace(df, 'city')
-    df.lat = df.lat.astype(float)
-    df.lng = df.lng.astype(float)
+    df.lat = df.lat.astype(float).round(6)
+    df.lng = df.lng.astype(float).round(6)
+
     for k in COUNTERS:
         logging.info(
             f"Replaced {COUNTERS[k]} instances of '{k}' with "
