@@ -1,6 +1,6 @@
 from collections import defaultdict
+import argparse
 import logging
-import sys
 import pandas as pd
 import re
 import taxonomy
@@ -8,9 +8,6 @@ import taxonomy
 logging.basicConfig(level='INFO', format='%(levelname)s: %(message)s')
 
 
-USAGE = f"python {__file__} <csv_file>"
-
-CATEGORIES = frozenset(taxonomy.load_categories())
 COLUMNS_OF_INTEREST = (
     "company city tax1 tax2 tax3 website lat lng".split(" "))
 
@@ -29,11 +26,10 @@ def check_no_missing(df, col):
     return valid
 
 
-def is_invalid_category(v):
-    return v not in CATEGORIES
+def check_valid_taxonomy_values(df, categories):
+    def is_invalid_category(v):
+        return v not in categories
 
-
-def check_valid_taxonomy_values(df):
     valid = True
     for col in ('tax1', 'tax2', 'tax3'):
         series = df[col].dropna()
@@ -75,7 +71,7 @@ def check_uncommon_city_names(df):
     df.apply(warn_if_city_occurs_once, axis=1)
 
 
-def validate(input_df):
+def validate(input_df, filter_obsolete):
     df = input_df.filter(items=COLUMNS_OF_INTEREST)
     valid = True
 
@@ -83,7 +79,9 @@ def validate(input_df):
     valid = check_no_missing(df, 'lat') and valid
     valid = check_no_missing(df, 'lng') and valid
     valid = check_no_missing(df, 'tax1') and valid
-    valid = check_valid_taxonomy_values(df) and valid
+
+    categories = taxonomy.load_categories(filter_obsolete=filter_obsolete)
+    valid = check_valid_taxonomy_values(df, categories) and valid
 
     check_duplicate_company_names(df)
 
@@ -96,11 +94,19 @@ def validate(input_df):
 
 
 def main():
-    if len(sys.argv) != 2:
-        print(USAGE)
-        sys.exit()
-    df = pd.read_csv(sys.argv[1], index_col='idx')
-    if validate(df):
+    parser = argparse.ArgumentParser(description='Validate map data.')
+    parser.add_argument(
+        'input_file',
+        metavar='<csv_input_file>',
+        type=str,
+        help='Name of the CSV input file to validate')
+    parser.add_argument(
+        '--include-obsolete-categories',
+        default=False,
+        action='store_true')
+    args = parser.parse_args()
+    df = pd.read_csv(args.input_file, index_col='idx')
+    if validate(df, not args.include_obsolete_categories):
         logging.info("Success! Data validated.")
     else:
         raise RuntimeError("Invalid data! Please fix and retry.")

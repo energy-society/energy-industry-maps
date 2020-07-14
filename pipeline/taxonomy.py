@@ -15,8 +15,11 @@ def ensure_taxonomy_loaded(fn):
 
 
 @ensure_taxonomy_loaded
-def load_categories():
-    return sorted([v['name'] for v in TAXONOMY])
+def load_categories(filter_obsolete=True):
+    categories = sorted([v for v in TAXONOMY], key=lambda v: v['name'])
+    if filter_obsolete:
+        return [v['name'] for v in categories if not v.get('obsolete', False)]
+    return [v['name'] for v in categories]
 
 
 @ensure_taxonomy_loaded
