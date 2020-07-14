@@ -79,6 +79,19 @@
         43.07
       ],
       "datasetHash": "2cc7d85"
+    },
+    "st-louis": {
+      "title": "St. Louis Energy Ecosystem",
+      "shortName": "St. Louis",
+      "center": [
+        -90.4,
+        38.8
+      ],
+      "flyTo": [
+        -90.2,
+        38.63
+      ],
+      "datasetHash": "1df1bc0"
     }
   }
 }
