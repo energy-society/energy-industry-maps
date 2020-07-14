@@ -27,6 +27,11 @@ def normalize_category_names(df):
     return df
 
 
+def normalize_company_names(df):
+    df.company = df.company.str.strip()
+    return df
+
+
 def main():
     if len(sys.argv) != 3:
         print(USAGE)
@@ -35,6 +40,7 @@ def main():
     df = pd.read_csv(input_file, index_col='idx')
     df = df.dropna(how='all').dropna(how='all', axis=1)
     df = normalize_category_names(df)
+    df = normalize_company_names(df)
     for k in COUNTERS:
         logging.info(
             f"Replaced {COUNTERS[k]} instances of '{k}' with "
