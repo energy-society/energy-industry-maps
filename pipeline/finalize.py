@@ -1,9 +1,9 @@
+import argparse
 import hashlib
 import json
 import logging
 import os
 import pandas as pd
-import sys
 import taxonomy
 import validate
 
@@ -89,16 +89,27 @@ def save_final_output(output, location_id):
 
 
 def main():
-    if len(sys.argv) != 3:
-        print(USAGE)
-        sys.exit(1)
-    input_csv, location_id = sys.argv[1:3]
     config = read_config()
-    if location_id not in config['maps']:
-        raise RuntimeError(f"Location id '{location_id}' not in config!")
-    df = pd.read_csv(input_csv, index_col='idx')
-    validate.validate(df)
-    save_final_output(make_final_output(df), location_id)
+    parser = argparse.ArgumentParser(description='Validate map data.')
+    parser.add_argument(
+        'input_file',
+        metavar='<csv_input_file>',
+        type=str,
+        help='Name of the CSV input file to finalize')
+    parser.add_argument(
+        'location_id',
+        metavar='<location_id>',
+        type=str,
+        choices=config['maps'],
+        help='ID of location as specified in config.json')
+    parser.add_argument(
+        '--include-obsolete-categories',
+        default=False,
+        action='store_true')
+    args = parser.parse_args()
+    df = pd.read_csv(args.input_file, index_col='idx')
+    validate.validate(df, not args.include_obsolete_categories)
+    save_final_output(make_final_output(df), args.location_id)
 
 
 if __name__ == '__main__':
