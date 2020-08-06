@@ -5,7 +5,7 @@ import taxonomy
 from collections import Counter
 
 
-USAGE = f"python {__file__} <csv_input_file> <csv_output_file>"
+USAGE = f"python {__file__} <csv_input_file> <csv_output_file> <country>"
 
 logging.basicConfig(level='INFO', format='%(levelname)s: %(message)s')
 
@@ -31,12 +31,21 @@ def strip_whitespace(df, col):
     df[col] = df[col].str.strip()
     return df
 
+def negative_lng(df):
+    for col in ('lng'):
+        if (country == 'USA'):
+            if (df.lng > 0):
+                df.lng = -df.lng
+            else:
+                df.lng = df.lng
+    return df.lng
+        
 
 def main():
     if len(sys.argv) != 3:
         print(USAGE)
         sys.exit()
-    input_file, output_file = sys.argv[1], sys.argv[2]
+    input_file, output_file, country = sys.argv[1], sys.argv[2], sys.argv[3]
     df = pd.read_csv(input_file, index_col='idx')
     df = df.dropna(how='all').dropna(how='all', axis=1)
     df = normalize_category_names(df)
