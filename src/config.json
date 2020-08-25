@@ -119,6 +119,19 @@
         39.1
       ],
       "datasetHash": "7a76235"
+    },
+    "pittsburgh": {
+      "title": "Pittsburgh Energy Ecosystem",
+      "shortName": "Pittsburgh",
+      "center": [
+        -79.9,
+        40.3
+      ],
+      "flyTo": [
+        -80.0,
+        40.4
+      ],
+      "datasetHash": "8dc734f"
     }
   }
 }
