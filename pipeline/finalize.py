@@ -108,7 +108,8 @@ def main():
         action='store_true')
     args = parser.parse_args()
     df = pd.read_csv(args.input_file, index_col='idx')
-    validate.validate(df, not args.include_obsolete_categories)
+    if not validate.validate(df, not args.include_obsolete_categories):
+      raise RuntimeError("Invalid data!")
     save_final_output(make_final_output(df), args.location_id)
 
 

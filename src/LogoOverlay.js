@@ -1,7 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import aesLogoWhite from './img/aes-logo-white-shadow.png';
-import suTreeDark from './img/su-tree-dark.png';
 import CONFIG from './config.json';
 
 
@@ -12,15 +11,17 @@ const useStyles = makeStyles((theme) => ({
     left: 0,
     'margin-bottom': 24,
     display: 'flex',
-    'flex-direction': 'row',
+    'flex-direction': 'column',
   },
   aesLogo: {
     padding: 8,
     height: 50,
   },
-  suLogo: {
-    padding: 8,
-    height: 50,
+  suLogoContainer: {
+    padding: "4px 8px",
+    maxWidth: 220,
+    color: "white",
+    fontSize: "9pt",
   },
 }));
 
@@ -29,6 +30,8 @@ export default function LogoOverlay(props) {
   const classes = useStyles();
 
   const map = CONFIG['maps'][props.selectedMapId];
+  // 2020-09-08: Stanford requested removal of logo in favor of explanatory
+  // text. Can be re-added at some point in the future.
   var suLogoDisplay = map['displayStanfordLogo'] ? 'block' : 'none'
 
   return (
@@ -36,10 +39,8 @@ export default function LogoOverlay(props) {
       <div
         className={classes.suLogoContainer}
         style={{display: suLogoDisplay}} >
-        <img
-          src={suTreeDark}
-          className={classes.suLogo}
-          alt="Stanford University Logo" />
+        Developed by American Energy Society in collaboration with Stanford
+        University's Precourt Institute for Energy
       </div>
       <div className={classes.aesLogoContainer}>
         <img

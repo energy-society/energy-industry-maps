@@ -191,6 +191,10 @@
     "color": "#bc6d4b"
   },
   {
+    "name": "Unknown",
+    "color": "#ccc"
+  },
+  {
     "name": "Utility/Grid",
     "color": "#f4a41a"
   },

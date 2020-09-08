@@ -12,7 +12,7 @@
         -122.21,
         37.65
       ],
-      "datasetHash": "8fcdc47",
+      "datasetHash": "283c3c0",
       "displayStanfordLogo": true,
       "includeObsoleteCategories": true
     },
@@ -27,7 +27,7 @@
         -87.829,
         41.879
       ],
-      "datasetHash": "69a54fa"
+      "datasetHash": "cfa7601"
     },
     "msp": {
       "title": "Minneapolis/St. Paul Energy Ecosystem",
@@ -40,7 +40,7 @@
         -93.2,
         44.9
       ],
-      "datasetHash": "aba1f9f"
+      "datasetHash": "02e3676"
     },
     "milwaukee": {
       "title": "Milwaukee Energy Ecosystem",
@@ -53,7 +53,7 @@
         -87.9,
         43.0
       ],
-      "datasetHash": "42bc05b"
+      "datasetHash": "69e0568"
     },
     "indianapolis": {
       "title": "Indianapolis Energy Ecosystem",
@@ -66,7 +66,7 @@
         -86.15,
         39.8
       ],
-      "datasetHash": "9440f13"
+      "datasetHash": "c417600"
     },
     "madison": {
       "title": "Madison Energy Ecosystem",
@@ -79,7 +79,7 @@
         -89.39,
         43.07
       ],
-      "datasetHash": "31822e6"
+      "datasetHash": "637567f"
     },
     "st-louis": {
       "title": "St. Louis Energy Ecosystem",
@@ -92,7 +92,7 @@
         -90.2,
         38.63
       ],
-      "datasetHash": "b9bd7fb"
+      "datasetHash": "be53678"
     },
     "des-moines": {
       "title": "Des Moines Energy Ecosystem",
@@ -105,7 +105,7 @@
         -93.6,
         41.6
       ],
-      "datasetHash": "ca7f0e4"
+      "datasetHash": "5f034a8"
     },
     "kansas-city": {
       "title": "Kansas City Energy Ecosystem",
@@ -118,7 +118,7 @@
         -94.6,
         39.1
       ],
-      "datasetHash": "7a76235"
+      "datasetHash": "8f1f9f5"
     },
     "pittsburgh": {
       "title": "Pittsburgh Energy Ecosystem",
@@ -131,7 +131,21 @@
         -80.0,
         40.4
       ],
-      "datasetHash": "8dc734f"
+      "datasetHash": "4a91159"
+    },
+    "denmark": {
+      "title": "Denmark Energy Ecosystem",
+      "shortName": "Denmark",
+      "center": [
+        12.4,
+        55.6
+      ],
+      "flyTo": [
+        10.5,
+        56.3
+      ],
+      "flyToZoom": 6.5,
+      "datasetHash": "a054c48"
     }
   }
 }

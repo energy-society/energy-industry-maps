@@ -95,7 +95,7 @@ function populateMapData(map, mapId, mapData) {
 
     map.flyTo({
       center: MAPS[mapId].flyTo,
-      zoom: 8,
+      zoom: MAPS[mapId].flyToZoom || 8,
       speed: 0.5,
     });
   });
