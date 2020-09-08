@@ -132,6 +132,20 @@
         40.4
       ],
       "datasetHash": "8dc734f"
+    },
+    "denmark": {
+      "title": "Denmark Energy Ecosystem",
+      "shortName": "Denmark",
+      "center": [
+        12.4,
+        55.6
+      ],
+      "flyTo": [
+        10.8,
+        55.9
+      ],
+      "flyToZoom": 6.9,
+      "datasetHash": "a054c48"
     }
   }
 }
