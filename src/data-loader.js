@@ -48,7 +48,8 @@ function toFinalForm(data) {
   }
 }
 
-export function fetchMapData(mapId) {
-  let url = process.env.PUBLIC_URL + `/data/${mapId}.json`;
+export function fetchMapData() {
+  let url = `https://energymaps.energysociety.org/data/silicon-valley.json`;
+
   return fetch(url).then(r => r.json()).then(toFinalForm);
 }

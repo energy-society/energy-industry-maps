@@ -1,7 +1,6 @@
 import mapboxgl from 'mapbox-gl';
 import React, { useState, useEffect } from 'react';
 import { ThemeProvider } from '@material-ui/core/styles';
-import Hidden from '@material-ui/core/Hidden';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import LogoOverlay from './LogoOverlay';
@@ -11,11 +10,10 @@ import { getAllCategories } from './common';
 import CONFIG from './config.json';
 import { fetchMapData } from './data-loader';
 import { THEME } from './Theme';
-import insightLogo from './img/insight-white.png';
+import taxonomy from './taxonomy.json';
 import './App.css';
 
 const COMPANIES_SOURCE = 'companies';
-const MAPS = CONFIG['maps'];
 const POINT_LAYER = 'energy-companies-point-layer';
 
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_API_TOKEN;
@@ -52,8 +50,8 @@ function displayPopup(map, feature) {
     .addTo(map);
 }
 
-function populateMapData(map, mapId, mapData) {
-  map.setCenter(MAPS[mapId].center);
+function populateMapData(map, mapData) {
+  map.setCenter(CONFIG.center);
   map.setZoom(6);
 
   mapData.then(data => {
@@ -94,34 +92,11 @@ function populateMapData(map, mapId, mapData) {
     map.on('click', POINT_LAYER, e => displayPopup(map, e.features[0]));
 
     map.flyTo({
-      center: MAPS[mapId].flyTo,
-      zoom: MAPS[mapId].flyToZoom || 8,
+      center: CONFIG.flyTo,
+      zoom: CONFIG.flyToZoom || 8,
       speed: 0.5,
     });
   });
-}
-
-const getUrlFragment = () => window.location.hash.replace('#', '');
-
-function useUrlFragment(fragment, callback) {
-  useEffect(() => {
-    window.location.hash = '#' + fragment;
-    const handleHashChange = () => {
-      callback(getUrlFragment());
-    }
-    window.addEventListener('hashchange', handleHashChange);
-    return () => {
-      window.removeEventListener('hashchange', handleHashChange);
-    }
-  });
-}
-
-function getInitialMapId() {
-  let initialMapId = getUrlFragment();
-  if (MAPS.hasOwnProperty(initialMapId)) {
-    return initialMapId;
-  }
-  return CONFIG['defaultMapId'];
 }
 
 const useStyles = makeStyles((theme) => ({
@@ -168,9 +143,6 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'row',
   },
-  insightLogoContainer: {
-    padding: 8,
-  },
   titleAndSearch: {
     padding: '4px 8px',
   },
@@ -185,12 +157,10 @@ export default function App() {
   const classes = useStyles();
 
   const [thisMap, setThisMap] = useState(null);
-  const [selectedMapId, setSelectedMapId] = useState(getInitialMapId());
   const [taxonomy, setTaxonomy] = useState([]);
   const [companiesGeojson, setCompaniesGeojson] = useState({});
   const [selectedCategories, setSelectedCategories] = useState(new Set([]));
   const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
-
 
   function handleToggleCategory(e) {
     var s = new Set(selectedCategories);
@@ -221,20 +191,6 @@ export default function App() {
     });
   }
 
-  function handleSelectMap(mapId) {
-    if (mapId !== selectedMapId) {
-      clearPopups();
-      thisMap.removeLayer(POINT_LAYER);
-      thisMap.removeSource(COMPANIES_SOURCE);
-      setSelectedMapId(mapId);
-      setMobileDrawerOpen(false);
-      let mapData = fetchMapData(mapId);
-      mapData.then(setUpMap);
-      populateMapData(thisMap, mapId, mapData);
-      handleSelectAllCategories(taxonomy);
-    }
-  }
-
   function setUpMap(data) {
     setTaxonomy(data['taxonomy']);
     setCompaniesGeojson(data['geojson']);
@@ -246,17 +202,17 @@ export default function App() {
     let map = new mapboxgl.Map({
       container: "map-container",
       style: 'mapbox://styles/mapbox/dark-v10',
-      center: MAPS[selectedMapId].center,
+      center: CONFIG.center,
       zoom: 6,
       minZoom: 6,
     });
-    let mapData = fetchMapData(selectedMapId);
+    let mapData = fetchMapData();
     mapData.then(setUpMap);
 
     map.on('load', () => {
       map.addControl(new mapboxgl.FullscreenControl(), 'bottom-right');
       map.addControl(new mapboxgl.NavigationControl(), 'bottom-right');
-      populateMapData(map, selectedMapId, mapData);
+      populateMapData(map, mapData);
     });
     setThisMap(map);
   }
@@ -281,21 +237,13 @@ export default function App() {
     }
   });
 
-  useUrlFragment(selectedMapId, urlFragment => {
-    if (MAPS.hasOwnProperty(urlFragment)) {
-      handleSelectMap(urlFragment);
-    }
-  });
-
   return (
     <ThemeProvider theme={THEME}>
       <div className={classes.root}>
         <SettingsPane
-          selectedMapId={selectedMapId}
           mobileDrawerOpen={mobileDrawerOpen}
           selectedCategories={selectedCategories}
           onToggleOpen={setMobileDrawerOpen}
-          onSelectMap={handleSelectMap}
           taxonomy={taxonomy}
           onSelectAllCategories={() => handleSelectAllCategories(taxonomy)}
           onDeselectAllCategories={handleDeselectAllCategories}
@@ -305,14 +253,9 @@ export default function App() {
           <div className={classes.mapOverlay}>
             <div className={classes.mapOverlayInner}>
               <div className={classes.mainControlOverlay}>
-                <Hidden smDown implementation="css">
-                  <div className={classes.insightLogoContainer}>
-                    <img src={insightLogo} alt="aes insight logo" height="80" />
-                  </div>
-                </Hidden>
                 <div className={classes.titleAndSearch}>
                   <div className={classes.mapTitle}>
-                    <Typography variant="h1">{MAPS[selectedMapId].title}</Typography>
+                    <Typography variant="h1">{CONFIG.title}</Typography>
                   </div>
                   <Omnibox
                     companies={companiesGeojson.features}
@@ -320,7 +263,7 @@ export default function App() {
                     onOpenMobileDrawer={() => setMobileDrawerOpen(true)} />
                   </div>
               </div>
-              <LogoOverlay selectedMapId={selectedMapId} />
+              <LogoOverlay />
             </div>
           </div>
         </main>

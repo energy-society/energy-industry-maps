@@ -4,7 +4,6 @@ import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Checkbox from '@material-ui/core/Checkbox';
 import CloseIcon from '@material-ui/icons/Close';
-import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
 import FormControl from '@material-ui/core/FormControl';
 import FormGroup from '@material-ui/core/FormGroup';
@@ -12,7 +11,6 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Hidden from '@material-ui/core/Hidden';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import LocationSelector from './LocationSelector';
 import { normalizeCategory } from './common';
 
 const drawerWidth = 320;
@@ -123,13 +121,6 @@ export default function SettingsPane(props) {
         </Hidden>
       </div>
       <div className={classes.settingsPaneContent}>
-        <div className={classes.settingsPaneSubheader}>
-          <Typography variant="h3">Select a location</Typography>
-        </div>
-        <LocationSelector
-          onSelectMap={props.onSelectMap}
-          selectedMapId={props.selectedMapId} />
-        <Divider style={{margin: 4}} />
         <div className={classes.settingsPaneSubheader}>
           <Typography variant="h3">Filter by category</Typography>
         </div>
