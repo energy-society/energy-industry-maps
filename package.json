@@ -2,7 +2,7 @@
   "name": "energy-society-maps",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://energymaps.energysociety.org/",
+  "homepage": "https://web.stanford.edu/group/pie/sv-energy-map/",
   "dependencies": {
     "@material-ui/core": "^4.10.2",
     "@material-ui/icons": "^4.9.1",
