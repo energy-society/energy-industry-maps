@@ -50,8 +50,6 @@ function toGeoJson(data) {
 }
 
 export function fetchMapData(mapId) {
-  let hashFrag = CONFIG['maps'][mapId].datasetHash;
-  let url = process.env.PUBLIC_URL + `/data/${mapId}-${hashFrag}.json`;
-
+  let url = process.env.PUBLIC_URL + `/data/${mapId}.json`;
   return fetch(url).then(r => r.json()).then(toGeoJson);
 }

@@ -12,7 +12,6 @@
         -122.21,
         37.65
       ],
-      "datasetHash": "283c3c0",
       "displayStanfordLogo": true,
       "includeObsoleteCategories": true
     },
@@ -26,8 +25,7 @@
       "flyTo": [
         -87.829,
         41.879
-      ],
-      "datasetHash": "cfa7601"
+      ]
     },
     "msp": {
       "title": "Minneapolis/St. Paul Energy Ecosystem",
@@ -39,8 +37,7 @@
       "flyTo": [
         -93.2,
         44.9
-      ],
-      "datasetHash": "02e3676"
+      ]
     },
     "milwaukee": {
       "title": "Milwaukee Energy Ecosystem",
@@ -52,8 +49,7 @@
       "flyTo": [
         -87.9,
         43.0
-      ],
-      "datasetHash": "69e0568"
+      ]
     },
     "indianapolis": {
       "title": "Indianapolis Energy Ecosystem",
@@ -65,8 +61,7 @@
       "flyTo": [
         -86.15,
         39.8
-      ],
-      "datasetHash": "c417600"
+      ]
     },
     "madison": {
       "title": "Madison Energy Ecosystem",
@@ -78,8 +73,7 @@
       "flyTo": [
         -89.39,
         43.07
-      ],
-      "datasetHash": "637567f"
+      ]
     },
     "st-louis": {
       "title": "St. Louis Energy Ecosystem",
@@ -91,8 +85,7 @@
       "flyTo": [
         -90.2,
         38.63
-      ],
-      "datasetHash": "be53678"
+      ]
     },
     "des-moines": {
       "title": "Des Moines Energy Ecosystem",
@@ -104,8 +97,7 @@
       "flyTo": [
         -93.6,
         41.6
-      ],
-      "datasetHash": "5f034a8"
+      ]
     },
     "kansas-city": {
       "title": "Kansas City Energy Ecosystem",
@@ -117,8 +109,7 @@
       "flyTo": [
         -94.6,
         39.1
-      ],
-      "datasetHash": "8f1f9f5"
+      ]
     },
     "pittsburgh": {
       "title": "Pittsburgh Energy Ecosystem",
@@ -130,8 +121,7 @@
       "flyTo": [
         -80.0,
         40.4
-      ],
-      "datasetHash": "4a91159"
+      ]
     },
     "denmark": {
       "title": "Denmark Energy Ecosystem",
@@ -144,8 +134,7 @@
         10.5,
         56.3
       ],
-      "flyToZoom": 6.5,
-      "datasetHash": "52fa34e"
+      "flyToZoom": 6.5
     }
   }
 }
