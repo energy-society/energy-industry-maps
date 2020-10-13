@@ -1,5 +1,4 @@
 import argparse
-import hashlib
 import json
 import logging
 import os
@@ -63,20 +62,9 @@ def make_final_output(input_df):
     }
 
 
-def update_config_file(location_id, hashfrag):
-    config = read_config()
-    config['maps'][location_id]['datasetHash'] = hashfrag
-    write_config(config)
-
-
 def save_final_output(output, location_id):
-    strout = json.dumps(output)
-    h = hashlib.sha256()
-    h.update(strout.encode())
-    digest_fragment = h.hexdigest()[:7]
-    filename = f'{location_id}-{digest_fragment}.json'
+    filename = f'{location_id}.json'
     output_path = f'../public/data/{filename}'
-    update_config_file(location_id, digest_fragment)
     with open(output_path, 'w') as f:
         json.dump(output, f)
         logging.info(f"Saved final output to {output_path}")
