@@ -107,7 +107,7 @@
   {
     "name": "IoT/IIoT",
     "color": "#a92278",
-    "aliases": ["IIoT/IoT"]
+    "aliases": ["IIoT/IoT", "Iot/IIoT"]
   },
   {
     "name": "Law",
