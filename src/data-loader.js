@@ -1,5 +1,4 @@
 import { normalizeCategory } from './common';
-import CONFIG from './config.json';
 import taxonomy from './taxonomy.json';
 
 const CATEGORIES = taxonomy.map(c => c.name).sort();
