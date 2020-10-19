@@ -228,9 +228,18 @@ export default function App() {
       thisMap.removeSource(COMPANIES_SOURCE);
       setSelectedMapId(mapId);
       setMobileDrawerOpen(false);
-      populateMapData(thisMap, mapId, fetchMapData(mapId));
+      let mapData = fetchMapData(mapId);
+      mapData.then(setUpMap);
+      populateMapData(thisMap, mapId, mapData);
       handleSelectAllCategories(taxonomy);
     }
+  }
+
+  function setUpMap(data) {
+    setTaxonomy(data['taxonomy']);
+    setCompaniesGeojson(data['geojson']);
+    // initially select all categories
+    handleSelectAllCategories(data['taxonomy']);
   }
 
   function initMap() {
@@ -242,12 +251,7 @@ export default function App() {
       minZoom: 6,
     });
     let mapData = fetchMapData(selectedMapId);
-    mapData.then(data => {
-      setTaxonomy(data['taxonomy']);
-      setCompaniesGeojson(data['geojson']);
-      // initially select all categories
-      handleSelectAllCategories(data['taxonomy']);
-    });
+    mapData.then(setUpMap);
 
     map.on('load', () => {
       map.addControl(new mapboxgl.FullscreenControl(), 'bottom-right');
