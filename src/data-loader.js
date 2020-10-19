@@ -7,7 +7,7 @@ function getCategory(k, taxonomy) {
   return taxonomy[k]['name'];
 }
 
-function toGeoJson(data) {
+function toFinalForm(data) {
   let headers = data.table.columns;
   const colidx = {};
   for (var i = 0; i < headers.length; i++) {
@@ -40,12 +40,15 @@ function toGeoJson(data) {
     features.push(feature);
   });
   return {
-    type: 'FeatureCollection',
-    features: features,
+    geojson: {
+      type: 'FeatureCollection',
+      features: features,
+    },
+    taxonomy: data.taxonomy,
   }
 }
 
 export function fetchMapData(mapId) {
   let url = process.env.PUBLIC_URL + `/data/${mapId}.json`;
-  return fetch(url).then(r => r.json()).then(toGeoJson);
+  return fetch(url).then(r => r.json()).then(toFinalForm);
 }

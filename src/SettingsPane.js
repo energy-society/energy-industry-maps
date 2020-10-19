@@ -13,7 +13,7 @@ import Hidden from '@material-ui/core/Hidden';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import LocationSelector from './LocationSelector';
-import { getFilteredTaxonomy, normalizeCategory } from './common';
+import { normalizeCategory } from './common';
 
 const drawerWidth = 320;
 
@@ -83,8 +83,7 @@ export default function SettingsPane(props) {
 
   const closeSettingsPane = () => props.onToggleOpen(false);
 
-  let categories = getFilteredTaxonomy(props.selectedMapId);
-  const formControlLabels = categories.map((category, idx) => {
+  const formControlLabels = props.taxonomy.map((category, idx) => {
     const sanitizedCat = normalizeCategory(category.name);
     const isChecked = props.selectedCategories.has(sanitizedCat);
 

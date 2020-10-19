@@ -11,16 +11,12 @@ import { getAllCategories } from './common';
 import CONFIG from './config.json';
 import { fetchMapData } from './data-loader';
 import { THEME } from './Theme';
-import taxonomy from './taxonomy.json';
 import insightLogo from './img/insight-white.png';
 import './App.css';
 
 const COMPANIES_SOURCE = 'companies';
 const MAPS = CONFIG['maps'];
 const POINT_LAYER = 'energy-companies-point-layer';
-// Last entry is fallthrough color
-const CIRCLE_COLORS =
-  taxonomy.map(c => [c.name, c.color]).flat().concat(['#ccc']);
 
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_API_TOKEN;
 
@@ -63,8 +59,12 @@ function populateMapData(map, mapId, mapData) {
   mapData.then(data => {
     map.addSource(COMPANIES_SOURCE, {
       type: 'geojson',
-      data: data,
+      data: data['geojson'],
     });
+
+    // Last entry is fallthrough color
+    let circleColors =
+      data['taxonomy'].map(c => [c.name, c.color]).flat().concat(['#ccc']);
 
     map.addLayer({
       id: POINT_LAYER,
@@ -77,7 +77,7 @@ function populateMapData(map, mapId, mapData) {
         },
         'circle-opacity': 0.85,
         // color circles by primary category
-        'circle-color': ['match', ['get', 'tax1']].concat(CIRCLE_COLORS),
+        'circle-color': ['match', ['get', 'tax1']].concat(circleColors),
         'circle-stroke-color': '#fff',
         'circle-stroke-width': 0.4,
       }
@@ -186,19 +186,11 @@ export default function App() {
 
   const [thisMap, setThisMap] = useState(null);
   const [selectedMapId, setSelectedMapId] = useState(getInitialMapId());
+  const [taxonomy, setTaxonomy] = useState([]);
   const [companiesGeojson, setCompaniesGeojson] = useState({});
-  const [selectedCategories, setSelectedCategories] =
-    useState(getAllCategories(selectedMapId));
+  const [selectedCategories, setSelectedCategories] = useState(new Set([]));
   const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
 
-
-  function loadGeojsonData(mapId) {
-    return fetchMapData(mapId)
-      .then(geojson => {
-        setCompaniesGeojson(geojson);
-        return geojson;
-    });
-  }
 
   function handleToggleCategory(e) {
     var s = new Set(selectedCategories);
@@ -210,10 +202,10 @@ export default function App() {
     setSelectedCategories(s);
   }
 
-  function handleSelectAllCategories(mapId) {
-    // takes argument instead of using selectedMapId because selectedMapId
+  function handleSelectAllCategories(txnomy) {
+    // takes argument instead of using taxonomy directly because taxonomy
     // state update can lag behind
-    setSelectedCategories(getAllCategories(mapId));
+    setSelectedCategories(getAllCategories(txnomy));
   }
 
   function handleDeselectAllCategories() {
@@ -236,8 +228,8 @@ export default function App() {
       thisMap.removeSource(COMPANIES_SOURCE);
       setSelectedMapId(mapId);
       setMobileDrawerOpen(false);
-      populateMapData(thisMap, mapId, loadGeojsonData(mapId));
-      handleSelectAllCategories(mapId);
+      populateMapData(thisMap, mapId, fetchMapData(mapId));
+      handleSelectAllCategories(taxonomy);
     }
   }
 
@@ -249,9 +241,13 @@ export default function App() {
       zoom: 6,
       minZoom: 6,
     });
-    let mapData = loadGeojsonData(selectedMapId);
-    // initially select all categories
-    handleSelectAllCategories(selectedMapId);
+    let mapData = fetchMapData(selectedMapId);
+    mapData.then(data => {
+      setTaxonomy(data['taxonomy']);
+      setCompaniesGeojson(data['geojson']);
+      // initially select all categories
+      handleSelectAllCategories(data['taxonomy']);
+    });
 
     map.on('load', () => {
       map.addControl(new mapboxgl.FullscreenControl(), 'bottom-right');
@@ -296,7 +292,8 @@ export default function App() {
           selectedCategories={selectedCategories}
           onToggleOpen={setMobileDrawerOpen}
           onSelectMap={handleSelectMap}
-          onSelectAllCategories={() => handleSelectAllCategories(selectedMapId)}
+          taxonomy={taxonomy}
+          onSelectAllCategories={() => handleSelectAllCategories(taxonomy)}
           onDeselectAllCategories={handleDeselectAllCategories}
           onToggleCategory={handleToggleCategory} />
         <main className={classes.mainContent}>
