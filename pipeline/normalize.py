@@ -42,6 +42,9 @@ def main():
     df = normalize_category_names(df)
     df = strip_whitespace(df, 'company')
     df = strip_whitespace(df, 'city')
+    df = strip_whitespace(df, 'tax1')
+    df = strip_whitespace(df, 'tax2')
+    df = strip_whitespace(df, 'tax3')
     df.lat = df.lat.astype(float).round(6)
     df.lng = df.lng.astype(float).round(6)
 
