@@ -30,7 +30,7 @@ def lookup(coll):
     return lambda k: coll[k]
 
 
-def make_final_output(input_df):
+def make_final_output(input_df, use_sv_taxonomy):
     df = input_df.filter(items=COLUMNS_TO_KEEP)
 
     # Categorize city column
@@ -39,7 +39,7 @@ def make_final_output(input_df):
     df.city = df.city.apply(lookup(city_to_idx))
 
     # Categorize taxonomy columns
-    categories = taxonomy.load_categories(filter_obsolete=False)
+    categories = taxonomy.load_categories(use_sv_taxonomy)
 
     cat_to_idx = {c: i for i, c in enumerate(categories)}
     cat_to_idx[''] = -1
@@ -58,6 +58,7 @@ def make_final_output(input_df):
 
     return {
       'cities': cities,
+      'taxonomy': taxonomy.load_taxonomy(use_sv_taxonomy),
       'table': table,
     }
 
@@ -90,15 +91,12 @@ def main():
         type=str,
         choices=config['maps'],
         help='ID of location as specified in config.json')
-    parser.add_argument(
-        '--include-obsolete-categories',
-        default=False,
-        action='store_true')
     args = parser.parse_args()
+    is_silicon_valley = args.location_id == 'silicon-valley'
     df = pd.read_csv(args.input_file, index_col='idx')
-    if not validate.validate(df, not args.include_obsolete_categories):
-      raise RuntimeError("Invalid data!")
-    save_final_output(make_final_output(df), args.location_id)
+    if not validate.validate(df, is_silicon_valley):
+        raise RuntimeError("Invalid data!")
+    save_final_output(make_final_output(df, is_silicon_valley), args.location_id)
 
 
 if __name__ == '__main__':

@@ -19,11 +19,6 @@
     "color": "#7cc908"
   },
   {
-    "name": "Built Environment",
-    "color": "#036",
-    "aliases": ["Buildings"]
-  },
-  {
     "name": "Chemistry",
     "color": "#c94208"
   },
@@ -32,25 +27,18 @@
     "color": "#5a8925"
   },
   {
-    "name": "Coal",
-    "color": "#333"
-  },
-  {
-    "name": "Construction",
-    "color": "#603e1e"
+    "name": "Construction/Built Environment",
+    "color": "#036",
+    "aliases": ["Buildings", "Built Environment", "Construction"]
   },
   {
     "name": "Consulting",
     "color": "#164d82"
   },
   {
-    "name": "Enabling Technologies/Components",
+    "name": "Enabling Technology/Components",
     "color": "#603e1e",
-    "aliases": ["Enabling Technology/Components"]
-  },
-  {
-    "name": "Energy Efficiency",
-    "color": "#50a22a"
+    "aliases": ["Enabling Technologies/Components"]
   },
   {
     "name": "Energy Systems/Management",
@@ -159,10 +147,6 @@
   {
     "name": "Thermal Energy",
     "color": "#bc6d4b"
-  },
-  {
-    "name": "Unknown",
-    "color": "#ccc"
   },
   {
     "name": "Utility/Grid",

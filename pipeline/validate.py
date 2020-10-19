@@ -71,7 +71,7 @@ def check_uncommon_city_names(df):
     df.apply(warn_if_city_occurs_once, axis=1)
 
 
-def validate(input_df, filter_obsolete):
+def validate(input_df, is_silicon_valley):
     df = input_df.filter(items=COLUMNS_OF_INTEREST)
     valid = True
 
@@ -80,7 +80,7 @@ def validate(input_df, filter_obsolete):
     valid = check_no_missing(df, 'lng') and valid
     valid = check_no_missing(df, 'tax1') and valid
 
-    categories = taxonomy.load_categories(filter_obsolete=filter_obsolete)
+    categories = taxonomy.load_categories(is_silicon_valley)
     valid = check_valid_taxonomy_values(df, categories) and valid
 
     check_duplicate_company_names(df)
@@ -101,12 +101,13 @@ def main():
         type=str,
         help='Name of the CSV input file to validate')
     parser.add_argument(
-        '--include-obsolete-categories',
+        '--silicon-valley',
         default=False,
-        action='store_true')
+        action='store_true',
+        help='Whether to use the SV taxonomy')
     args = parser.parse_args()
     df = pd.read_csv(args.input_file, index_col='idx')
-    if validate(df, not args.include_obsolete_categories):
+    if validate(df, args.silicon_valley):
         logging.info("Success! Data validated.")
     else:
         raise RuntimeError("Invalid data! Please fix and retry.")
