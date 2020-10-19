@@ -1,13 +1,10 @@
 import { normalizeCategory } from './common';
-import taxonomy from './taxonomy.json';
 
-const CATEGORIES = taxonomy.map(c => c.name).sort();
-
-function getCategory(k) {
+function getCategory(k, taxonomy) {
   if (k === -1) {
     return '';
   }
-  return CATEGORIES[k];
+  return taxonomy[k]['name'];
 }
 
 function toGeoJson(data) {
@@ -24,9 +21,9 @@ function toGeoJson(data) {
         'idx': i,
         'company': row[colidx['company']],
         'city': data.cities[row[colidx['city']]],
-        'tax1': getCategory(row[colidx['tax1']]),
-        'tax2': getCategory(row[colidx['tax2']]),
-        'tax3': getCategory(row[colidx['tax3']]),
+        'tax1': getCategory(row[colidx['tax1']], data.taxonomy),
+        'tax2': getCategory(row[colidx['tax2']], data.taxonomy),
+        'tax3': getCategory(row[colidx['tax3']], data.taxonomy),
         'website': row[colidx['website']],
       },
       'geometry': {
