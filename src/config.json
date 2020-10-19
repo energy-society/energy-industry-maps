@@ -12,8 +12,7 @@
         -122.21,
         37.65
       ],
-      "displayStanfordLogo": true,
-      "includeObsoleteCategories": true
+      "displayStanfordLogo": true
     },
     "chicago": {
       "title": "Chicago Energy Ecosystem",

@@ -1,27 +1,22 @@
+import argparse
 import logging
 import pandas as pd
-import sys
 import taxonomy
 from collections import Counter
 
 
-USAGE = f"python {__file__} <csv_input_file> <csv_output_file>"
-
 logging.basicConfig(level='INFO', format='%(levelname)s: %(message)s')
 
 
-CATEGORY_MAPPING = taxonomy.load_category_mapping()
 COUNTERS = Counter()
 
 
-def map_category_name(c):
-    if c in CATEGORY_MAPPING:
-        COUNTERS[c] += 1
-        return CATEGORY_MAPPING[c]
-    return c
-
-
-def normalize_category_names(df):
+def normalize_category_names(df, mapping):
+    def map_category_name(c):
+        if c in mapping:
+            COUNTERS[c] += 1
+            return mapping[c]
+        return c
     for col in ('tax1', 'tax2', 'tax3'):
         df[col] = df[col].apply(map_category_name)
     return df
@@ -33,13 +28,28 @@ def strip_whitespace(df, col):
 
 
 def main():
-    if len(sys.argv) != 3:
-        print(USAGE)
-        sys.exit()
-    input_file, output_file = sys.argv[1], sys.argv[2]
-    df = pd.read_csv(input_file, index_col='idx')
+    parser = argparse.ArgumentParser(description='Validate map data.')
+    parser.add_argument(
+        'input_file',
+        metavar='<csv_input_file>',
+        type=str,
+        help='Name of the CSV input file to normalize')
+    parser.add_argument(
+        'output_file',
+        metavar='<csv_output_file>',
+        type=str,
+        help='Name of the file to write normalized output CSV to')
+    parser.add_argument(
+        '--silicon-valley',
+        default=False,
+        action='store_true',
+        help='Whether to use the SV taxonomy')
+    args = parser.parse_args()
+
+    df = pd.read_csv(args.input_file, index_col='idx')
     df = df.dropna(how='all').dropna(how='all', axis=1)
-    df = normalize_category_names(df)
+    category_mapping = taxonomy.load_category_mapping(args.silicon_valley)
+    df = normalize_category_names(df, category_mapping)
     df = strip_whitespace(df, 'company')
     df = strip_whitespace(df, 'city')
     df = strip_whitespace(df, 'tax1')
@@ -51,9 +61,9 @@ def main():
     for k in COUNTERS:
         logging.info(
             f"Replaced {COUNTERS[k]} instances of '{k}' with "
-            f"'{CATEGORY_MAPPING[k]}'")
-    df.round(6).to_csv(output_file)
-    logging.info(f"Wrote output to {output_file}")
+            f"'{category_mapping[k]}'")
+    df.round(6).to_csv(args.output_file)
+    logging.info(f"Wrote output to {args.output_file}")
 
 
 if __name__ == '__main__':
