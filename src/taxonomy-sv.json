@@ -27,10 +27,6 @@
     "color": "#5a8925"
   },
   {
-    "name": "Coal",
-    "color": "#333"
-  },
-  {
     "name": "Construction/Built Environment",
     "color": "#036",
     "aliases": ["Buildings", "Built Environment", "Construction"]
@@ -43,10 +39,6 @@
     "name": "Enabling Technology/Components",
     "color": "#603e1e",
     "aliases": ["Enabling Technologies/Components"]
-  },
-  {
-    "name": "Energy Efficiency",
-    "color": "#50a22a"
   },
   {
     "name": "Energy Systems/Management",
@@ -155,10 +147,6 @@
   {
     "name": "Thermal Energy",
     "color": "#bc6d4b"
-  },
-  {
-    "name": "Unknown",
-    "color": "#ccc"
   },
   {
     "name": "Utility/Grid",
