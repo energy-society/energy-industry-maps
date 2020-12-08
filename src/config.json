@@ -121,19 +121,6 @@
         -80.0,
         40.4
       ]
-    },
-    "denmark": {
-      "title": "Denmark Energy Ecosystem",
-      "shortName": "Denmark",
-      "center": [
-        12.4,
-        55.6
-      ],
-      "flyTo": [
-        10.5,
-        56.3
-      ],
-      "flyToZoom": 6.5
     }
   }
 }
