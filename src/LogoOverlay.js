@@ -39,8 +39,9 @@ export default function LogoOverlay(props) {
       <div
         className={classes.suLogoContainer}
         style={{display: suLogoDisplay}} >
-        Developed by American Energy Society in collaboration with Stanford
-        University's Precourt Institute for Energy
+        Developed by American Energy Society in collaboration with Sally Benson,
+        Precourt Family Professor at Stanford University, and Scott Jespersen,
+        MS '20, Stanford.
       </div>
       <div className={classes.aesLogoContainer}>
         <img
