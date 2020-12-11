@@ -33,8 +33,9 @@ export default function LogoOverlay(props) {
         className={classes.attributionContainer}
         style={{display: 'block'}} >
         Developed by <a href="https://www.energysociety.org/" className={classes.aesLink}>
-        American Energy Society</a> in collaboration with Stanford University's
-        Precourt Institute for Energy
+        American Energy Society</a> in collaboration with Sally Benson,
+        Precourt Family Professor at Stanford University, and Scott Jespersen,
+        MS '20, Stanford.
       </div>
     </div>
   );
