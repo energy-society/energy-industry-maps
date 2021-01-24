@@ -36,9 +36,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "resolutions": {
-    "autoprefixer": "9.8.0",
-    "node-forge": "0.10.0"
   }
 }
