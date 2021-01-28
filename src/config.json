@@ -1,5 +1,10 @@
 {
   "defaultMapId": "silicon-valley",
+  "taxonomies": {
+    "default": "taxonomy.json",
+    "sv": "taxonomy-sv.json",
+    "denmark": "taxonomy-denmark.json"
+  },
   "maps": {
     "silicon-valley": {
       "title": "Silicon Valley Energy Ecosystem",
@@ -12,6 +17,7 @@
         -122.21,
         37.65
       ],
+      "taxonomy": "sv",
       "displayStanfordLogo": true
     },
     "chicago": {
@@ -24,7 +30,8 @@
       "flyTo": [
         -87.829,
         41.879
-      ]
+      ],
+      "taxonomy": "default"
     },
     "msp": {
       "title": "Minneapolis/St. Paul Energy Ecosystem",
@@ -36,7 +43,8 @@
       "flyTo": [
         -93.2,
         44.9
-      ]
+      ],
+      "taxonomy": "default"
     },
     "milwaukee": {
       "title": "Milwaukee Energy Ecosystem",
@@ -48,7 +56,8 @@
       "flyTo": [
         -87.9,
         43.0
-      ]
+      ],
+      "taxonomy": "default"
     },
     "indianapolis": {
       "title": "Indianapolis Energy Ecosystem",
@@ -60,7 +69,8 @@
       "flyTo": [
         -86.15,
         39.8
-      ]
+      ],
+      "taxonomy": "default"
     },
     "madison": {
       "title": "Madison Energy Ecosystem",
@@ -72,7 +82,8 @@
       "flyTo": [
         -89.39,
         43.07
-      ]
+      ],
+      "taxonomy": "default"
     },
     "st-louis": {
       "title": "St. Louis Energy Ecosystem",
@@ -84,7 +95,8 @@
       "flyTo": [
         -90.2,
         38.63
-      ]
+      ],
+      "taxonomy": "default"
     },
     "des-moines": {
       "title": "Des Moines Energy Ecosystem",
@@ -96,7 +108,8 @@
       "flyTo": [
         -93.6,
         41.6
-      ]
+      ],
+      "taxonomy": "default"
     },
     "kansas-city": {
       "title": "Kansas City Energy Ecosystem",
@@ -108,7 +121,8 @@
       "flyTo": [
         -94.6,
         39.1
-      ]
+      ],
+      "taxonomy": "default"
     },
     "pittsburgh": {
       "title": "Pittsburgh Energy Ecosystem",
@@ -120,7 +134,22 @@
       "flyTo": [
         -80.0,
         40.4
-      ]
+      ],
+      "taxonomy": "default"
+    },
+    "denmark": {
+      "title": "Denmark Energy Ecosystem",
+      "shortName": "Denmark",
+      "center": [
+        12.4,
+        55.6
+      ],
+      "flyTo": [
+        10.5,
+        56.3
+      ],
+      "flyToZoom": 6.5,
+      "taxonomy": "denmark"
     }
   }
 }

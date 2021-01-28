@@ -25,6 +25,7 @@ function toFinalForm(data) {
         'tax2': getCategory(row[colidx['tax2']], data.taxonomy),
         'tax3': getCategory(row[colidx['tax3']], data.taxonomy),
         'website': row[colidx['website']],
+        'notes': row[colidx['notes']],
       },
       'geometry': {
         'type': 'Point',

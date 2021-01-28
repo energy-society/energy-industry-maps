@@ -40,15 +40,16 @@ def main():
         type=str,
         help='Name of the file to write normalized output CSV to')
     parser.add_argument(
-        '--silicon-valley',
-        default=False,
-        action='store_true',
-        help='Whether to use the SV taxonomy')
+        '--taxonomy',
+        type=str,
+        default="default",
+        choices=taxonomy.get_available_taxonomies(),
+        help='Which taxonomy to use')
     args = parser.parse_args()
 
     df = pd.read_csv(args.input_file, index_col='idx')
     df = df.dropna(how='all').dropna(how='all', axis=1)
-    category_mapping = taxonomy.load_category_mapping(args.silicon_valley)
+    category_mapping = taxonomy.load_category_mapping(args.taxonomy)
     df = normalize_category_names(df, category_mapping)
     df = strip_whitespace(df, 'company')
     df = strip_whitespace(df, 'city')
