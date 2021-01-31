@@ -24,14 +24,18 @@ function getPopupContent(props) {
   const categoryInfo = ['tax1', 'tax2', 'tax3']
     .map(k => props[k])
     .filter(s => s).join(" | ");
+  var extraNotes = "";
+  if (props.hasOwnProperty("notes") && props["notes"] !== "") {
+    extraNotes = `<span>${props['notes']}</span><br />`;
+  }
   return `
     <div class="popup">
-      <h3 class="company-name">${props['company']}</h3>
+      <h3 class="company-name">
+        <a href=${props['website']} target="blank">${props['company']}</a>
+      </h3>
       <span class="category-info">${categoryInfo}</span><br />
       <span class="city-info">${props['city']}</span><br />
-      <span>
-        <a href=${props['website']} target="blank">${props['website']}</a>
-      </span>
+      ${extraNotes}
     </div>`;
 }
 
