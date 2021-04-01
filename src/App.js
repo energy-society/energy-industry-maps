@@ -10,7 +10,6 @@ import { getAllCategories } from './common';
 import CONFIG from './config.json';
 import { fetchMapData } from './data-loader';
 import { THEME } from './Theme';
-import taxonomy from './taxonomy.json';
 import './App.css';
 
 const COMPANIES_SOURCE = 'companies';
