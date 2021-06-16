@@ -78,7 +78,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SettingsPane(props) {
+export default function /** open/close settings pane with sector selector and menu */ SettingsPane(/** defined earlier */ props) {
   const classes = useStyles();
 
   const closeSettingsPane = () => props.onToggleOpen(false);
@@ -154,7 +154,8 @@ export default function SettingsPane(props) {
     <div className={classes.drawer}>
       <Hidden lgUp implementation="css">
         <Drawer
-          variant="temporary"
+          variant="persistent"
+          anchor = "left"
           open={props.mobileDrawerOpen}
           onClose={closeSettingsPane}
           ModalProps={{

@@ -2,9 +2,9 @@ import React from 'react';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import Hidden from '@material-ui/core/Hidden';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
+import DoubleArrowIcon from '@material-ui/icons/DoubleArrow';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -32,13 +32,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function Omnibox(props) {
+export default function /** seems to generate pop-up boxes */ Omnibox(/** defined earlier */ props) {
   const classes = useStyles();
 
   let companies = (props.companies || []).map(f => f.properties);
   let companyNames = companies.map(c => c.company);
 
-  function handleResultSelection(event, value) {
+  function /** reacts to sector selection */ handleResultSelection( /** mouse event */ event, /** chosen sectors */ value) {
     if (value && companyNames.includes(value.company)) {
       props.onSelectCompany(value);
     }
@@ -53,7 +53,7 @@ export default function Omnibox(props) {
           aria-label="menu"
           className={classes.menuButton}
           onClick={props.onOpenMobileDrawer}>
-          <MenuIcon style={{fontSize: '1.8rem'}} />
+          <DoubleArrowIcon style={{fontSize: '2.0rem'}} />
         </IconButton>
       </Hidden>
       <Autocomplete

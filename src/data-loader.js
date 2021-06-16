@@ -1,13 +1,15 @@
 import { normalizeCategory } from './common';
 
-function getCategory(k, taxonomy) {
+/** @return {...} */
+function /** gets a certain category */ getCategory(k, taxonomy) {
   if (k === -1) {
     return '';
   }
   return taxonomy[k]['name'];
 }
 
-function toFinalForm(data) {
+/** @return {...} */
+function /** shapes data for json file */ toFinalForm(data) {
   let headers = data.table.columns;
   const colidx = {};
   for (var i = 0; i < headers.length; i++) {
@@ -49,7 +51,8 @@ function toFinalForm(data) {
   }
 }
 
-export function fetchMapData(mapId) {
+/** @return {...} */
+export function /** fetches url and shapes to Final form */ fetchMapData(mapId) {
   let url = process.env.PUBLIC_URL + `/data/${mapId}.json`;
   return fetch(url).then(r => r.json()).then(toFinalForm);
 }

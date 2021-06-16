@@ -40,6 +40,8 @@ def load_categories(taxonomy="default"):
 def load_category_mapping(taxonomy="default"):
     mapping = {}
     for category in load_taxonomy(taxonomy):
+        mapping[category['name'].lower()] = category['name']
         for alias in category.get('aliases', []):
-            mapping[alias] = category['name']
+            mapping[alias.lower()] = category['name']
     return mapping
+    

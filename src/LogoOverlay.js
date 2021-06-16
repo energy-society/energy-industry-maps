@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function LogoOverlay(props) {
+export default function /** creates logo overlay */ LogoOverlay(/** defined earlier */ props) {
   const classes = useStyles();
 
   const map = CONFIG['maps'][props.selectedMapId];
@@ -36,19 +36,21 @@ export default function LogoOverlay(props) {
 
   return (
     <div className={classes.root}>
-      <div
-        className={classes.suLogoContainer}
+      <div className={classes.suLogoContainer}
         style={{display: suLogoDisplay}} >
         Developed by American Energy Society in collaboration with Sally Benson,
         Precourt Family Professor at Stanford University, and Scott Jespersen,
         MS '20, Stanford.
       </div>
       <div className={classes.aesLogoContainer}>
-        <img
-          src={aesLogoWhite}
-          className={classes.aesLogo}
-          alt="American Energy Society Logo" />
+        <a href="https://www.energysociety.org" target="_blank" rel="noopener noreferrer"> 
+          <img
+            src={aesLogoWhite}
+            className={classes.aesLogo}
+            alt="American Energy Society Logo" />
+        </a>
       </div>
+
     </div>
   );
 }

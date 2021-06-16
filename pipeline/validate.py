@@ -27,6 +27,7 @@ def check_no_missing(df, col):
 
 
 def check_valid_taxonomy_values(df, categories):
+
     def is_invalid_category(v):
         return v not in categories
 
