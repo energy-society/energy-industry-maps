@@ -20,7 +20,7 @@ const MAPS = CONFIG['maps'];
 const POINT_LAYER = 'energy-companies-point-layer';
 
 // mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_API_TOKEN;
-mapboxgl.accessToken='pk.eyJ1IjoidG90b3JvLWRha2UiLCJhIjoiY2tiNzJuZmQ3MDFudDJxa2N1ZG91YzBzciJ9.5qJpYzti2W7avnuM9rCiKA'
+mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_API_TOKEN;
 
 /** @return {html code for the popup } */
 function getPopupContent(props) {
