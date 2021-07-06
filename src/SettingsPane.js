@@ -155,7 +155,7 @@ export default function /** open/close settings pane with sector selector and me
       <Hidden lgUp implementation="css">
         <Drawer
           variant="persistent"
-          anchor = "left"
+          anchor="left"
           open={props.mobileDrawerOpen}
           onClose={closeSettingsPane}
           ModalProps={{
