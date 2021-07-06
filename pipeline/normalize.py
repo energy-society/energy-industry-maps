@@ -13,12 +13,26 @@ COUNTERS = Counter()
 
 def normalize_category_names(df, mapping):
     def map_category_name(c):
-        if c in mapping:
+        if isinstance(c, str) and c.lower() in mapping:
             COUNTERS[c] += 1
-            return mapping[c]
+            return mapping[c.lower()]
         return c
     for col in ('tax1', 'tax2', 'tax3'):
         df[col] = df[col].apply(map_category_name)
+    return df
+
+
+def replace_www_to_http(df, col):
+   """Modify website links that start with "www".
+
+    Arguments:
+        df: dataframe
+        col: name of column in dataframe to modify
+    Returns:
+        modified dataframe with https protocol added
+    """
+    rows = df[col].str[:3] == "www"
+    df.loc[rows, col] = df[col].str.replace('www.', 'https://')
     return df
 
 
@@ -56,16 +70,18 @@ def main():
     df = strip_whitespace(df, 'tax1')
     df = strip_whitespace(df, 'tax2')
     df = strip_whitespace(df, 'tax3')
+    df = replace_www_to_http(df, 'website')
     df.lat = df.lat.astype(float).round(6)
     df.lng = df.lng.astype(float).round(6)
 
     for k in COUNTERS:
         logging.info(
             f"Replaced {COUNTERS[k]} instances of '{k}' with "
-            f"'{category_mapping[k]}'")
+            f"'{category_mapping[k.lower()]}'")
     df.round(6).to_csv(args.output_file)
     logging.info(f"Wrote output to {args.output_file}")
 
 
 if __name__ == '__main__':
     main()
+    

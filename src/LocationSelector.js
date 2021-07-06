@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function LocationSelector(props) {
+export default function /** creates location selector */ LocationSelector(/** defined elsewhere */ props) {
   const [selectedMap, setSelectedMap] = useState(asOption(props.selectedMapId));
   const classes = useStyles();
 
