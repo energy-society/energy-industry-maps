@@ -23,14 +23,14 @@ def normalize_category_names(df, mapping):
 
 
 def replace_www_to_http(df, col):
-'''
-Modify website links that start with www
+   """Modify website links that start with "www".
 
-Arguments: df - dataframe
-           col - column name in dataframe
-Returns: modified dataframe with replaced "www"
-         at the beginning
-'''
+    Arguments:
+        df: dataframe
+        col: name of column in dataframe to modify
+    Returns:
+        modified dataframe with https protocol added
+    """
     rows = df[col].str[:3] == "www"
     df.loc[rows, col] = df[col].str.replace('www.', 'https://')
     return df
