@@ -19,7 +19,6 @@ const COMPANIES_SOURCE = 'companies';
 const MAPS = CONFIG['maps'];
 const POINT_LAYER = 'energy-companies-point-layer';
 
-// mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_API_TOKEN;
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_API_TOKEN;
 
 /** @return {html code for the popup } */
@@ -59,7 +58,6 @@ function displayPopup(map, feature) {
     .setMaxWidth("600px")
     .addTo(map);
 }
-//79ddf2
 
 function populateMapData(map, mapId, mapData) {
   // adds the data to the map
