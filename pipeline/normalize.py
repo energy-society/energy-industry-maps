@@ -22,6 +22,20 @@ def normalize_category_names(df, mapping):
     return df
 
 
+def replace_www_to_http(df, col):
+   """Modify website links that start with "www".
+
+    Arguments:
+        df: dataframe
+        col: name of column in dataframe to modify
+    Returns:
+        modified dataframe with https protocol added
+    """
+    rows = df[col].str[:3] == "www"
+    df.loc[rows, col] = df[col].str.replace('www.', 'https://')
+    return df
+
+
 def strip_whitespace(df, col):
     df[col] = df[col].str.strip()
     return df
@@ -56,6 +70,7 @@ def main():
     df = strip_whitespace(df, 'tax1')
     df = strip_whitespace(df, 'tax2')
     df = strip_whitespace(df, 'tax3')
+    df = replace_www_to_http(df, 'website')
     df.lat = df.lat.astype(float).round(6)
     df.lng = df.lng.astype(float).round(6)
 
@@ -69,3 +84,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+    

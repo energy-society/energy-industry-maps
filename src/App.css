@@ -25,3 +25,16 @@ body {
 .mapboxgl-popup-content > .popup > * {
   margin: 0;
 }
+
+a.popup-link:link{
+  text-decoration: underline; 
+}
+a.popup-link:visited,
+
+a.popup-link:active { 
+  color: #3366FF; text-decoration: none; 
+}
+
+a.popup-link:hover { 
+  color: #79ddf2; text-decoration: underline; 
+}

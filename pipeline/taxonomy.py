@@ -44,3 +44,4 @@ def load_category_mapping(taxonomy="default"):
         for alias in category.get('aliases', []):
             mapping[alias.lower()] = category['name']
     return mapping
+    
