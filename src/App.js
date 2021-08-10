@@ -1,10 +1,8 @@
 import mapboxgl from 'mapbox-gl';
 import React, { useState, useEffect } from 'react';
 import { ThemeProvider } from '@material-ui/core/styles';
-import Hidden from '@material-ui/core/Hidden';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
 import LogoOverlay from './LogoOverlay';
 import Omnibox from './Omnibox';
 import SettingsPane from './SettingsPane';
@@ -12,7 +10,6 @@ import { getAllCategories } from './common';
 import CONFIG from './config.json';
 import { fetchMapData } from './data-loader';
 import { THEME } from './Theme';
-import insightLogo from './img/insight-white.png';
 import './App.css';
 
 const COMPANIES_SOURCE = 'companies';
