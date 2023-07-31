@@ -1,0 +1,434 @@
+idx,company,address,city,tax1,tax2,tax3,website,lat,lng
+1,Mighty Pipeline,"Anchorage, AK",Anchorage,Hydrogen,Generation/Transmission,Oil and Gas,https://www.launchalaska.com/2021-cohort,61.217576,-149.899678
+2,H2GO Power,"London, UK",London,Hydrogen,Storage/Batteries,,https://www.h2gopower.com/,51.507218,-0.127586
+3,Tagup,"Boston, Mass",Boston,IoT/IIoT,Built Environment/Construction,Evaluation/Compliance,http://tagup.io/,42.360082,-71.05888
+4,Sila Nanotechnologies,"Alameda, CA",Alameda,Storage/Batteries,Materials,,https://www.silanano.com/,37.779872,-122.282186
+5,Smart Wires,"Norham, NC",Norham,Utility/Grid,IoT/IIoT,Enabling Technologies/Components,https://www.smartwires.com/,35.759573,-79.0193
+6,Sentient Energy,"Frisco, TX",Frisco,Utility/Grid,Solar,IoT/IIoT,https://www.sentientenergy.com/,33.150674,-96.823612
+7,Prosumer Grid,"Brookhaven, GA",Brookhaven,Utility/Grid,Generation/Transmission,IoT/IIoT,https://prosumergrid.com/,33.865019,-84.337127
+8,GridBlock,"Atlanta, GA",Atlanta,Utility/Grid,Enabling Technologies/Components,Generation/Transmission,https://www.gridblock.com/,33.748752,-84.387684
+9,TurbineLogic,"Atlanta, GA",Atlanta,Generation/Transmission,Utility/Grid,IoT/IIoT,https://turbinelogic.com/,33.748752,-84.387684
+10,DBE Hytec Ltd,"College Station, TX",College Station,Water/Wave/Hydro,Enabling Technologies/Components,Environmental Remediation,https://dbe-rsl.com/,30.627977,-96.334407
+11,ZOLA Electric,"Amsterdam, North Holland",Amsterdam,IoT/IIoT,Energy Systems/Management,Storage/Batteries,https://zolaelectric.com/,52.367573,4.904139
+12,Menlo Micro,"Albany, New York",Albany,Generation/Transmission,Enabling Technologies/Components,,https://menlomicro.com/,42.652579,-73.756232
+13,SLS Energy,"Kigali City, Rwanda",Kigali City,Storage/Batteries,Circular Economy,,https://www.slsenergy.io/,-1.957876,30.112735
+14,Virridy,"Boulder, Colorado",Boulder,Enabling Technologies/Components,IoT/IIoT,Water/Wave/Hydro,https://virridy.com/,40.014986,-105.270546
+15,Reduzer,"Oslo, Norway",Oslo,IoT/IIoT,Built Environment/Construction,Carbon/CCUS,https://reduzer.com/home,59.913869,10.752245
+16,Dynami Battery,"Binghamton, New York",Binghamton,Storage/Batteries,Enabling Technologies/Components,Chemistry,https://www.dynami-battery.com/,42.098687,-75.917974
+17,Aerovy Mobility,"West Lafayette, IN",West Lafayette,Transportation/MaaS,Power Electronics,IoT/IIoT,https://aerovymobility.com/?_ga=2.158950202.1047863680.1686000898-292926562.1670957240,40.425869,-86.908065
+18,Windlift,"Durham, NC",Durham,Wind,Generation/Transmission,,https://windlift.com/,35.994033,-78.898619
+19,Terrafore Technologies,MN,MN,Storage/Batteries,Energy Efficiency,Energy Systems/Management,https://terraforetechnologies.com/,46.729553,-94.6859
+20,Brekland,NY,NY,Ag/Food-tech,Materials,,https://www.linkedin.com/company/brekland/,40.712775,-74.005973
+21,Atma Leather,CT,CT,Materials,Circular Economy,,https://environment.yale.edu/news/article/yse-students-line-alternative-leather-consumer-goods-wins-startup-yale-sustainability,41.603221,-73.087749
+22,mAIRsure,PA,PA,IoT/IIoT,Environmental Remediation,,https://mairsure.com/technology/,41.203322,-77.194525
+23,Onyx Power,TX,TX,Storage/Batteries,Power Electronics,Professional Services,https://www.onyxpower.io/,31.968599,-99.901813
+24,Air Company,"New York City, NY",New York City,Carbon/CCUS,Circular Economy,Materials,http://www.aircompany.com/,40.712775,-74.005973
+25,Summit Nanotech,"Calgary, Canada",Calgary,Geology/Mining,Materials,REEs,https://www.summitnanotech.ca/,51.044733,-114.071883
+26,Tynt Technologies,"Boulder, CO",Boulder,Built Environment/Construction,Materials,Thermal/Geothermal,https://www.tynt.io/,40.014986,-105.270546
+27,Syenta,"Canberra, Australia",Canberra,Manufacturing,Materials,Power Electronics,https://www.linkedin.com/company/syenta/,-35.28019,149.131004
+28,Dollaride,"Brooklyn, NY",Brooklyn,IoT/IIoT,Transportation/MaaS,,http://dollaride.com/,40.678178,-73.944158
+29,Olokun Minerals,"Los Angeles, CA",Los Angeles,Circular Economy,Materials,Geology/Mining,http://olokunminerals.com/,34.052234,-118.243685
+30,Friendlier,"Ottowa, Ontario",Ottowa,IoT/IIoT,Circular Economy,Materials,https://www.friendlier.ca/,45.42153,-75.697193
+31,Sironix Renewables,"Seattle, WA",Seattle,Biofuels/Bioeconomy,Circular Economy,Materials,http://www.sironixrenewables.com/,47.60621,-122.332071
+32,NW,"Paris, France",Paris,Energy Systems/Management,Storage/Batteries,Generation/Transmission,https://www.nw-groupe.com/,48.856614,2.352222
+33,Criterion Energy Partners,"Houston, Texas",Houston,Thermal/Geothermal,Generation/Transmission,Geology/Mining,https://www.criterionep.com/,29.760427,-95.369803
+34,A&I Power Group Inc.,"Somerville, MA",Somerville,Power Electronics,Storage/Batteries,Enabling Technologies/Components,https://aipowergroup.com/,42.387597,-71.099497
+35,CLS Wind,"Houston, TX",Houston,Built Environment/Construction,Wind,Professional Services,https://www.clswind.com/,29.760427,-95.369803
+36,Dash Clean Energy,"San Diego, CA",San Diego,Hydrogen,IoT/IIoT,Consulting,https://www.dashcleanenergy.com/,32.715738,-117.161084
+37,Dsider,"Spring, TX",Spring,IoT/IIoT,Professional Services,Finance,https://www.dsider.app/,30.07994,-95.41716
+38,Elemental Recycling,"Houston, TX",Houston,Circular Economy,Manufacturing,Environmental Remediation,http://elementalrecycling.com/,29.760427,-95.369803
+39,SolarFlexes,"Los Angeles, CA",Los Angeles,Solar,Manufacturing,,(7) Dave Lutian | LinkedIn,34.052234,-118.243685
+40,Charge+,"Thomson Road, 
+SLF Building, Singapore",Thomson Road,Transportation/MaaS,Storage/Batteries,Energy Systems/Management,https://www.chargeplus.com/,1.333053,103.839001
+41,Lydian,"Cambridge, MA",Cambridge,Manufacturing,Chemistry,Carbon/CCUS,https://www.lydianlabsinc.com/,42.373616,-71.109733
+42,The Nitrogen Company,CA,CA,Enabling Technologies/Components,Lighting,,https://thenitrogencompany.com/,36.778261,-119.417932
+43,Aloviam,TX,TX,Environmental Remediation,Circular Economy,,https://www.aloviam.com/,31.968599,-99.901813
+44,enVerde LLC,"Minneapolis, MN",Minneapolis,Thermal/Geothermal,,,http://www.enverdellc.com/,44.977753,-93.265011
+45,Community Energy Labs,"Portland, Oregon",Portland,IoT/IIoT,Energy Efficiency,Built Environment/Construction,https://communityenergylabs.com/,45.515232,-122.678385
+46,Mirai Solar,"Makkah, Saudi Arabia",Makkah,Solar,Enabling Technologies/Components,Built Environment/Construction,https://www.miraisolar.com/,21.389082,39.857912
+47,Ebb Carbon,"San Carlos, CA",San Carlos,Carbon/CCUS,Engineering,Environmental Remediation,https://www.ebbcarbon.com/,37.507159,-122.260522
+48,AgriLife Research,TX,TX,Enabling Technologies/Components,Ag/Food-tech,,https://agriliferesearch.tamu.edu/2021/07/30/mris-on-crop-roots-open-new-doors-for-agriculture/,31.968599,-99.901813
+49,FluxWorks,"College Station, TX",College Station,Enabling Technologies/Components,Power Electronics,,https://fluxworksllc.com/,30.627977,-96.334407
+50,Stepwise,"Cambridge, MA",Cambridge,Transportation/MaaS,Storage/Batteries,,https://www.getstepwise.com/,42.373616,-71.109733
+51,Amyris,"Emeryville, CA",Emeryville,Materials,Circular Economy,,https://amyris.com/,37.839503,-122.289228
+52,Anthro Energy,"San Jose, CA",San Jose,Storage/Batteries,Manufacturing,Power Electronics,https://www.anthroenergy.com/,37.33874,-121.885252
+53,Benchmark Labs,"San Diego, CA",San Diego,Environmental Remediation,IoT/IIoT,Ag/Food-tech,https://www.benchmarklabs.com/,32.715738,-117.161084
+54,Buzz Solutions,"Palo Alto, CA",Palo Alto,Enabling Technologies/Components,IoT/IIoT,Evaluation/Compliance,https://www.buzzsolutions.co/,37.441883,-122.14302
+55,Dioxide Materials,"Boca Raton, FL",Boca Raton,Enabling Technologies/Components,Circular Economy,Carbon/CCUS,https://dioxidematerials.com/,26.368306,-80.128932
+56,FLO Materials,"Berkeley, CA",Berkeley,Materials,Circular Economy,Environmental Remediation,https://www.flomaterials.co/,37.871523,-122.273042
+57,Frost Methane,"Juneau, AK",Juneau,Generation/Transmission,Chemistry,Environmental Remediation,https://www.frostmethane.com/,58.300493,-134.420131
+58,GenH,"Boston, MA",Boston,Water/Wave/Hydro,Energy Systems/Management,,http://www.genh.co/,42.360082,-71.05888
+59,Huue,"Berkeley, CA",Berkeley,Chemistry,Materials,Environmental Remediation,https://www.huue.bio/,37.871523,-122.273042
+60,Imprint Energy,"Alameda, CA",Alameda,Storage/Batteries,IoT/IIoT,Manufacturing,https://www.imprintenergy.com/,37.779872,-122.282186
+61,Intropic Materials,"Oaklad, CA",Oaklad,Circular Economy,Materials,Environmental Remediation,https://www.activate.org/intropic-materials,37.804351,-122.271164
+62,Mosaic Materials,"Alameda, CA",Alameda,Enabling Technologies/Components,Environmental Remediation,,https://mosaicmaterials.com/,37.779872,-122.282186
+63,Niron Magnetics,"Minneapolis, MN",Minneapolis,Materials,Enabling Technologies/Components,Chemistry,https://www.nironmagnetics.com/,44.977753,-93.265011
+64,Noble Thermo,"Alameda, CA",Alameda,Generation/Transmission,Enabling Technologies/Components,Power Electronics,https://noblethermo.com/,37.779872,-122.282186
+65,Quino Energy,"San Leandro, CA",San Leandro,Water/Wave/Hydro,Storage/Batteries,,https://quinoenergy.com/,37.725766,-122.156855
+66,Smart Joules,"Delhi, India",Delhi,Built Environment/Construction,Energy Systems/Management,Energy Efficiency,https://www.smartjoules.co.in/,28.704059,77.10249
+67,Travertine Technologies,"Boulder, CO",Boulder,Circular Economy,Carbon/CCUS,Chemistry,https://www.travertinetech.com/,40.014986,-105.270546
+68,Windscape AI,"Berkeley, CA",Berkeley,Wind,IoT/IIoT,Enabling Technologies/Components,http://www.windscape.ai/,37.871523,-122.273042
+69,Repurpose Energy,"Fairfield, CA",Fairfield,Storage/Batteries,Circular Economy,,https://www.repurpose.energy/,38.249196,-122.040515
+70,SynapSense (recently aquired by Panduit),"Tinley Park, Illinois",Tinley Park,Enabling Technologies/Components,Energy Efficiency,,https://www.panduit.com/,41.573144,-87.793294
+71,Gate Five,"Irvine, CA",Irvine,Environmental Remediation,Circular Economy,Generation/Transmission,https://gate-5.com/,33.684567,-117.826505
+72,Hago Energetics,"Camarillo, CA",Camarillo,Hydrogen,Carbon/CCUS,,http://hagoenergetics.com/,34.216394,-119.037602
+73,Parthian Energy,"Pasadena, CA",Pasadena,Storage/Batteries,Enabling Technologies/Components,,https://www.parthianenergy.com/,34.147785,-118.144516
+74,Recreate Energy,"Irvine, CA",Irvine,Biofuels/Bioeconomy,Chemistry,Oil and Gas,https://www.recreateenergy.com/,33.684567,-117.826505
+75,TAE Technologies,"Foothill Ranch, CA",Foothill Ranch,Storage/Batteries,Nuclear,Chemistry,https://tae.com/,33.683183,-117.666431
+76,Thermal Smart,"Los Angeles, CA",Los Angeles,Thermal/Geothermal,Energy Efficiency,Materials,https://www.thermal-smart.com/,34.052234,-118.243685
+77,Voice Life,"Dubai, United Arab Emirates",Dubai,Storage/Batteries,Enabling Technologies/Components,,https://voicelife.io/,25.204849,55.270783
+78,Lucidean,"Santa Barbara, CA",Santa Barbara,Energy Efficiency,Enabling Technologies/Components,,https://www.lucidean-inc.com/,34.42083,-119.69819
+79,SorbiForce,"Tucson, AZ",Tucson,Storage/Batteries,Materials,Circular Economy,https://sorbiforce.com/,32.253979,-110.974177
+80,Electric Hydrogen,"San Carlos, CA",San Carlos,Hydrogen,,,https://eh2.com/,37.507159,-122.260522
+81,Kevala,"San Francisco, CA",San Francisco,IoT/IIoT,Utility/Grid,,https://www.kevala.com/,37.77493,-122.419416
+82,Big Blue Technologies,"Denver, CO",Denver,Materials,Thermal/Geothermal,Manufacturing,https://bigbluetec.com/,39.739236,-104.990251
+83,Brek Electronics,"Broomfield, CO",Broomfield,Enabling Technologies/Components,Materials,,https://brekelectronics.com/,39.920541,-105.08665
+84,Minus Materials,"Boulder, CO",Boulder,Materials,Enabling Technologies/Components,Carbon/CCUS,https://www.minusmaterials.com/,40.014986,-105.270546
+85,New Iridium,"Boulder, CO",Boulder,Carbon/CCUS,Materials,Manufacturing,https://newiridium.com/,40.014986,-105.270546
+86,Otoro Energies,"Boulder, CO",Boulder,Storage/Batteries,Enabling Technologies/Components,Materials,https://www.otoroenergy.com/,40.014986,-105.270546
+87,Rocky Tech,"Boulder, CO",Boulder,Circular Economy,Materials,,https://www.rockytechs.com/,40.014986,-105.270546
+88,Lignolix,"Newark, DE",Newark,Biofuels/Bioeconomy,Circular Economy,Materials,https://www.lignolix.com/,39.683723,-75.749657
+89,RiKarbon,"Newark, DE",Newark,Circular Economy,Materials,Carbon/CCUS,https://rikarbon.com/,39.683723,-75.749657
+90,Biome Future,"Hollywood, FL",Hollywood,Water/Wave/Hydro,Chemistry,,https://www.biomefuture.com/,26.011201,-80.14949
+91,Integrated Solar Technologies,"Santa Fe, NM",Santa Fe,Solar,Enabling Technologies/Components,,https://i-solar-technologies.com/,35.686975,-105.937799
+92,Sustainable Lithium Cells Australi (SLCA),"Brisbane, Australia",Brisbane,Storage/Batteries,Circular Economy,Enabling Technologies/Components,https://slbatteries.com.au/,-27.470453,153.026034
+93,Airdar Inc.,"Edmonton, Canada",Edmonton,IoT/IIoT,Environmental Remediation,,https://airdar.com/,53.546098,-113.493727
+94,Harvest Increase Ag,"Iowa, US","Iowa, US",Chemistry,Circular Economy,Ag/Food-tech,,41.878002,-93.097702
+95,Volamet,"Iowa, US","Iowa, US",Chemistry,Circular Economy,Energy Efficiency,,41.878002,-93.097702
+96,Superhero Recycling,CA,CA,Circular Economy,Materials,Carbon/CCUS,,36.778261,-119.417932
+97,"Aquagga, Inc.","Washington, US","Washington, US",Water/Wave/Hydro,Enabling Technologies/Components,Environmental Remediation,,47.751074,-120.740139
+98,n/a OWS turbine system,TX,TX,Wind,Enabling Technologies/Components,,,31.968599,-99.901813
+99,n/a power module,"Virginia, US","Virginia, US",Enabling Technologies/Components,Chemistry,Power Electronics,,37.431573,-78.656894
+100,MycoHAB / Sprouting Shelters,"Cambridge, MA",Cambridge,Materials,Built Environment/Construction,Environmental Remediation,https://www.mycohab.com/,42.373616,-71.109733
+101,Salient Predictions,"Boston, MA",Boston,IoT/IIoT,,Evaluation/Compliance,https://www.salientpredictions.com/,42.360082,-71.05888
+102,ClimateAI,"San Franciso, CA",San Franciso,IoT/IIoT,Evaluation/Compliance,,https://climate.ai/,37.77493,-122.419416
+103,Federato,"Stanford, CA",Stanford,IoT/IIoT,Finance,Insurance,https://tomkat.stanford.edu/innovation-transfer/federato,37.424106,-122.166076
+104,HighTide,"Stuart, FL",Stuart,IoT/IIoT,Environmental Remediation,Water/Wave/Hydro,https://hightide.ai/,27.197548,-80.252826
+105,Conduit Tech,"Somerville, MA",Somerville,IoT/IIoT,Thermal/Geothermal,Energy Efficiency,https://www.getconduit.com/,42.387597,-71.099497
+106,IRCool Textiles,"Stanford, CA",Stanford,Thermal/Geothermal,Materials,,https://tomkat.stanford.edu/innovation-transfer/ircool-textiles,37.424106,-122.166076
+107,Kit Switch,"San Franciso, CA",San Franciso,Built Environment/Construction,Circular Economy,,https://tomkat.stanford.edu/innovation-transfer/kitswitch,37.77493,-122.419416
+108,Lasso,"San Francisco, CA",San Francisco,IoT/IIoT,Environmental Remediation,Ag/Food-tech,https://joinlasso.com/,37.77493,-122.419416
+109,PeroPure,"Zhejiang, China",Zhejiang,Enabling Technologies/Components,Water/Wave/Hydro,Environmental Remediation,https://peropure.com/,30.26555,120.1536
+110,Pulsar,"Palo Alto, CA",Palo Alto,IoT/IIoT,Manufacturing,Enabling Technologies/Components,https://www.pulsarml.com/#,37.441883,-122.14302
+111,ReGen Partners,"Nyack, NY",Nyack,Environmental Remediation,Finance,,https://regenerativeresources.co/,41.090652,-73.917915
+112,ReMatter,"Standford, CA",Standford,IoT/IIoT,Circular Economy,Environmental Remediation,https://rematter.com/,37.424106,-122.166076
+113,Renewell Energy,"Bakersfield, CA",Bakersfield,Storage/Batteries,Built Environment/Construction,Circular Economy,https://renewellenergy.com/,35.373292,-119.018712
+114,ReSource,"Oakland, CA",Oakland,Circular Economy,Materials,Carbon/CCUS,https://tomkat.stanford.edu/translation/resource,37.804351,-122.271164
+115,Scope Zero,"San Francisco, CA",San Francisco,Finance,IoT/IIoT,Carbon/CCUS,https://tomkat.stanford.edu/innovation-transfer/scopezero,37.77493,-122.419416
+116,SHYFT Power Solutions,"San Francisco, CA",San Francisco,IoT/IIoT,Energy Systems/Management,Energy Efficiency,https://shyftpower.com/,37.77493,-122.419416
+117,SkyCool,"Mountain View, CA",Mountain View,Enabling Technologies/Components,Thermal/Geothermal,,https://www.skycoolsystems.com/,37.386052,-122.083851
+118,SOURCE Climate Solutions,"Palo Alto, CA",Palo Alto,Built Environment/Construction,Energy Efficiency,,https://tomkat.stanford.edu/innovation-transfer/source-climate-solutions,37.441883,-122.14302
+119,Spark Thermionics,"Berkeley, CA",Berkeley,Enabling Technologies/Components,Energy Efficiency,Utility/Grid,https://www.sparkthermionics.com/,37.871523,-122.273042
+120,Tandem PV,"Los Altos, CA",Los Altos,Solar,Chemistry,Enabling Technologies/Components,https://www.tandempv.com/,37.385218,-122.11413
+121,TruckLabs,"Phoenix, AZ",Phoenix,Energy Efficiency,Transportation/MaaS,,https://www.trucklabs.com/,33.448377,-112.074037
+122,Twelve,"San Francisco Bay Area, CA",San Francisco Bay Area,Circular Economy,Manufacturing,Carbon/CCUS,https://www.twelve.co/,37.77493,-122.419416
+123,Vellex Computing,"San Francisco, CA",San Francisco,Enabling Technologies/Components,Utility/Grid,IoT/IIoT,https://www.vellex.io/,37.77493,-122.419416
+124,VERNE,"San Francisco, CA",San Francisco,Storage/Batteries,Chemistry,Enabling Technologies/Components,https://www.verneh2.com/,37.77493,-122.419416
+125,WeaveGrid,"San Francisco, CA",San Francisco,IoT/IIoT,Transportation/MaaS,Utility/Grid,https://www.weavegrid.com/,37.77493,-122.419416
+126,WindBorne Systems,"Palo Alto, CA",Palo Alto,Wind,IoT/IIoT,Generation/Transmission,https://windbornesystems.com/,37.441883,-122.14302
+127,Working Trees,"San Francisco Bay Area, CA",San Francisco Bay Area,IoT/IIoT,Finance,Carbon/CCUS,https://www.workingtrees.com/,37.77493,-122.419416
+128,XFlow,"Seattle, WA",Seattle,Wind,Generation/Transmission,,https://www.xflowenergy.com/,47.60621,-122.332071
+129,Feon Energy,"Woburn, MA",Woburn,Enabling Technologies/Components,Storage/Batteries,Materials,https://www.feonenergy.com/,42.479262,-71.152276
+130,Terradot,"San Francisco, CA",San Francisco,Ag/Food-tech,Carbon/CCUS,Energy Systems/Management,https://tomkat.stanford.edu/innovation-transfer/terradot,37.77493,-122.419416
+131,Mawa Modular,CA,CA,Solar,Built Environment/Construction,,https://www.mawamodular.com/,36.778261,-119.417932
+132,Perseus Materials,"Stanford, CA",Stanford,Wind,Manufacturing,Enabling Technologies/Components,https://tomkat.stanford.edu/innovation-transfer/perseus,37.424106,-122.166076
+133,Revivo,CA,CA,IoT/IIoT,Circular Economy,,https://revivokenya.com/,36.778261,-119.417932
+134,Suryodaya,CA,CA,Solar,Ag/Food-tech,,https://tomkat.stanford.edu/innovation-transfer/suryodaya,36.778261,-119.417932
+135,VISDOM,CA,CA,Utility/Grid,IoT/IIoT,Energy Efficiency,https://tomkat.stanford.edu/innovation-transfer/visdom,36.778261,-119.417932
+136,RockFix,CA,CA,Carbon/CCUS,Storage/Batteries,Environmental Remediation,https://rockfix.co/,36.778261,-119.417932
+137,OXO,CA,CA,IoT/IIoT,Transportation/MaaS,,https://joinoxo.com/,36.778261,-119.417932
+138,Yocto,"Stanford, CA",Stanford,Enabling Technologies/Components,IoT/IIoT,Environmental Remediation,https://tomkat.stanford.edu/innovation-transfer/yocto,37.424106,-122.166076
+139,Terrapin Geothermics,"Edmonton, Alberta, Canada",Edmonton,Thermal/Geothermal,Energy Systems/Management,Oil and Gas,https://www.terrapingeo.com/,53.546098,-113.493727
+140,Magno Motors,"Palo Alto, CA",Palo Alto,Transportation/MaaS,Enabling Technologies/Components,,https://tomkat.stanford.edu/innovation-transfer/magno-motors,37.441883,-122.14302
+141,Nitricity,"San Francisco, CA",San Francisco,Environmental Remediation,Chemistry,Ag/Food-tech,https://tomkat.stanford.edu/innovation-transfer/nitricity,37.77493,-122.419416
+142,WasteWizer Technologies,"Atlanta, Georgia",Atlanta,IoT/IIoT,Circular Economy,Manufacturing,https://wastewizer.com/,33.748752,-84.387684
+143,Veloce Energy,"Los Angeles, CA",Los Angeles,Storage/Batteries,Built Environment/Construction,IoT/IIoT,https://www.veloceenergy.com/,34.052234,-118.243685
+144,Kapacity.io,"Helsinki, Finland",Helsinki,Built Environment/Construction,Energy Efficiency,IoT/IIoT,https://kapacity.io/,60.169856,24.938379
+145,Sonocharge Energy,CA,CA,Storage/Batteries,REEs,Carbon/CCUS,http://sonocharge.com/,36.778261,-119.417932
+146,Citrimer,"Ann Harbor, MI",Ann Harbor,Materials,Circular Economy,Manufacturing,https://mobile.twitter.com/ZellLurie/status/1616501360006164480,42.280826,-83.743038
+147,Crystal Sonic,"Phoenix, AZ",Phoenix,Manufacturing,Materials,Circular Economy,https://xtalsonic.com/,33.448377,-112.074037
+148,Enkoat,"Phoenix, AZ",Phoenix,Materials,Built Environment/Construction,Thermal/Geothermal,https://enkoat.com/,33.448377,-112.074037
+149,BioSqueeze Inc.,"Butte, Montana",Butte,Oil and Gas,Materials,Environmental Remediation,https://biosqueeze.com/,46.003823,-112.534778
+150,Bootbox,"Boxford, Mass",Boxford,Thermal/Geothermal,Energy Efficiency,Enabling Technologies/Components,https://bootboxlabs.com/,42.66116,-70.996726
+151,Clenersys,"Westwood, Mass",Westwood,Hydrogen,Enabling Technologies/Components,,https://clenersys.com/,42.213987,-71.224499
+152,OCOChem,"Richland, WA",Richland,Carbon/CCUS,Water/Wave/Hydro,Hydrogen,https://ocochem.com/,46.28042,-119.2752
+153,rStream,"Boston, Mass",Boston,IoT/IIoT,Environmental Remediation,Circular Economy,https://www.rstreamrecycling.com/,42.360082,-71.05888
+154,Sol Clarity,"Somerville, Mass",Somerville,Solar,Environmental Remediation,Enabling Technologies/Components,https://www.solclarityeds.com/,42.387597,-71.099497
+155,Dimensional Energy,"Ithaca, NY",Ithaca,Transportation/MaaS,Biofuels/Bioeconomy,Carbon/CCUS,https://www.dimensionalenergy.com/,42.443961,-76.501881
+156,Matrix Sensors,"San Diego, CA",San Diego,Enabling Technologies/Components,Carbon/CCUS,Environmental Remediation,https://www.matrixsensorsinc.com/,32.715738,-117.161084
+157,PingThings,"Washington, DC",Washington,IoT/IIoT,Utility/Grid,Professional Services,http://pingthings.io,38.907192,-77.036871
+158,Broadbit Batteries,"Helsinki, Finland",Helsinki,Storage/Batteries,Chemistry,,https://www.broadbit.com/,60.169856,24.938379
+159,Geyser Batteries,"Mikkeli, Finland",Mikkeli,Storage/Batteries,Enabling Technologies/Components,,https://www.geyserbatteries.com/,61.688727,27.272146
+160,CarbonCents,"Columbia, South Carolina",Columbia,IoT/IIoT,Energy Efficiency,Professional Services,https://www.carboncents.com/,34.00071,-81.034814
+161,Blaze Energy,"Denver, Colorado",Denver,Hydrogen,Enabling Technologies/Components,Generation/Transmission,https://blazeenergytech.com/,39.739236,-104.990251
+162,Access Sensor,"Fort Collins, Colorado",Fort Collins,Enabling Technologies/Components,Environmental Remediation,,https://www.accsensors.com/,40.58526,-105.084423
+163,Atmos Zero,"Fort Collins, Colorado",Fort Collins,Generation/Transmission,Thermal/Geothermal,Enabling Technologies/Components,http://atmoszero.energy/,40.58526,-105.084423
+164,Curable Composites,"Fort Collins, Colorado",Fort Collins,Materials,,,https://www.curablecomposites.com/about,40.58526,-105.084423
+165,Changing Room,"New York City, NY",New York City,IoT/IIoT,Circular Economy,Materials,https://www.changingroom.eco/,40.712775,-74.005973
+166,Columbia Power Technologies,"Charlottesville, VA",Charlottesville,Water/Wave/Hydro,IoT/IIoT,,https://cpower.co/,38.029306,-78.476678
+167,Greenore,"New York City, NY",New York City,Carbon/CCUS,Built Environment/Construction,Circular Economy,https://www.greenore.com/,40.712775,-74.005973
+168,Amperon,"Houston, Texas",Houston,IoT/IIoT,Utility/Grid,Generation/Transmission,https://amperon.co/,29.760427,-95.369803
+169,Conamix,"Ithaca, NY",Ithaca,Chemistry,Storage/Batteries,Materials,https://www.conamix.com/#5,42.443961,-76.501881
+170,Diverso Energy,"Toronto, Canada",Toronto,Thermal/Geothermal,Utility/Grid,Energy Systems/Management,https://www.diversoenergy.com/,43.653226,-79.383184
+171,Ecolectro,"Ithaca, NY",Ithaca,Hydrogen,Enabling Technologies/Components,,https://www.ecolectro.com/,42.443961,-76.501881
+172,LimeLoop,"San Francisco, CA",San Francisco,IoT/IIoT,Circular Economy,Materials,https://thelimeloop.com/,37.77493,-122.419416
+173,Ninedot Energy,"Brooklyn, NY",Brooklyn,Utility/Grid,Energy Systems/Management,Storage/Batteries,https://www.nine.energy/,40.678178,-73.944158
+174,Setpoint,Israel,Israel,IoT/IIoT,Enabling Technologies/Components,Energy Efficiency,https://www.setpoint.ai/,31.046051,34.851612
+175,Shifted Energy,"Honolulu, Hawaii",Honolulu,IoT/IIoT,Energy Systems/Management,Utility/Grid,https://www.shiftedenergy.com/,21.309884,-157.85814
+176,simuwatt,"Denver, Colorado",Denver,IoT/IIoT,Energy Efficiency,Built Environment/Construction,https://buildee.com/,39.739236,-104.990251
+177,SMPnet,"London, UK",London,IoT/IIoT,Energy Systems/Management,,https://smpnetworks.com/,51.507218,-0.127586
+178,Soteria BIG,"Greenville, SC",Greenville,Storage/Batteries,Media/Assoc,Professional Services,https://www.soteriabig.com/,34.852618,-82.39401
+179,SWTCH,"Toronto, Canada",Toronto,Storage/Batteries,Transportation/MaaS,Built Environment/Construction,https://swtchenergy.com/,43.653226,-79.383184
+180,Sylvera,"London, UK",London,Carbon/CCUS,Evaluation/Compliance,IoT/IIoT,https://www.sylvera.com/,51.507218,-0.127586
+181,Teknobuilt,"Calgary, Canada",Calgary,IoT/IIoT,Built Environment/Construction,,https://www.teknobuilt.com/,51.044733,-114.071883
+182,Resonant Link,"Burlington, Vermont",Burlington,Generation/Transmission,IoT/IIoT,Power Electronics,https://www.resonant-link.com/,44.475882,-73.212072
+183,Polar Night Energy,"Tampere, Finland",Tampere,Thermal/Geothermal,Storage/Batteries,Energy Systems/Management,https://polarnightenergy.fi/,61.497752,23.760954
+184,374Water,"Durham, NC",Durham,Water/Wave/Hydro,Environmental Remediation,Materials,https://374water.com/,35.994033,-78.898619
+185,GRACE,"Durham, NC",Durham,Energy Systems/Management,Utility/Grid,Power Electronics,https://arpa-e.energy.gov/technologies/projects/grid-thats-risk-aware-clean-electricity-grace,35.994033,-78.898619
+186,Nature Dots,"Delhi, India",Delhi,IoT/IIoT,Circular Economy,,https://naturedots.com,28.704059,77.10249
+187,Solar Unsoiled,"Durham, NC",Durham,Solar,IoT/IIoT,Ag/Food-tech,https://www.solarunsoiled.com/,35.994033,-78.898619
+188,TeraLoop,"Espoo, Finland",Espoo,Storage/Batteries,Enabling Technologies/Components,Energy Efficiency,https://www.teraloop.org/,60.205491,24.6559
+189,BlockCarbon,"Chicago, IL",Chicago,Finance,IoT/IIoT,Carbon/CCUS,https://blockcarbon.io/,41.878114,-87.629798
+190,Copernic Catalysts,"Cambridge, MA",Cambridge,Chemistry,Hydrogen,Transportation/MaaS,https://coperniccatalysts.com/,42.373616,-71.109733
+191,DetoXyFi,"Boston, MA",Boston,Environmental Remediation,Enabling Technologies/Components,Water/Wave/Hydro,https://www.detoxyfi.com/,42.360082,-71.05888
+192,Terrastor,"Forth Worth, TX",Forth Worth,Storage/Batteries,Utility/Grid,,https://www.terrastor.co/,32.755488,-97.330766
+193,Arbon,"Cambridge, MA",Cambridge,Carbon/CCUS,Materials,Enabling Technologies/Components,https://www.arboncapture.com/,42.373616,-71.109733
+194,Hexcrete Technology,"Ames, IA",Ames,Wind,Built Environment/Construction,Generation/Transmission,https://www.concreteconstruction.net/business/technology/hexcrete-wind-energy-towers_c,42.030781,-93.631913
+195,Project EVWC,"Iowa, US","Iowa, US",Transportation/MaaS,Storage/Batteries,Enabling Technologies/Components,,41.878002,-93.097702
+196,Rosenberg Solutions,"Des Moines, IA",Des Moines,Wind,IoT/IIoT,Professional Services,https://www.rosesolved.com/,41.586835,-93.624959
+197,Cella,"New York, NY",New York,Carbon/CCUS,Geology/Mining,Chemistry,https://www.cellamineralstorage.com/,40.712775,-74.005973
+198,EV FireSafe,"Melbourne, Australia",Melbourne,Transportation/MaaS,Environmental Remediation,,https://www.evfiresafe.com/,-37.813628,144.963058
+199,Switched Source,"Vestal, NY",Vestal,Enabling Technologies/Components,Generation/Transmission,Utility/Grid,https://www.switchedsource.com/,42.08559,-76.053575
+200,Virtus Solis,"Troy, MI",Troy,Solar,Generation/Transmission,,https://virtussolis.space/,42.60641,-83.149775
+201,ElectricFish,"Fremont, CA",Fremont,Storage/Batteries,Transportation/MaaS,Enabling Technologies/Components,https://www.electricfish.co/,37.54854,-121.988583
+202,Active Surfaces,"Cambridge, MA",Cambridge,Solar,Materials,Enabling Technologies/Components,https://www.linkedin.com/company/activesurfaces/,42.373616,-71.109733
+203,Electrified Thermal Solutions,"Medford, MA",Medford,Storage/Batteries,Thermal/Geothermal,Materials,https://www.electrifiedthermal.com/,42.41843,-71.106164
+204,Finwave,"Waltham, MA",Waltham,Enabling Technologies/Components,IoT/IIoT,Power Electronics,https://www.finwavesemi.com/,42.376485,-71.235611
+205,FoundEnergy,"Boston, MA",Boston,Hydrogen,Storage/Batteries,Energy Systems/Management,https://www.found.energy/,42.360082,-71.05888
+206,Mantel Capture,"Cambridge, MA",Cambridge,Enabling Technologies/Components,Energy Systems/Management,Carbon/CCUS,https://mantelcapture.com/,42.373616,-71.109733
+207,Muir.ai,"Seattle, WA",Seattle,IoT/IIoT,Environmental Remediation,Energy Systems/Management,https://www.muir.ai/,47.60621,-122.332071
+208,Osmoses,"Cambridge, MA",Cambridge,Enabling Technologies/Components,Hydrogen,Carbon/CCUS,https://osmoses.com/,42.373616,-71.109733
+209,Quaise,"Cambridge, MA",Cambridge,Thermal/Geothermal,Enabling Technologies/Components,,https://www.quaise.energy/,42.373616,-71.109733
+210,Wenverter,"Glasgow, Scotland",Glasgow,Water/Wave/Hydro,Hydrogen,Generation/Transmission,https://www.wenverter.com/,55.86167,-4.258334
+211,Daqus Energy,"El Paso, TX",El Paso,Enabling Technologies/Components,Storage/Batteries,Materials,https://www.activate.org/daqus-energy,31.761878,-106.485022
+212,GeoLabe,"Los Alamos, NM",Los Alamos,IoT/IIoT,Geology/Mining,Evaluation/Compliance,https://www.geolabe.com/home,35.880036,-106.303114
+213,4C2B,"Boston, MA",Boston,Built Environment/Construction,Chemistry,Engineering,https://arpa-e.energy.gov/technologies/projects/4c2b-century-scale-carbon-sequestration-cross-laminated-timber-composite,42.360082,-71.05888
+214,Actinia,"Evanston, IL",Evanston,Solar,Nuclear,Evaluation/Compliance,https://actiniadetectors.com/,42.045072,-87.687697
+215,Mattiq,"Skokie, IL",Skokie,Materials,Manufacturing,Energy Systems/Management,https://mattiq.com/,42.032402,-87.741625
+216,MFNS-Tec,"Glenview, IL",Glenview,Water/Wave/Hydro,Environmental Remediation,Enabling Technologies/Components,https://www.mfns-tech.com/,42.077806,-87.822337
+217,Volexion,"Evanston, IL",Evanston,Storage/Batteries,Chemistry,,https://www.volexion-inc.com/,42.045072,-87.687697
+218,Vaulta,"Brisbane, Australia",Brisbane,Storage/Batteries,Manufacturing,Circular Economy,https://www.vaulta.com.au/,-27.470453,153.026034
+219,Khaira Energy,"Bandung, Indonesia",Bandung,Storage/Batteries,Solar,Built Environment/Construction,https://khairaenergy.com/,-6.917464,107.619123
+220,Cypris Materials,"San Leandro, CA",San Leandro,Materials,Manufacturing,Chemistry,https://www.cyprismaterials.com/,37.725766,-122.156855
+221,Adena Power,"Lewis Center, OH",Lewis Center,Storage/Batteries,Chemistry,Power Electronics,https://adenapower.com/,40.198388,-83.010099
+222,Advano,"New Orleans, LA",New Orleans,REEs,Materials,Storage/Batteries,https://www.advano.io/,29.951066,-90.071532
+223,Atargis Energy,"Pueblo, CO",Pueblo,Water/Wave/Hydro,,,https://atargis.com/,38.254447,-104.609141
+224,Babylon Microfarms,"Richmond, VA",Richmond,IoT/IIoT,Ag/Food-tech,,https://babylonmicrofarms.com/,37.540725,-77.436048
+225,Blocpower,"Brooklyn, NY",Brooklyn,Built Environment/Construction,Energy Efficiency,IoT/IIoT,https://www.blocpower.io/,40.678178,-73.944158
+226,Boxpower,"Grass Valley, CA",Grass Valley,Power Electronics,Utility/Grid,Energy Efficiency,https://boxpower.io/,39.219061,-121.061061
+227,Carnot Engines,"London, UK",London,Enabling Technologies/Components,Power Electronics,Transportation/MaaS,https://carnotengines.com/,51.507218,-0.127586
+228,CleanInnoGen Energy Solutions,"Ottowa, Ontario",Ottowa,Hydrogen,Energy Efficiency,Thermal/Geothermal,https://www.cleaninnogen.com/,45.42153,-75.697193
+229,Evoloh,"Palo Alto, California",Palo Alto,Hydrogen,Enabling Technologies/Components,Chemistry,https://evoloh.com/,37.441883,-122.14302
+230,Greenspur Wind,"Cleveland, Ohio",Cleveland,Wind,REEs,Enabling Technologies/Components,https://www.greenspur.co.uk/,41.49932,-81.69436
+231,Growflux,"Philadelphia, PA",Philadelphia,Enabling Technologies/Components,Lighting,Ag/Food-tech,https://growflux.com/,39.952584,-75.165222
+232,Harvest Thermal,"San Francisco, CA",San Francisco,Enabling Technologies/Components,Thermal/Geothermal,Energy Efficiency,https://www.harvest-thermal.com/,37.77493,-122.419416
+233,Hexas Biomass,"Olympia, WA",Olympia,Circular Economy,Materials,Ag/Food-tech,https://hexas.com/,47.037874,-122.900695
+234,Heycharge,"Munich, Germany",Munich,IoT/IIoT,Storage/Batteries,Transportation/MaaS,https://heycharge.com/,48.135125,11.581981
+235,Infraclear,"Washington, DC",Washington,Generation/Transmission,Finance,IoT/IIoT,https://infraclear.com/,38.907192,-77.036871
+236,Ionomr Innovations,"Vancouver, Canada",Vancouver,Hydrogen,Materials,Enabling Technologies/Components,https://ionomr.com/,49.282729,-123.120738
+237,LiBama Power,"Binghamton, New York",Binghamton,Storage/Batteries,Enabling Technologies/Components,,https://www.libamapower.com/,42.098687,-75.917974
+238,Marel Power Solutions,"Detroit, Michigan",Detroit,Power Electronics,Enabling Technologies/Components,,https://marel-power.com/,42.331427,-83.045754
+239,Mars Materials,"Oakland, CA",Oakland,Built Environment/Construction,Materials,Manufacturing,https://www.marsmaterials.tech/,37.804351,-122.271164
+240,Mocean Energy,"Edinburgh, Scotland",Edinburgh,Water/Wave/Hydro,Generation/Transmission,,https://www.mocean.energy/,55.953252,-3.188267
+241,Natrion,"Binghamton, New York",Binghamton,Storage/Batteries,Materials,Chemistry,https://www.natrion.co/,42.098687,-75.917974
+242,Novamera,"Ontario, Canada",Ontario,Geology/Mining,IoT/IIoT,Enabling Technologies/Components,https://novamerainc.com/,51.253775,-85.323214
+243,Polystyvert,"Anjou, Quebec",Anjou,Circular Economy,Materials,,https://polystyvert.com/fr/,45.612351,-73.555326
+244,Rebound Technologies,"Denver, Colorado",Denver,Thermal/Geothermal,Energy Efficiency,,https://www.rebound-tech.com/,39.739236,-104.990251
+245,Renew Risk,"London, UK",London,Wind,IoT/IIoT,Finance,http://renew-risk.com.s3-website-eu-west-1.amazonaws.com/#page-top,51.507218,-0.127586
+246,UbiQD,"Los Alamos, NM",Los Alamos,Enabling Technologies/Components,Built Environment/Construction,Solar,https://ubiqd.com/,35.880036,-106.303114
+247,V-glass,"Virginia Beach, Virginia",Virginia Beach,Lighting,Built Environment/Construction,Energy Efficiency,https://www.vg12.com/,36.851644,-75.979219
+248,C-Power,"Charlottesville, VA",Charlottesville,Water/Wave/Hydro,Generation/Transmission,,https://cpower.co/,38.029306,-78.476678
+249,Polyose Bio,"Boston, MA",Boston,Circular Economy,Biofuels/Bioeconomy,Ag/Food-tech,polyosebio.com,42.360082,-71.05888
+250,AirOmatix,"Porland, OR",Porland,Enabling Technologies/Components,Chemistry,Energy Systems/Management,https://www.airomatixinc.com/,45.515232,-122.678385
+251,Continuous Solutions,"Portland, OR",Portland,IoT/IIoT,Energy Efficiency,Power Electronics,https://www.continuousolutions.com/,45.515232,-122.678385
+252,Lite Devices,"Portland, OR",Portland,IoT/IIoT,Enabling Technologies/Components,Environmental Remediation,https://litedevices.com/,45.515232,-122.678385
+253,Ventacity Systems,"Portland, OR",Portland,IoT/IIoT,Built Environment/Construction,Environmental Remediation,https://www.ventacity.com/,45.515232,-122.678385
+254,Separion,"Houston, TX",Houston,Thermal/Geothermal,REEs,Materials,https://www.linkedin.com/company/separion-llc/,29.760427,-95.369803
+255,Sygne Solutions,TX,TX,Environmental Remediation,Chemistry,Enabling Technologies/Components,https://sygnesolutions.co/,31.968599,-99.901813
+256,Tierra Climate,"New York, NY",New York,Storage/Batteries,Carbon/CCUS,Finance,https://www.tierraclimate.com/about,40.712775,-74.005973
+257,Voltstorage,"Munich, Germany",Munich,Storage/Batteries,Materials,,https://voltstorage.com/,48.135125,11.581981
+258,Princeton NuEnergy,Bordentown NJ,Bordentown NJ,Storage/Batteries,Circular Economy,Chemistry,https://www.pnecycle.com/,40.146221,-74.711826
+259,RenewCO2,"Cranford, NJ",Cranford,Carbon/CCUS,Circular Economy,Chemistry,https://www.renewco2.com/,40.657366,-74.304986
+260,Vutility,"Salt Lake City, UT",Salt Lake City,IoT/IIoT,Built Environment/Construction,Energy Efficiency,https://vutility.com/,40.760779,-111.891047
+261,Aeromutable,"San Diego, CA",San Diego,Energy Efficiency,Enabling Technologies/Components,Transportation/MaaS,https://www.aeromutable.com/,32.715738,-117.161084
+262,Airity Technologies,"Palo Alto, CA",Palo Alto,Enabling Technologies/Components,Power Electronics,,https://www.airitytech.com/,37.441883,-122.14302
+263,Antora Energy,"Sunnyvale, CA",Sunnyvale,Storage/Batteries,Thermal/Geothermal,Materials,https://antoraenergy.com/,37.36883,-122.03635
+264,Arch,"San Francisco, CA",San Francisco,Energy Efficiency,Energy Systems/Management,IoT/IIoT,https://www.getarch.com/,37.77493,-122.419416
+265,Archive,"San Francisco, CA",San Francisco,Circular Economy,IoT/IIoT,Materials,https://www.archiveresale.com/,37.77493,-122.419416
+266,Artyc,"San Franciso, CA",San Franciso,Circular Economy,Storage/Batteries,,https://www.shipartyc.com/,37.77493,-122.419416
+267,Imperial College of London,"San Franciso, CA",San Franciso,Solar,IoT/IIoT,,https://aurorasolar.com/,37.77493,-122.419416
+268,Blumen,"San Franciso, CA",San Franciso,IoT/IIoT,Law,Evaluation/Compliance,https://www.blumensystems.com/,37.77493,-122.419416
+269,Bundle,"Oakland, CA",Oakland,Built Environment/Construction,IoT/IIoT,Finance,https://bundle.build/,37.804351,-122.271164
+270,Ceres Imaging,"Oakland, CA",Oakland,Ag/Food-tech,IoT/IIoT,Evaluation/Compliance,https://www.ceresimaging.net/,37.804351,-122.271164
+271,Citrine Informatics,"Redwood City, CA",Redwood City,IoT/IIoT,Chemistry,Materials,https://citrine.io/#citrineinformatics,37.484796,-122.228141
+272,ClearFlame Engines,"Geneva, IL",Geneva,Power Electronics,Engineering,Transportation/MaaS,https://www.clearflame.com/technology/,41.892644,-88.32879
+273,Dragonfly Systems,"Stanford, CA",Stanford,Enabling Technologies/Components,Solar,,https://tomkat.stanford.edu/innovation-transfer/dragonfly-systems,37.424106,-122.166076
+274,eLyte Technology Inc.,"Woburn, MA",Woburn,Storage/Batteries,Chemistry,,https://www.elyte.tech/,42.479262,-71.152276
+275,Empowered Homes,"Johannesburg, South Africa",Johannesburg,Solar,Generation/Transmission,,https://www.empowered.homes/,-26.204103,28.047305
+276,FarmRaise,Remote,Remote,IoT/IIoT,Finance,Ag/Food-tech,https://www.farmraise.com/,41.947939,-35.585729
+277,Fervo Energy,"Houston, TX",Houston,Thermal/Geothermal,Generation/Transmission,Geology/Mining,https://fervoenergy.com/,29.760427,-95.369803
+278,FLIP,"Stanford, CA",Stanford,IoT/IIoT,Transportation/MaaS,Energy Systems/Management,https://tomkat.stanford.edu/innovation-transfer/flip,37.424106,-122.166076
+279,Gemini Energy Solutions,"Springfield, Virginia",Springfield,Evaluation/Compliance,Built Environment/Construction,Energy Efficiency,https://www.geminiesolutions.com/,38.78928,-77.187204
+280,Indrio Technologies,"San Jose, CA",San Jose,Evaluation/Compliance,Enabling Technologies/Components,Chemistry,https://www.indriotech.com/,37.33874,-121.885252
+281,Allied Microbiota,"San Francisco, CA",San Francisco,Biofuels/Bioeconomy,Environmental Remediation,,http://www.alliedmicrobiota.com/,37.77493,-122.419416
+282,BAH Holdings,"Sea Cliff, NY",Sea Cliff,Oil and Gas,Enabling Technologies/Components,Environmental Remediation,http://bahholdings.com/,40.848989,-73.64485
+283,Chem3,"Stony Brook, NY",Stony Brook,Materials,Manufacturing,,http://www.chemcubed.com/,40.925654,-73.140943
+284,Yotta Energy,"Austin, TX",Austin,Solar,Storage/Batteries,Enabling Technologies/Components,https://www.yottaenergy.com/,30.267153,-97.743061
+285,Lithios,"Cambridge, MA",Cambridge,Chemistry,Geology/Mining,REEs,https://www.lithios.xyz/,42.373616,-71.109733
+286,Aqualumos,"Hartford, CT",Hartford,Enabling Technologies/Components,Environmental Remediation,Water/Wave/Hydro,https://www.geyser-remediation.com/,41.765804,-72.673372
+287,Nanoionix,"Farmington, CT",Farmington,Environmental Remediation,Materials,Chemistry,https://nanoionix.com/,41.73603,-72.795027
+288,Phoenix Tailings,"Woburn, MA",Woburn,Circular Economy,Geology/Mining,REEs,https://phoenixtailings.com/,42.479262,-71.152276
+289,Pani Clean,"Iowa City, IA",Iowa City,Enabling Technologies/Components,Environmental Remediation,,https://www.paniclean.com/,41.657826,-91.534617
+290,SunHydrogen,"Coralville, IA",Coralville,Solar,Hydrogen,Water/Wave/Hydro,https://www.sunhydrogen.com/,41.696046,-91.608603
+291,Alchemity,"College Park, MD",College Park,Materials,Chemistry,Power Electronics,https://alchemity.tech/,38.989697,-76.93776
+292,AquaLith,"Baltimore, MD",Baltimore,Enabling Technologies/Components,Chemistry,Materials,https://www.aqualith.net/,39.290385,-76.612189
+293,highT-Tech,"College Park, MD",College Park,Materials,Thermal/Geothermal,Enabling Technologies/Components,https://www.hight-tech.com/,38.989697,-76.93776
+294,InventWood,"College Park, MD",College Park,Built Environment/Construction,Materials,Circular Economy,https://inventwood.com/,38.989697,-76.93776
+295,Ion Storage Systems,"Beltsville, MD",Beltsville,Storage/Batteries,Chemistry,Enabling Technologies/Components,https://ionstoragesystems.com/,39.034832,-76.907474
+296,Manta Biofuel,"Owings Mills, MD",Owings Mills,Biofuels/Bioeconomy,Environmental Remediation,Enabling Technologies/Components,https://mantabiofuel.com/,39.41955,-76.780253
+297,NanoDirect,"Baltimore, MD",Baltimore,IoT/IIoT,Circular Economy,Professional Services,https://nanodirect.com/,39.290385,-76.612189
+298,pulseiq,"Takoma Park, MD",Takoma Park,IoT/IIoT,Energy Efficiency,,https://pulseiq.com/,38.977888,-77.007476
+299,Darcy Solutions,"Excelsior, MN",Excelsior,Thermal/Geothermal,Circular Economy,,http://darcysolutions.com/,44.903296,-93.566346
+300,Electra,"Boulder, CO",Boulder,Manufacturing,Built Environment/Construction,Energy Efficiency,https://www.electra.earth/,40.014986,-105.270546
+301,Resynergi,"Rohnert Park, CA",Rohnert Park,Circular Economy,Materials,Chemistry,http://www.resynergi.com/,38.339637,-122.701098
+302,TerraCOH,"Minneapolis, MN",Minneapolis,Thermal/Geothermal,Carbon/CCUS,Carbon/CCUS,http://terracoh-age.com/,44.977753,-93.265011
+303,Valerian Materials,"St. Louis Park, MN",St. Louis Park,Circular Economy,Materials,,https://www.valerianmaterials.com/,44.959738,-93.370219
+304,FGC Plasma Solutions,"Cambridge, MA",Cambridge,Materials,Enabling Technologies/Components,Power Electronics,http://fgcplasma.com/,42.373616,-71.109733
+305,Swinergy,"Minneapolis, MN",Minneapolis,Biofuels/Bioeconomy,Circular Economy,,https://www.swinergy.com/,44.977753,-93.265011
+306,Maplewell Energy,"Broomfield, CO",Broomfield,IoT/IIoT,Utility/Grid,,https://www.maplewelleng.com/,39.920541,-105.08665
+307,microEra Power,"Rochestor, NY",Rochestor,Storage/Batteries,Energy Systems/Management,Built Environment/Construction,https://www.microerapower.com/,43.156578,-77.608846
+308,Carbonlink,"Los Angeles, CA",Los Angeles,IoT/IIoT,Circular Economy,Carbon/CCUS,https://www.carbonlink.io/,34.052234,-118.243685
+309,Elevated Materials,"Los Angeles, CA",Los Angeles,Materials,Circular Economy,,https://www.elevatedmaterials.com/,34.052234,-118.243685
+310,"Energy Exploration Technologies, Inc.(Energy X)","Lauderdale, FL",Lauderdale,Geology/Mining,REEs,,https://energyx.com/,26.122439,-80.137317
+311,Mi Terro,"City of Industry, CA",City of Industry,Circular Economy,Materials,,https://miterro.com/,34.019734,-117.958675
+312,Kuva,"Cambridge, MA",Cambridge,IoT/IIoT,Environmental Remediation,Evaluation/Compliance,https://www.kuvasystems.com/,42.373616,-71.109733
+313,Outmore Living,"Austin, TX",Austin,Energy Efficiency,Manufacturing,,https://outmoreliving.com/,30.267153,-97.743061
+314,Pike Robotics,"Austin, TX",Austin,Oil and Gas,Enabling Technologies/Components,Evaluation/Compliance,https://www.pikerobotics.com/,30.267153,-97.743061
+315,Sundial Solar Components,"Fork, UT",Fork,Solar,Enabling Technologies/Components,,https://jstnhicken.wixsite.com/sundial,40.376895,-111.795764
+316,AIWaysion Inc,"Seattle, WA",Seattle,Enabling Technologies/Components,Transportation/MaaS,,https://www.aiwaysion.com/,47.60621,-122.332071
+317,Banyu Carbon,"Seattle, WA",Seattle,Water/Wave/Hydro,Enabling Technologies/Components,Carbon/CCUS,https://www.banyucarbon.com/,47.60621,-122.332071
+318,BattGenie Inc.,"Seattle, WA",Seattle,IoT/IIoT,Storage/Batteries,,https://battgenie.life/,47.60621,-122.332071
+319,"BlueDot Photonics, Inc.","Seattle, WA",Seattle,Solar,Materials,Energy Efficiency,https://www.bluedotphotonics.com/,47.60621,-122.332071
+320,"EnerG2 Technologies, Inc.","Seattle, WA",Seattle,Storage/Batteries,Enabling Technologies/Components,Manufacturing,https://energ2.com,47.60621,-122.332071
+321,EVOECO,"Seattle, WA",Seattle,IoT/IIoT,Enabling Technologies/Components,Circular Economy,https://evoeco.com/,47.60621,-122.332071
+322,"HyperSciences, Inc.","Spokane, WA",Spokane,Geology/Mining,Enabling Technologies/Components,,https://www.hypersciences.com/,47.65878,-117.426047
+323,Membrion,"Seattle, WA",Seattle,Enabling Technologies/Components,Environmental Remediation,Materials,https://membrion.com/,47.60621,-122.332071
+324,MicroHAOPs,"Seattle, WA",Seattle,Materials,Environmental Remediation,Water/Wave/Hydro,https://www.microhaopsinc.com/,47.60621,-122.332071
+325,"Zap Energy, Inc.","Seattle, WA",Seattle,Nuclear,Generation/Transmission,,https://www.zapenergy.com/,47.60621,-122.332071
+326,Flux XII,"Madison, WI",Madison,Storage/Batteries,Chemistry,Utility/Grid,https://www.flux12.com/,43.072166,-89.40075
+327,Hycamite,"Kokkola, Finland",Kokkola,Biofuels/Bioeconomy,Hydrogen,Generation/Transmission,https://hycamite.com/,63.8415,23.125034
+328,Ecellix,"Seattle, WA",Seattle,Enabling Technologies/Components,Storage/Batteries,Materials,https://ecellix.com/,47.60621,-122.332071
+329,Gelion,"Eveleigh, New South Wales",Eveleigh,Storage/Batteries,Enabling Technologies/Components,,https://gelion.com/,-33.896342,151.195001
+330,The Good Car Company,"Hobart, Australia",Hobart,Transportation/MaaS,,,https://www.goodcar.co/,-42.882606,147.32572
+331,LoopX AI,"Waterloo, Ontario",Waterloo,IoT/IIoT,Transportation/MaaS,,https://www.linkedin.com/company/loopx-ai/about/,43.464258,-80.52041
+332,Sicona Battery Technologies,"Brooklyn, NY",Brooklyn,Storage/Batteries,Materials,Chemistry,https://siconabattery.com/,40.678178,-73.944158
+333,AmpUp,"Cupertino, CA",Cupertino,Transportation/MaaS,Storage/Batteries,IoT/IIoT,https://ampup.io/,37.322998,-122.032182
+334,Emrgy,"Atlanta, GA",Atlanta,Water/Wave/Hydro,Generation/Transmission,Enabling Technologies/Components,https://emrgy.com/,33.748752,-84.387684
+335,Quest Renewables,"Atlanta, GA",Atlanta,Solar,Architecture/Design,,https://questrenewables.com/,33.748752,-84.387684
+336,Cloverly,"Atlanta, GA",Atlanta,Carbon/CCUS,IoT/IIoT,Finance,https://cloverly.com,33.748752,-84.387684
+337,Polymer Solutions,"Atlanta, GA",Atlanta,Materials,Enabling Technologies/Components,,https://polymersol.com/,33.748752,-84.387684
+338,WEAV3D,"Norcross, GA",Norcross,Manufacturing,,,https://weav3d.com/,33.941108,-84.213744
+339,Carbice,"Atlanta, GA",Atlanta,Materials,Enabling Technologies/Components,Thermal/Geothermal,https://carbice.com/markets/,33.748752,-84.387684
+340,Roev,"Brisbane, Australia",Brisbane,Transportation/MaaS,Circular Economy,Power Electronics,https://www.roev.com/,-27.470453,153.026034
+341,"ElektrikGreen, Inc","Lyons, CO",Lyons,Hydrogen,Storage/Batteries,,https://elektrikgreen.com/,40.224708,-105.271378
+342,Transitional Energy,"Denver, CO",Denver,Oil and Gas,Power Electronics,Thermal/Geothermal,https://transitionalenergy.us/,39.739236,-104.990251
+343,Total Containment Inc (TCI),"Edmonton, Canada",Edmonton,Environmental Remediation,Materials,Oil and Gas,https://totalcontainment.ca/,53.546098,-113.493727
+344,Altum Technologies,"Las Vegas, NV",Las Vegas,Environmental Remediation,Professional Services,IoT/IIoT,https://altumtechnologies.com/,36.171563,-115.139101
+345,Certek Heat Machine,"Grand Junction, CO",Grand Junction,Thermal/Geothermal,Energy Systems/Management,,https://certek.ca/,39.06387,-108.550649
+346,Cimarron Energy,"Houston, TX",Houston,Environmental Remediation,Enabling Technologies/Components,Manufacturing,https://cimarron.com/,29.760427,-95.369803
+347,Direct-C,"Edmonton, Canada",Edmonton,IoT/IIoT,Environmental Remediation,Oil and Gas,https://www.direct-c.ca/,53.546098,-113.493727
+348,Kathairos Solutions,"Dover, DE",Dover,Enabling Technologies/Components,Environmental Remediation,Oil and Gas,https://kathairos.com/,39.158168,-75.524368
+349,Proteum Energy,"Phoenix, AZ",Phoenix,Oil and Gas,Hydrogen,,https://www.proteumenergy.com/,33.448377,-112.074037
+350,Qube Technologies,"Calgary, Alberta, Canada",Calgary,IoT/IIoT,Environmental Remediation,Evaluation/Compliance,https://www.qubeiot.com/,51.044733,-114.071883
+351,REVOLUTION Turbine Technologies,"Houston, TX",Houston,Enabling Technologies/Components,Circular Economy,Oil and Gas,https://www.revolutionturbines.com/,29.760427,-95.369803
+352,Telops,"Quebec, Quebec, Canada",Quebec,Environmental Remediation,Enabling Technologies/Components,IoT/IIoT,https://www.telops.com/,46.813082,-71.20746
+353,Calion Technologies,"Berkeley, CA",Berkeley,Enabling Technologies/Components,Chemistry,Thermal/Geothermal,https://www.activate.org/calion-technologies,37.871523,-122.273042
+354,Allium Engineering,"Peabody, MA",Peabody,Manufacturing,Materials,Built Environment/Construction,https://www.alliumeng.com/,42.527873,-70.928661
+355,Arrakis Materials,"Berkeley, CA",Berkeley,Carbon/CCUS,Chemistry,Materials,https://www.activate.org/arrakis-materials,37.871523,-122.273042
+356,Florrent,"Amherst, MA",Amherst,Enabling Technologies/Components,Energy Systems/Management,Utility/Grid,https://florrent.com/,42.373222,-72.519854
+357,Pascal,"Cambridge, MA",Cambridge,Engineering,Materials,,Pascal (pascaltechnology.com),42.373616,-71.109733
+358,Ayrton Energy,"Calgary, AB, Canada",Calgary,Hydrogen,Storage/Batteries,,https://ayrtonenergy.com/,51.044733,-114.071883
+359,Carbix,"Boston, MA",Boston,Carbon/CCUS,Built Environment/Construction,Circular Economy,https://www.carbixcorp.com/,42.360082,-71.05888
+360,Digital Carbon Bank,"Calgary, Alberta, Canada",Calgary,Finance,Professional Services,,Carbon Offsets Trading | Digital Carbon Bank,51.044733,-114.071883
+361,EarthEn,"Phoenix, AZ",Phoenix,Storage/Batteries,IoT/IIoT,Utility/Grid,https://www.earthen.energy/earthen-pods,33.448377,-112.074037
+362,h quest vanguard,"Pittsburgh, PA",Pittsburgh,Hydrogen,Generation/Transmission,Enabling Technologies/Components,https://www.h-quest.com/,40.440625,-79.995886
+363,Highwood Emissions Management,"Calgary, Alberta, Canada",Calgary,IoT/IIoT,Professional Services,,https://highwoodemissions.com/software/,51.044733,-114.071883
+364,Icarus RT,"Carlsbad, Canada",Carlsbad,Enabling Technologies/Components,Solar,,https://icarusrt.com/about-us-2/,56.130366,-106.346771
+365,Khepra,"Los Altos, CA",Los Altos,Biofuels/Bioeconomy,Manufacturing,Enabling Technologies/Components,https://www.khepra.io/index.html,37.385218,-122.11413
+366,Natrion's,"Binghamton, NY",Binghamton,Storage/Batteries,Enabling Technologies/Components,Materials,https://www.natrion.co/team/alex-kosyakov/,42.098687,-75.917974
+367,Conservation Labs,"Pittsburgh, PA",Pittsburgh,IoT/IIoT,Water/Wave/Hydro,Evaluation/Compliance,https://conservationlabs.com/,40.440625,-79.995886
+368,AirViz,"Pittsburgh, PA",Pittsburgh,IoT/IIoT,Enabling Technologies/Components,Evaluation/Compliance,https://airvizinc.com/,40.440625,-79.995886
+369,Arieca,"Pittsburgh, PA",Pittsburgh,Materials,Thermal/Geothermal,Enabling Technologies/Components,https://www.arieca.com/,40.440625,-79.995886
+370,Blade Diagnostics,"Pittsburgh, PA",Pittsburgh,Evaluation/Compliance,IoT/IIoT,,https://bladediagnostics.com/,40.440625,-79.995886
+371,Bloomfield Robotics,"Pittsburgh, PA",Pittsburgh,Ag/Food-tech,IoT/IIoT,Evaluation/Compliance,https://bloomfield.ai/,40.440625,-79.995886
+372,Chement,"Chicago, IL",Chicago,Carbon/CCUS,Manufacturing,Enabling Technologies/Components,https://www.chement.co/,41.878114,-87.629798
+373,CorePower Magnetics,"Pittsburgh, PA",Pittsburgh,Materials,Manufacturing,Generation/Transmission,https://www.corepowermagnetics.com/,40.440625,-79.995886
+374,LeanFM Technologies,"Pittsburgh, PA",Pittsburgh,IoT/IIoT,Enabling Technologies/Components,Evaluation/Compliance,https://leanfmtech.com/,40.440625,-79.995886
+375,Mine Vision Systems,"Pittsburgh, PA",Pittsburgh,IoT/IIoT,Geology/Mining,Professional Services,https://www.minevisionsystems.com/,40.440625,-79.995886
+376,Pearl Street Technologies,"Pittsburgh, PA",Pittsburgh,IoT/IIoT,Professional Services,Utility/Grid,https://www.pearlstreettechnologies.com/,40.440625,-79.995886
+377,Platypus Technologies,"Pittsburgh, PA",Pittsburgh,Professional Services,Enabling Technologies/Components,Water/Wave/Hydro,http://senseplatypus.com/,40.440625,-79.995886
+378,Silisium Tech,"Pittsburgh, PA",Pittsburgh,Manufacturing,Solar,,https://www.silisiumtech.com/,40.440625,-79.995886
+379,Sudoc,"Cambridge, MA",Cambridge,Chemistry,Enabling Technologies/Components,,https://www.sudoc.com/,42.373616,-71.109733
+380,Teratonix,"Pittsburgh, PA",Pittsburgh,Enabling Technologies/Components,Generation/Transmission,Engineering,https://www.teratonix.com/,40.440625,-79.995886
+381,Stratus Materials,"Pittsburgh, PA",Pittsburgh,Manufacturing,Enabling Technologies/Components,Storage/Batteries,https://www.stratusmaterials.com/,40.440625,-79.995886
+382,BuildSim,"Wexford, PA",Wexford,IoT/IIoT,Professional Services,Energy Systems/Management,https://www.buildsim.io/,40.626632,-80.054977
+383,Ecotone Renweables,"Pittsburgh, PA",Pittsburgh,Ag/Food-tech,Circular Economy,Carbon/CCUS,https://www.ecotonerenewables.com/,40.440625,-79.995886
+384,Farm to Flame Energy,"Kearny, NJ",Kearny,Power Electronics,Professional Services,Circular Economy,https://ftfenergy.com/,40.768434,-74.145421
+385,Four Growers,"Turtle Creek, PA",Turtle Creek,Ag/Food-tech,IoT/IIoT,Enabling Technologies/Components,https://fourgrowers.com/,40.405902,-79.825048
+386,Gridfruit,"Pittsburgh, PA",Pittsburgh,IoT/IIoT,Energy Systems/Management,,https://www.gridfruit.com/,40.440625,-79.995886
+387,Hyliion,"Cedar Park, TX",Cedar Park,Generation/Transmission,Transportation/MaaS,Enabling Technologies/Components,https://www.hyliion.com/,30.505198,-97.820289
+388,Ion Works,"Pittsburgh, PA",Pittsburgh,IoT/IIoT,Storage/Batteries,,https://ion-works.com/,40.440625,-79.995886
+389,Mach9,"Pittsburgh, PA",Pittsburgh,IoT/IIoT,Geology/Mining,,https://www.mach9.io/,40.440625,-79.995886
+390,SparkMeter,"Washington, DC",Washington,IoT/IIoT,Utility/Grid,,https://www.sparkmeter.io/,38.907192,-77.036871
+391,Automat Solutions,"Fremont, CA",Fremont,Storage/Batteries,Materials,Enabling Technologies/Components,https://www.automatsoln.com/,37.54854,-121.988583
+392,Dakota Energy Systems,"Peoria, AZ",Peoria,Water/Wave/Hydro,Generation/Transmission,Energy Systems/Management,https://www.dakotaenergysystems.com/,33.580596,-112.237378
+393,Delphire,"Los Angeles, CA",Los Angeles,IoT/IIoT,Environmental Remediation,,https://delphiretech.com/,34.052234,-118.243685
+394,Hydroplane,"Los Angeles, CA",Los Angeles,Storage/Batteries,Hydrogen,Enabling Technologies/Components,https://hydroplane.us/,34.052234,-118.243685
+395,Pace AI,"Philadelphia, PA",Philadelphia,IoT/IIoT,Consulting,Energy Systems/Management,https://pacecontrols.com/,39.952584,-75.165222
+396,Prabhu Energy Labs,"San Francisco, CA",San Francisco,Power Electronics,Professional Services,Environmental Remediation,https://www.prabhuenergy.com/,37.77493,-122.419416
+397,Pulsenics,"Toronto, Canada",Toronto,Energy Systems/Management,Power Electronics,Consulting,https://www.pulsenics.com/,43.653226,-79.383184
+398,Safi Organics,"Wanguru, North Kinangop",Wanguru,Ag/Food-tech,Manufacturing,Consulting,https://safiorganics.co.ke/,-0.683882,37.358682
+399,Sea Dragon Energy,"Florence, TX",Florence,Storage/Batteries,Hydrogen,Water/Wave/Hydro,https://www.seadragon.energy/,30.841295,-97.793627
+400,Wild Technologies,"Los Angeles, CA",Los Angeles,Thermal/Geothermal,IoT/IIoT,,https://wildenergy.io/,34.052234,-118.243685
+401,Xendee,"San Diego, CA",San Diego,Energy Systems/Management,IoT/IIoT,Enabling Technologies/Components,https://xendee.com/,32.715738,-117.161084
+402,Xponent Power,"Fremont, CA",Fremont,Solar,Enabling Technologies/Components,,https://xponentpower.com/,37.54854,-121.988583
+403,Oceanways,"London, UK",London,Environmental Remediation,Hydrogen,Transportation/MaaS,Oceanways - Zero emission cargo submarines,51.507218,-0.127586
+404,Relyion Energy,"Santa Clara, CA",Santa Clara,Storage/Batteries,IoT/IIoT,Utility/Grid,https://www.relyionenergy.com/,37.354108,-121.955236
+405,Triton Anchor,"Chelmsford, MA",Chelmsford,Water/Wave/Hydro,Engineering,Built Environment/Construction,Offshore Wind Anchor | Triton Anchor | Chelmsford,42.599814,-71.367284
+406,Troes,"Markham ON, Canada",Markham ON,Storage/Batteries,IoT/IIoT,Thermal/Geothermal,https://troescorp.com/cutting-edge-integration-technology/,43.8561,-79.337019
+407,Tycho Solutions,"Mexico City, Mexico",Mexico City,IoT/IIoT,Professional Services,,https://www.tycho.solutions/,19.432608,-99.133208
+408,Actionfigure,"Washington, DC",Washington,IoT/IIoT,Transportation/MaaS,,https://actionfigure.ai/,38.907192,-77.036871
+409,Allume Energy,"Richmond, Australia",Richmond,Solar,Energy Systems/Management,Power Electronics,https://allumeenergy.com/au/,-37.823894,144.998267
+410,Amber Kinetics,"Union City, CA",Union City,Storage/Batteries,Energy Systems/Management,Enabling Technologies/Components,https://amberkinetics.com/product/,37.593356,-122.043861
+411,Ambri,"Cambridge, MA",Cambridge,Storage/Batteries,Utility/Grid,,https://ambri.com/,42.373616,-71.109733
+412,Ampaire,"Los Angeles, CA",Los Angeles,Transportation/MaaS,Enabling Technologies/Components,,https://www.ampaire.com/,34.052234,-118.243685
+413,Acelerex,"Cambridge, MA",Cambridge,IoT/IIoT,Utility/Grid,Energy Systems/Management,https://acelerex.com/,42.373616,-71.109733
+414,Acoustic Wells,"Boston, MA",Boston,IoT/IIoT,Oil and Gas,Energy Systems/Management,https://www.acoustic-wells.com/,42.360082,-71.05888
+415,Adaviv,"Boston, MA",Boston,Ag/Food-tech,IoT/IIoT,Enabling Technologies/Components,https://www.adaviv.com/,42.360082,-71.05888
+416,Adept Materials,"Somerville, MA",Somerville,Architecture/Design,Materials,Engineering,https://www.adeptmaterials.com/,42.387597,-71.099497
+417,AeroShield,"Cambridge, MA",Cambridge,Architecture/Design,Materials,Engineering,https://www.aeroshield.tech/,42.373616,-71.109733
+418,Aluminum Technologies,"New Orleans, LA",New Orleans,Manufacturing,Chemistry,Energy Efficiency,https://aluminumtechnologies.us/,29.951066,-90.071532
+419,Aquosmic,"Galveston, TX",Galveston,Water/Wave/Hydro,IoT/IIoT,Professional Services,https://aquosmic.com/,29.301348,-94.797696
+420,CalWave,"Oakland, CA",Oakland,Water/Wave/Hydro,Generation/Transmission,Energy Systems/Management,https://calwave.energy/,37.804351,-122.271164
+421,C-Quester,"Los Angeles, CA",Los Angeles,Carbon/CCUS,Environmental Remediation,,https://cquester.net/,34.052234,-118.243685
+422,Carbonext,"Sugar Land, TX",Sugar Land,Manufacturing,Materials,Enabling Technologies/Components,https://carbonextinc.com/,29.598443,-95.622552
+423,Drinkicks,"Houston, TX",Houston,Circular Economy,Environmental Remediation,Materials,https://drinkicks.com/,29.760427,-95.369803
+424,Eos Loan,"Houston, TX",Houston,Finance,Professional Services,,https://eossolarloan.com/,29.760427,-95.369803
+425,Excipio Energy,"Houston, TX",Houston,Water/Wave/Hydro,Generation/Transmission,,https://excipioenergy.com/,29.760427,-95.369803
+426,Frakktal,"Houston, TX",Houston,Materials,Circular Economy,Architecture/Design,https://www.frakktal.com/,29.760427,-95.369803
+427,Fysikes Biosolutions,"Houston, TX",Houston,Hydrogen,Carbon/CCUS,Environmental Remediation,https://www.fysikes.bio/,29.760427,-95.369803
+428,Moonshot Compost,"Houston, TX",Houston,Ag/Food-tech,Circular Economy,Biofuels/Bioeconomy,https://www.moonshotcompost.com/,29.760427,-95.369803
+429,Helix Earth Technologies,"Houston, TX",Houston,Carbon/CCUS,Enabling Technologies/Components,Environmental Remediation,https://www.helixearthtechnologies.com/,29.760427,-95.369803
+430,Varea Energy,"Houston, TX",Houston,Hydrogen,Transportation/MaaS,Enabling Technologies/Components,https://www.vareaenergy.com/,29.760427,-95.369803
+431,WIP International Services LLC,"Houston, TX",Houston,Water/Wave/Hydro,Engineering,Consulting,https://wipintl.com/,29.760427,-95.369803
+432,WOOTZ,"Houston, TX",Houston,Materials,Enabling Technologies/Components,Manufacturing,https://wootznano.com/,29.760427,-95.369803

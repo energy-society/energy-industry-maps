@@ -1,0 +1,207 @@
+[
+  {
+      "name": "Academia/Research",
+      "color": "#0d75bc",
+      "aliases": ["Academia", "Research"]
+  },
+  {
+      "name": "Ag/Food-tech",
+      "color": "#c94c4c"
+  },
+  {
+      "name": "Architecture/Design",
+      "color": "#997399",
+      "aliases": ["Design", "Buildings", "Construction"]
+  },
+  {
+      "name": "Accelerator/Incubator",
+      "color": "#cc3300"
+  },
+  {
+      "name": "Biofuels/Bioeconomy",
+      "color": "#8bcc33"
+  },
+  {
+      "name": "Built Environment/Construction",
+      "color": "#003366",
+      "aliases": ["Buildings", "Construction"]
+  },
+  {
+      "name": "Carbon/CCUS",
+      "color": "#9c27b0",
+      "aliases": ["Carbon", "Carbon Capture Utilization and Sequestration"]
+  },
+  {
+      "name": "Chemistry",
+      "color": "#cc6633"
+  },
+  {
+      "name": "Circular Economy",
+      "color": "#5acc88",
+      "aliases": ["Sustainable Agriculture", "Recycling"]
+  },
+  {
+      "name": "Coal",
+      "color": "#333333"
+  },
+  {
+      "name": "Consulting",
+      "color": "#1682d9",
+      "aliases": ["Professional Services"]
+  },
+  {
+      "name": "Enabling Technologies/Components",
+      "color": "#1e8e60",
+      "aliases": ["Supply-chain Components"]
+  },
+  {
+      "name": "Energy Efficiency",
+      "color": "#2ad050"
+  },
+  {
+      "name": "Energy Systems/Management",
+      "color": "#2aa282",
+      "aliases": ["Energy Management", "Energy Flow"]
+  },
+  {
+      "name": "Engineering",
+      "color": "#1e6e3e",
+      "aliases": ["Construction", "Professional Services"]
+  },
+  {
+      "name": "Environmental Remediation",
+      "color": "#562e89"
+  },
+  {
+      "name": "Evaluation/Compliance",
+      "color": "#9e6616",
+      "aliases": ["Liability Management", "Insurance"]
+  },
+  {
+      "name": "Finance",
+      "color": "#199e26",
+      "aliases": ["Professional Services"]
+  },
+  {
+      "name": "Generation/Transmission",
+      "color": "#f88017",
+      "aliases": ["Energy Transmission"]
+  },
+  {
+      "name": "Geology/Mining",
+      "color": "#16a49e"
+  },
+  {
+      "name": "Hydrogen",
+      "color": "#2c8ef4"
+  },
+  {
+      "name": "Insurance",
+      "color": "#a22cf7",
+      "aliases": ["Professional Services"]
+  },
+  {
+      "name": "IoT/IIoT",
+      "color": "#2278a9",
+      "aliases": ["Internet of Things", "Industrial Internet of Things", "Sensors", "AI"]
+  },
+  {
+      "name": "Lighting",
+      "color": "#e1f490",
+      "aliases": ["LED"]
+  },
+  {
+      "name": "Law",
+      "color": "#f42c8e",
+      "aliases": ["Professional Services"]
+  },
+  {
+      "name": "Manufacturing",
+      "color": "#7b33ce",
+      "aliases": ["Distribution Centers"]
+  },
+  {
+      "name": "Marketing",
+      "color": "#656353",
+      "aliases": ["Advertising", "PR"]
+  },
+  {
+      "name": "Materials",
+      "color": "#bc7b16",
+      "aliases": ["Silicon", "Graphene", "Lithium", "Plutonium"]
+  },
+  {
+      "name": "Media/Assoc",
+      "color": "#d11265",
+      "aliases": ["Professional Services", "Energy Intelligence"]
+  },
+  {
+      "name": "REEs",
+      "color": "#8bc34a",
+      "aliases": ["Rare Earth Elements", "Minerals"]
+  },
+  {
+      "name": "Transportation/MaaS",
+      "color": "#35b7c1",
+      "aliases": ["Mobility as a Service", "Transport", "Uber", "Lyft"]
+  },
+  {
+      "name": "Nuclear",
+      "color": "#f0f0f0"
+  },
+  {
+      "name": "Oil and Gas",
+      "color": "#ce6633"
+  },
+  {
+      "name": "Policy",
+      "color": "#660066",
+      "aliases": ["Professional Services", "Politicians"]
+  },
+  {
+      "name": "Power Electronics",
+      "color": "#FF5733"
+  },
+  {
+      "name": "Professional Services",
+      "color": "#1682a4",
+      "aliases": ["Consulting", "Finance", "Engineering", "Marketing", "Media/Assoc"]
+  },
+  {
+    "name": "Security/Cybersecurity",
+    "color": "#f42c2c",
+    "aliases": ["Security"]
+  },
+  {
+      "name": "Solar",
+      "color": "#fceb19"
+  },
+  {
+      "name": "Storage/Batteries",
+      "color": "#098503",
+      "aliases": ["Storage", "Batteries"]
+  },
+  {
+      "name": "Thermal/Geothermal",
+      "color": "#bc864b",
+      "aliases": ["Thermal", "Geothermal", "Geothermal/Thermal"]
+  },
+  {
+      "name": "Unknown",
+      "color": "#cccccc"
+  },
+  {
+      "name": "Utility/Grid",
+      "color": "#a4f41a"
+  },
+  {
+      "name": "Water/Wave/Hydro",
+      "color": "#20dbdb",
+      "aliases": ["Wave/Water/Hydro"]
+  },
+  {
+      "name": "Wind",
+      "color": "#167f7d"
+  }
+]
+

@@ -9,7 +9,7 @@ import requests
 
 USAGE = "python geocode_w_google.py <input_csv_to_geocode> <output_csv>"
 
-API_KEY = ""  # your API key here
+API_KEY = "AIzaSyAYm_AvyTW2BzENTOhKWUEvn_DMrZFl9Rc"  # your API key here
 HOST = "https://maps.googleapis.com/maps/api/geocode/json"
 
 logging.basicConfig(level='INFO', format='%(levelname)s: %(message)s')

@@ -1,8 +1,11 @@
 import mapboxgl from 'mapbox-gl';
 import React, { useState, useEffect } from 'react';
 import { ThemeProvider } from '@material-ui/core/styles';
+import Hidden from '@material-ui/core/Hidden';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+import IconButton from '@material-ui/core/Button';
+import { Home } from '@material-ui/icons';
 import LogoOverlay from './LogoOverlay';
 import Omnibox from './Omnibox';
 import SettingsPane from './SettingsPane';
@@ -10,19 +13,33 @@ import { getAllCategories } from './common';
 import CONFIG from './config.json';
 import { fetchMapData } from './data-loader';
 import { THEME } from './Theme';
+import insightLogo from './img/insight-white.png';
 import './App.css';
+import TaxColors from './taxonomy.json';
+
 
 const COMPANIES_SOURCE = 'companies';
 const MAPS = CONFIG['maps'];
 const POINT_LAYER = 'energy-companies-point-layer';
 
-mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_API_TOKEN;
+// mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_API_TOKEN;
+mapboxgl.accessToken='pk.eyJ1IjoidG90b3JvLWRha2UiLCJhIjoiY2tiNzJuZmQ3MDFudDJxa2N1ZG91YzBzciJ9.5qJpYzti2W7avnuM9rCiKA'
 
-/** @return {html code for the popup } */
 function getPopupContent(props) {
-  const categoryInfo = ['tax1', 'tax2', 'tax3']
+  const categories = ['tax1', 'tax2', 'tax3']
     .map(k => props[k])
-    .filter(s => s).join(", ");
+    .filter(s => s);
+    
+    let TaxColorDict = {};
+    TaxColors.forEach(item => {
+      TaxColorDict[item.name] = item.color;
+    });
+  
+  const categoryInfo = categories
+    .map(category => `<span style="background-color: ${TaxColorDict[category] || '#ccc' }; 
+    display: inline-block; border-radius: 3px; width: 15px; height: 15px; margin-right: 5px;"></span>${category}`)
+    .join(", ");
+
   var extraNotes = "";
   if (props.hasOwnProperty("notes") && props["notes"] !== "") {
     extraNotes = `Focus: <span>${props['notes']}</span><br />`;
@@ -32,7 +49,7 @@ function getPopupContent(props) {
       <h3 class="company-name">
         <a href=${props['website']} class="popup-link" target="blank">${props['company']}</a>
       </h3>
-      Sector(s): <span class="category-info">${categoryInfo}</span><br />
+      Sector(s): <div class="category-info">${categoryInfo}</div><br />
       City: <span class="city-info">${props['city']}</span><br />
       ${extraNotes}
     </div>`;
@@ -55,6 +72,7 @@ function displayPopup(map, feature) {
     .setMaxWidth("600px")
     .addTo(map);
 }
+//79ddf2 - color for hover
 
 function populateMapData(map, mapId, mapData) {
   // adds the data to the map
@@ -200,6 +218,14 @@ const useStyles = makeStyles((theme) => ({
     padding: '4px 0px',
     marginBottom: 4,
   },
+  resetViewButton: {
+    position: 'absolute',
+    bottom: 73,
+    right: 4.5,
+    minWidth: 30,
+    maxWidth: 30,
+    height: 31,
+  }
 }));
 
 /** @return {html code for the app } */
@@ -269,6 +295,14 @@ export default function App() {
     }
   }
 
+  function handleReset() {
+    // called when reset button is clicked
+    thisMap.flyTo({
+      center: MAPS[selectedMapId].flyTo,
+      zoom: MAPS[selectedMapId].flyToZoom || 8,
+    });
+  }
+
   function setUpMap(data) {
     // changes the data in the map
     setTaxonomy(data['taxonomy']);
@@ -284,8 +318,8 @@ export default function App() {
       style: 'mapbox://styles/mapbox/dark-v10',
       attributionControl: false,
       center: MAPS[selectedMapId].center,
-      zoom: 6,
-      minZoom: 6,
+      zoom: MAPS[selectedMapId].flyToZoom || 6,
+      minZoom: 5,
     });
     let mapData = fetchMapData(selectedMapId);
     mapData.then(setUpMap);
@@ -340,6 +374,11 @@ return (
       <main className={classes.mainContent}>
         <div id="map-container" className={classes.mapContainer} />
           <LogoOverlay selectedMapId={selectedMapId} />
+          <div className={classes.resetViewButton} >
+            <IconButton variant="contained" color="default" className={classes.resetViewButton} aria-label="reset view" onClick={() => { handleReset() }} >
+              <Home />
+            </IconButton>
+          </div>
         <div className={classes.mapOverlay}>
           <div className={classes.mapOverlayInner}>
             <div className={handleShift()}>
@@ -352,6 +391,7 @@ return (
                   onSelectCompany={handleSelectCompany}
                   onOpenMobileDrawer={() => setMobileDrawerOpen(true)} />
               </div>
+              
             </div>
             <LogoOverlay selectedMapId={selectedMapId} />
           </div>

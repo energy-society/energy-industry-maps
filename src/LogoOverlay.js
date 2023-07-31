@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import aesLogoWhite from './img/aes-logo-white-shadow.png';
+import nexus_logo from './img/nexus-logo.png';
 import CONFIG from './config.json';
 
 
@@ -23,6 +24,10 @@ const useStyles = makeStyles((theme) => ({
     color: "white",
     fontSize: "9pt",
   },
+  nexusLogo: {
+   padding: 8,
+   height: 50,
+ },
 }));
 
 
@@ -33,6 +38,7 @@ export default function /** creates logo overlay */ LogoOverlay(/** defined earl
   // 2020-09-08: Stanford requested removal of logo in favor of explanatory
   // text. Can be re-added at some point in the future.
   var suLogoDisplay = map['displayStanfordLogo'] ? 'block' : 'none'
+  var plLogoDisplay = map['displayPhilippinesLogo'] ? 'block' : 'none'
 
   return (
     <div className={classes.root}>
@@ -42,8 +48,17 @@ export default function /** creates logo overlay */ LogoOverlay(/** defined earl
         Precourt Family Professor at Stanford University, and Scott Jespersen,
         MS '20, Stanford.
       </div>
+      <div className={classes.nexusLogoContainer}
+        style={{display: plLogoDisplay}}>
+        <a href="https://www.newenergynexus.com/" target="_blank" rel="noopener noreferrer">
+          <img
+            src={nexus_logo}
+            className={classes.nexusLogo}
+            alt="New Nexus Energy Logo" />
+        </a>
+      </div>
       <div className={classes.aesLogoContainer}>
-        <a href="https://www.energysociety.org" target="_blank" rel="noopener noreferrer"> 
+        <a href="https://www.energysociety.org" target="_blank" rel="noopener noreferrer">
           <img
             src={aesLogoWhite}
             className={classes.aesLogo}
