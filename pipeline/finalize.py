@@ -34,6 +34,7 @@ def make_final_output(input_df, taxonomy_to_use):
     df = input_df.filter(items=COLUMNS_TO_KEEP)
 
     # Categorize city column
+    df.city = df.city.astype(str)
     cities = sorted(df.city.unique())
     city_to_idx = {c: i for i, c in enumerate(cities)}
     df.city = df.city.apply(lookup(city_to_idx))
@@ -50,7 +51,7 @@ def make_final_output(input_df, taxonomy_to_use):
     df.website = df.website.fillna('')
 
     # Make sure notes is not NaN
-    df.notes = df.notes.fillna('')
+    #df.notes = df.notes.fillna('')
 
     # Round lat/lngs so they print sanely
     df.lat = df.lat.round(6)

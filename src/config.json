@@ -1,14 +1,12 @@
 {
-  "defaultMapId": "silicon-valley",
+  "defaultMapId": "tech-startups",
   "taxonomies": {
-    "default": "taxonomy.json",
-    "sv": "taxonomy-sv.json",
-    "denmark": "taxonomy-denmark.json"
+    "default": "taxonomy.json"
   },
   "maps": {
-    "silicon-valley": {
-      "title": "Silicon Valley Energy Ecosystem",
-      "shortName": "Silicon Valley",
+    "tech-startups": {
+      "title": "Energy TechStartups",
+      "shortName": "TechStartups",
       "center": [
         -121,
         36.5
@@ -17,139 +15,8 @@
         -122.21,
         37.65
       ],
-      "taxonomy": "sv",
-      "displayStanfordLogo": true
-    },
-    "chicago": {
-      "title": "Chicago Energy Ecosystem",
-      "shortName": "Chicago",
-      "center": [
-        -88.5,
-        41.1
-      ],
-      "flyTo": [
-        -87.829,
-        41.879
-      ],
-      "taxonomy": "default"
-    },
-    "msp": {
-      "title": "Minneapolis/St. Paul Energy Ecosystem",
-      "shortName": "Minneapolis/St. Paul",
-      "center": [
-        -93.1,
-        44.78
-      ],
-      "flyTo": [
-        -93.2,
-        44.9
-      ],
-      "taxonomy": "default"
-    },
-    "milwaukee": {
-      "title": "Milwaukee Energy Ecosystem",
-      "shortName": "Milwaukee",
-      "center": [
-        -88.1,
-        42.8
-      ],
-      "flyTo": [
-        -87.9,
-        43.0
-      ],
-      "taxonomy": "default"
-    },
-    "indianapolis": {
-      "title": "Indianapolis Energy Ecosystem",
-      "shortName": "Indianapolis",
-      "center": [
-        -85.95,
-        39.6
-      ],
-      "flyTo": [
-        -86.15,
-        39.8
-      ],
-      "taxonomy": "default"
-    },
-    "madison": {
-      "title": "Madison Energy Ecosystem",
-      "shortName": "Madison",
-      "center": [
-        -89.4,
-        42.9
-      ],
-      "flyTo": [
-        -89.39,
-        43.07
-      ],
-      "taxonomy": "default"
-    },
-    "st-louis": {
-      "title": "St. Louis Energy Ecosystem",
-      "shortName": "St. Louis",
-      "center": [
-        -90.4,
-        38.8
-      ],
-      "flyTo": [
-        -90.2,
-        38.63
-      ],
-      "taxonomy": "default"
-    },
-    "des-moines": {
-      "title": "Des Moines Energy Ecosystem",
-      "shortName": "Des Moines",
-      "center": [
-        -93.3,
-        41.4
-      ],
-      "flyTo": [
-        -93.6,
-        41.6
-      ],
-      "taxonomy": "default"
-    },
-    "kansas-city": {
-      "title": "Kansas City Energy Ecosystem",
-      "shortName": "Kansas City",
-      "center": [
-        -94.5,
-        38.8
-      ],
-      "flyTo": [
-        -94.6,
-        39.1
-      ],
-      "taxonomy": "default"
-    },
-    "pittsburgh": {
-      "title": "Pittsburgh Energy Ecosystem",
-      "shortName": "Pittsburgh",
-      "center": [
-        -79.9,
-        40.3
-      ],
-      "flyTo": [
-        -80.0,
-        40.4
-      ],
-      "taxonomy": "default"
-    },
-    "denmark": {
-      "title": "Denmark Energy Ecosystem",
-      "shortName": "Denmark",
-      "center": [
-        12.4,
-        55.6
-      ],
-      "flyTo": [
-        10.5,
-        56.3
-      ],
-      "flyToZoom": 6.5,
-      "taxonomy": "denmark"
+      "taxonomy": "default",
+      "displayStanfordLogo": false
     }
   }
 }
